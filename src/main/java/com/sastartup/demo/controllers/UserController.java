@@ -1,40 +1,35 @@
-//package com.sastartup.demo.controllers;
-//
-//import com.sastartup.demo.models.User;
-//import com.sastartup.demo.repositories.UserRepo;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.ModelAttribute;
-//import org.springframework.web.bind.annotation.PostMapping;
-//
-//@Controller
-//public class UserController {
-//
-//    @Autowired
-//    private UserRepo users;
-//
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
-//
-//    public UserController(UserRepo user,PasswordEncoder passwordEncoder){
-//        this.users = user;
-//        this.passwordEncoder = passwordEncoder;
-//    }
-//
-//    @GetMapping("/sign-up")
-//    public String showSignupForm(Model model){
-//        model.addAttribute("user", new User());
-//        return "users/sign-up";
-//    }
-//
-//    @PostMapping("/sign-up")
-//    public String saveUser(@ModelAttribute User user){
-//        String hash = passwordEncoder.encoder.encode(user.getPassword());
-//        user.setPassword(hash);
-//        users.save(user);
-//        return "redirect:/login";
-//    }
-//
-//}
+package com.sastartup.demo.Controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+
+@Controller
+public class UserController {
+
+    @GetMapping("/")
+    public String hello(){
+        return "startups/index";
+    }
+
+    @GetMapping("/register")
+    public String registerForm(Model model){
+        model.addAttribute("user", new User());
+        return "users/signup-form";
+    }
+
+    @GetMapping("/create/startup")
+    public String createStartupForm(Model model){
+        model.addAttribute("startup", new Startup());
+        return "users/create-startup";
+    }
+
+    @GetMapping("/submitresume")
+    public String resumeForm(Model model){
+        model.addAttribute("resume", new Resume());
+        return "users/signup-form";
+    }
+
+
+}
