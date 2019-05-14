@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<form th:action="@{/create/startup}" th:method="POST" th:object="${job}">
+
+    <label for="title">Job Title</label>
+    <input id="title" th:field="*{title}"/>
+    <label for="description">Job Responsibilities</label>
+    <input id="description" th:field="*{description}"/>
+
+    <button>Create my Profile</button>
+
+</form>
+
+</body>
+</html>

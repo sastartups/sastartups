@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<form th:action="@{/create/startup}" th:method="POST" th:object="${startup}">
+
+    <label for="name">Startup Name </label>
+    <input id="name" th:field="*{name}"/>
+    <label for="description">Tell us about your business!</label>
+    <input id="description" th:field="*{description}"/>
+    <label for="address">Where are you located?</label>
+    <input id="address" th:field="*{address}"/>
+    <label for="profilePicture">Profile Picture</label>
+    <input id="profilePicture" th:field="*{profilePicture}"/>
+    <label for="coverPhoto">Profile Cover Photo</label>
+    <input id="coverPhoto" th:field="*{coverPhoto}"/>
+
+    <button>Create my Profile</button>
+
+</form>
+
+</body>
+</html>
