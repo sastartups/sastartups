@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+        <h2>show all the start ups ...</h2>
+
+    <div th:each="item : ${allstartups}">
+
+        <a th:href="@{'/showpage/' + ${item.id}}">
+        <h4>company name:</h4>
+
+        <p th:text="${item.name}"></p>
+        </a>
+
+        <h4>company description:</h4>
+        <p th:text="${item.description}"></p>
+
+        <h4>company address:</h4>
+        <p th:text="${item.address}"></p>
+
+        <h4>profile image:</h4>
+        <img width="300" height="300" th:src="${item.profile_img}" alt="profile img"/>
+
+        <h4>cover image:</h4>
+        <img width="300" height="300" th:src="${item.cover_img}" alt="cover img"/>
+
+        <hr/>
+    </div>
+
+
+
+</body>
+</html>
