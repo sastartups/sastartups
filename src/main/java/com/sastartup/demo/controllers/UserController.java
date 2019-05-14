@@ -79,5 +79,10 @@ public class UserController {
         return "users/resume";
     }
 
+    @GetMapping("/userProfile")
+    public String userProfile(Model model){
+        model.addAttribute("user", userDao.findOne(1L));
+        return "users/userProfile";
+    }
 
 }
