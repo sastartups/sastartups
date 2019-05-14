@@ -38,30 +38,6 @@ public class StartupController {
     }
 
 
-    private final JobRepo jobDao;
-    private final ResumeRepo resumeDao;
-    private final StartupRepo startupDao;
-    private final UserRepo userDao;
-
-//    constructor
-
-
-    public StartupController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao) {
-        this.jobDao = jobDao;
-        this.resumeDao = resumeDao;
-        this.startupDao = startupDao;
-        this.userDao = userDao;
-    }
-
-
-    @GetMapping("/create-job-posting")
-    public String jobPostingForm(Model model){
-        model.addAttribute("job", new Job());
-        return "startups/create-job-posting";
-    }
-
-
-
     //    shows all the startup  in the table
     @GetMapping("/showpage")
     public String showpage(Model vmodel){
@@ -72,17 +48,25 @@ public class StartupController {
 
     //    show one startup and details
     @GetMapping("/showpage/{id}")
-    public String showOne(@PathVariable Long id,Model vmodel){
+    public String showOne(@PathVariable Long id,Model vmodel) {
         Startup startup = startupDao.findOne(id);
-        vmodel.addAttribute("oneStartup",startup);
+        vmodel.addAttribute("oneStartup", startup);
         return "startups/showone";
-        
+    }
+
+    @GetMapping("/create-job-posting")
+    public String jobPostingForm(Model model){
+        model.addAttribute("job", new Job());
+        return "startups/create-job-posting";
+    }
+
     @PostMapping("/create-job-posting")
     public String submitJobPosting(@ModelAttribute Job job){
         job.setStartup(startupDao.findOne(1l));
         jobDao.save(job);
         return "startups/create-job-posting";
     }
+
 
 
 
