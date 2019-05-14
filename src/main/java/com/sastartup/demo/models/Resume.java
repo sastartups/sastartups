@@ -11,11 +11,52 @@ public class Resume {
     private Long id;
 
     @Column
-    private String resume;
+    private String path;
 
     @OneToOne
     private User owner;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resume")
-    private List<Resume> resumes;
+    @ManyToMany(mappedBy = "resumes")
+    private List<Job> jobs;
+
+    public Resume() {
+    }
+
+    public Resume(String path, User owner, List<Job> jobs) {
+        this.path = path;
+        this.owner = owner;
+        this.jobs = jobs;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
+    }
 }
