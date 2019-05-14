@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+    <h2>show one of the start ups and details...</h2>
+
+    <div>
+
+        <h4>company name:</h4>
+
+        <p th:text="${oneStartup.name}"></p>
+
+        <h4>company description:</h4>
+        <p th:text="${oneStartup.description}"></p>
+
+        <h4>company address:</h4>
+        <p th:text="${oneStartup.address}"></p>
+
+        <h4>profile image:</h4>
+        <img width="300" height="300" th:src="${oneStartup.profile_img}" alt="profile img"/>
+
+        <h4>cover image:</h4>
+        <img width="300" height="300" th:src="${oneStartup.cover_img}" alt="cover img"/>
+
+        <h1>new info from job table</h1>
+
+        <div th:each="item : ${oneStartup.jobs}">
+
+        <h4>job description</h4>
+        <p th:text="${item.description}"></p>
+
+        <h4>job title</h4>
+        <p th:text="${item.title}"></p>
+
+            <hr/>
+
+
+        </div>
+    </div>
+
+</body>
+</html>
