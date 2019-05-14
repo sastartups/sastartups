@@ -7,10 +7,10 @@
 </head>
 <body>
 
-<form th:action="@{/submitresume}" th:method="POST" th:object="${resume}">
+<form th:action="@{/submit-resume}" th:method="POST" th:object="${resume}">
 
     <label for="resumeFile">Upload Resume</label>
-    <input id="resumeFile" th:field="*{filePath}"/>
+    <input id="resumeFile" th:field="*{path}"/>
 
     <button>Upload Resume</button>
 
