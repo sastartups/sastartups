@@ -59,4 +59,5 @@ public class Resume {
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
     }
+
 }

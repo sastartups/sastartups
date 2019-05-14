@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<form th:action="@{/create/startup}" th:method="POST" th:object="${job}">
+<form th:action="@{/create-job-posting}" th:method="POST" th:object="${job}">
 
     <label for="title">Job Title</label>
     <input id="title" th:field="*{title}"/>
