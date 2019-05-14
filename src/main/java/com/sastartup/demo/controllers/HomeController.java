@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    private final ApplicationRepo applicationDao;
+
     private final JobRepo jobDao;
     private final ResumeRepo resumeDao;
     private final StartupRepo startupDao;
@@ -16,8 +16,7 @@ public class HomeController {
 //    constructor
 
 
-    public HomeController(ApplicationRepo applicationDao, JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao) {
-        this.applicationDao = applicationDao;
+    public HomeController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao) {
         this.jobDao = jobDao;
         this.resumeDao = resumeDao;
         this.startupDao = startupDao;
