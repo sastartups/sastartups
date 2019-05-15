@@ -68,7 +68,12 @@ public class StartupController {
 
 
 
-    
+    @GetMapping("/all/jobs")
+    public String viewAllJobs(Model model){
+        model.addAttribute("jobs", jobDao.findAll());
+        return "startups/alljobs";
+
+    }
 
 
 

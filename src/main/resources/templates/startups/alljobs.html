@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div th:each="job : ${jobs}">
+
+    <p th:text="${job.title}"></p>
+    <p th:text="${job.description}"></p>
+
+</div>
+
+</body>
+</html>

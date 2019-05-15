@@ -3,7 +3,7 @@ body {
     padding: 0;
     max-width: 100%;
     overflow-x: hidden;
-    background-image: url(../img/San3.png);
+    background-image: url(/img/San4.png);
     background-size: 100% 40%;
     background-position: .5rem;
     background-repeat: no-repeat;
@@ -22,8 +22,7 @@ body {
 /* navbar */
 #navbar {
     padding: 0;
-    background-color: white;
-    opacity: .7;
+    background-color: transparent;
     z-index: 1;
 }
 
@@ -33,13 +32,14 @@ body {
     padding-left: 17rem;
     padding-top: -1rem;
     font-size: 2em;
-    color: black;
+    color: white;
+    border-bottom: .1rem solid white;
 }
 
 #navbar a{
     font-family: 'Carrois Gothic', sans-serif;
     font-size: 1em;
-    color: black;
+    color: white;
 }
 
 #navbar .navbar-toggler {
@@ -53,7 +53,7 @@ body {
 }
 
 #navbar .nav-item:hover {
-    border-bottom: .1rem solid black;
+    border-bottom: .1rem solid white;
     width: 5.5rem;
 }
 
@@ -69,7 +69,8 @@ body {
     background-position: 95% 36%;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-color: #647E9F;
+    background-color: #2A3141;
+    color:white;
 }
 
 /* Container-2 */
@@ -85,7 +86,7 @@ body {
 }
 
 #container2 h2 {
-    margin-top: 7rem;
+    margin-top: 3rem;
     font-family: 'Carrois Gothic', sans-serif;
 }
 
@@ -97,15 +98,13 @@ body {
     background-color: #2A3141;
     color: white;
     height: 20rem;
-    padding: 10px;
-    background-image:
-            linear-gradient(to bottom,
-            #647e9f 100%,
-            #818B95 100%),
-            linear-gradient(to bottom,
-            #2A3141 100%,
-            #E5ECEF 100%);
-    background-clip: content-box, padding-box;
+    margin-top: 6rem;
+}
+
+#container2 .col-md-5 {
+    background-color: #2A3141;
+    color: white;
+    height: 20rem;
     margin-top: 6rem;
 }
 
@@ -130,18 +129,8 @@ body {
     background-color: #2A3141;
     color: white;
     height: 20rem;
-    padding: 10px;
-    background-image:
-            linear-gradient(to bottom,
-            #647e9f 100%,
-            #818B95 100%),
-            linear-gradient(to bottom,
-            #2A3141 100%,
-            #E5ECEF 100%);
-    background-clip: content-box, padding-box;
     margin-top: 6rem;
 }
-
 
 @media (max-width: 992px) {
 
