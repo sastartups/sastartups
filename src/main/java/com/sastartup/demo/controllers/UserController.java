@@ -1,9 +1,6 @@
 package com.sastartup.demo.controllers;
 
-import com.sastartup.demo.models.Job;
-import com.sastartup.demo.models.Resume;
-import com.sastartup.demo.models.Startup;
-import com.sastartup.demo.models.User;
+import com.sastartup.demo.models.*;
 import com.sastartup.demo.repositories.JobRepo;
 import com.sastartup.demo.repositories.ResumeRepo;
 import com.sastartup.demo.repositories.StartupRepo;
@@ -15,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.persistence.JoinColumn;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -28,15 +26,17 @@ public class UserController {
     private final ResumeRepo resumeDao;
     private final StartupRepo startupDao;
     private final UserRepo userDao;
+    private EmailService emailService;
 
 //    constructor
 
 
-    public UserController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao) {
+    public UserController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao,EmailService emailService) {
         this.jobDao = jobDao;
         this.resumeDao = resumeDao;
         this.startupDao = startupDao;
         this.userDao = userDao;
+        this.emailService = emailService;
     }
 
 
@@ -95,6 +95,17 @@ public class UserController {
         Resume userResume = resumeDao.findOne(userDao.findOne(1l).getId());
         jobResumes.add(userResume);
         jobDao.save(job);
+
+        //sends email to the company owner on apply
+        //System.out.println(userResume.getPath());
+        emailService.prepareAndSend(
+                job.getStartup(),
+                "resume uploaded",
+                "resume link : " + userResume.getPath() +"\n"
+                + "first name: " + userResume.getOwner().getFirst_name() +"\n"
+                + "last name: " + userResume.getOwner().getLast_name() +"\n"
+        );
+
         return "startups/index";
     }
 
