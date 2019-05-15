@@ -1,23 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
-
+    <!-- bootstrap cdn -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="/css/signup.css" />
-
 </head>
 <body>
 <th:block th:replace="fragments/navbar :: navbar"/>
 
-<h2>user Profile!!</h2>
-
-<h1 th:text="${user.user_name}"></h1>
-<div th:each="startup : ${user.startups}">
-    <p th:text="${startup.name}"></p>
-</div>
-
+    <h1>ALL DONE !!!</h1>
 </body>
 </html>

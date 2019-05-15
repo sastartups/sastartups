@@ -16,6 +16,7 @@
 
 </head>
 <body>
+    <th:block th:replace="fragments/navbar :: navbar"/>
 
     <th:block th:replace="fragments/navbar :: navbar"/>
 
@@ -60,7 +61,7 @@
                     <p th:text="${item.title}"></p>
 
                     <form th:action="@{'/apply/' + ${item.id} }" method="POST">
-                        <button>Easy Apply</button>
+                        <button class="btn btn-outline-success">Easy Apply</button>
                     </form>
 
                     <hr/>
@@ -103,7 +104,7 @@
 
             }));
 
-        })
+        });
 
 
         function geocode(search, token) {

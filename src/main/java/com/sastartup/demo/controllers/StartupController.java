@@ -63,7 +63,7 @@ public class StartupController {
     public String submitJobPosting(@ModelAttribute Job job){
         job.setStartup(startupDao.findOne(1l));
         jobDao.save(job);
-        return "startups/create-job-posting";
+        return "redirect:/";
     }
 
 
