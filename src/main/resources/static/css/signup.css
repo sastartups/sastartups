@@ -1,0 +1,26 @@
+.col-md-3.offset-md-3 {
+    margin-top: 2rem;
+}
+
+.col-md-3 {
+    margin-top: 2rem;
+}
+
+#formCon1 {
+    margin-top: 3rem;
+    background-color: #647e9f;
+    padding: 5rem;
+    border-radius: .5rem;
+}
+
+#formCon1 form {
+    background-color: lightblue;
+    border-radius: .5rem;
+    height: 27rem;
+}
+
+body {
+    background-image: url("/img/san4.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
