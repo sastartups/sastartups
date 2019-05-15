@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+
+    <script src="//static.filestackapi.com/filestack-js/2.x.x/filestack.min.js"></script>
+
 </head>
 <body>
 
@@ -15,14 +18,43 @@
     <input id="description" th:field="*{description}"/>
     <label for="address">Where are you located?</label>
     <input id="address" th:field="*{address}"/>
-    <label for="profilePicture">Profile Picture</label>
-    <input id="profilePicture" th:field="*{profile_img}"/>
-    <label for="coverPhoto">Profile Cover Photo</label>
-    <input id="coverPhoto" th:field="*{cover_img}"/>
+
+    <input id="picture" type="button" class="btn btn-block btn-primary" name="picture" value="Upload Profile Picture"/>
+    <input id="profilePicture" th:field="*{profile_img}" type="text" style="visibility: hidden"/>
+
+    <!--<label for="profilePicture">Profile Picture</label>-->
+    <!--<input id="profilePicture" th:field="*{profile_img}"/>-->
+
+
+    <input id="picture2" type="button" class="btn btn-block btn-primary" name="picture2" value="Upload Cover Picture"/>
+    <input id="coverPicture" th:field="*{cover_img}" type="text" style="visibility: hidden"/>
 
     <button>Create my Profile</button>
 
 </form>
+
+<script>
+    document.getElementById("picture").addEventListener("click", function () {
+        var client = filestack.init('AEWKiu5qYTtif6jqXiYivz');
+        client.picker({
+            onFileUploadFinished: function(response){
+                this.value ="https://cdn.filestackcontent.com/" + (response.handle);
+                document.getElementById("profilePicture").value = this.value
+            }
+        }).open();
+    })
+
+    document.getElementById("picture2").addEventListener("click", function () {
+        var client = filestack.init('AEWKiu5qYTtif6jqXiYivz');
+        client.picker({
+            onFileUploadFinished: function(response){
+                this.value ="https://cdn.filestackcontent.com/" + (response.handle);
+                document.getElementById("coverPicture").value = this.value
+            }
+        }).open();
+    })
+
+</script>
 
 </body>
 </html>
