@@ -66,7 +66,7 @@ body {
     margin-top: -10rem;
     background-image: url(/img/san4.png);
     background-size: 65% 70%;
-    background-position: 80% 50%;
+    background-position: 95% 36%;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-color: #647E9F;
@@ -76,8 +76,6 @@ body {
 #container2 {
     height: 130rem;
     background-color: white;
-    margin: 0;
-    padding: 0;
     max-width: 100%;
     margin-top: -14rem;
 }
@@ -122,25 +120,26 @@ body {
     background-image: url("../img/San2.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 100% 40%;
+    background-size: 50% 40%;
     background-position-y: 28rem;
+    background-position-x: 20rem;
     /*background-color: #647E9F;*/
 }
 
-#container4 {
-    height: 45rem;
-    margin: 0;
-    padding: 0;
-    max-width: 100%;
-    background-color: #818B95;
-}
-
-#container5 {
-    height: 45rem;
-    margin: 0;
-    padding: 0;
-    max-width: 100%;
-    background-color: white;
+#container3 .col-md-4 {
+    background-color: #2A3141;
+    color: white;
+    height: 20rem;
+    padding: 10px;
+    background-image:
+            linear-gradient(to bottom,
+            #647e9f 100%,
+            #818B95 100%),
+            linear-gradient(to bottom,
+            #2A3141 100%,
+            #E5ECEF 100%);
+    background-clip: content-box, padding-box;
+    margin-top: 6rem;
 }
 
 
