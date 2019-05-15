@@ -40,10 +40,6 @@ public class UserController {
     }
 
 
-//    @GetMapping("/")
-//    public String hello(){
-//        return "index";
-//    }
 
     @GetMapping("/register")
     public String registerForm(Model model) {
