@@ -14,31 +14,32 @@
 
 <th:block th:replace="fragments/navbar :: navbar"/>
 
-        <h2>show all the start ups ...</h2>
 
-    <div th:each="item : ${allstartups}">
+    <h2>show all the start ups ...</h2>
 
-        <a th:href="@{'/showpage/' + ${item.id}}">
-        <h4>company name:</h4>
+     <div class="card mb-3" style="max-width: 540px;" th:each="item : ${allstartups}">
+            <div class="row no-gutters">
 
-        <p th:text="${item.name}"></p>
-        </a>
+                <div class="col-md-4">
+                    <!--cover image-->
+                    <img width="100%" height="100%" th:src="${item.cover_img}" alt="cover img"/>
+                </div>
 
-        <h4>company description:</h4>
-        <p th:text="${item.description}"></p>
+                <div class="col-md-8">
+                    <div class="card-body">
 
-        <h4>company address:</h4>
-        <p th:text="${item.address}"></p>
+                        <!--link to show one startup page-->
+                        <a th:href="@{'/showpage/' + ${item.id}}"><p th:text="${item.name}"></p></a>
 
-        <h4>profile image:</h4>
-        <img width="300" height="300" th:src="${item.profile_img}" alt="profile img"/>
+                        <!--company description-->
+                        <p class="card-text" th:text="${item.description}"></p>
 
-        <h4>cover image:</h4>
-        <img width="300" height="300" th:src="${item.cover_img}" alt="cover img"/>
-
-        <hr/>
+                        <!--company address-->
+                        <p class="card-text"><small class="text-muted" th:text="${item.address}"></small></p>
+                    </div>
+                </div>
+            </div>
     </div>
-
 
 
 </body>
