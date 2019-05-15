@@ -5,20 +5,34 @@
     <th:block th:fragment="navbar">
         <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="#">GrowTech-SA</a>
+                <a class="navbar-brand" th:href="@{/}">GrowTech-SA</a>
                 <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Section 1</a>
+                            <a class="nav-link" th:href="@{/login}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Section 2</a>
+                            <form th:action="@{/logout}" th:method="post">
+                                <button class="border-0"><a class="nav-link">Logout</a></button>
+                            </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Section 3</a>
+                            <a class="nav-link" th:href="@{/showpage}">All Startups</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/create-job-posting}">Create Job</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/submit-resume}">submit resume</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/userProfile}">user Profile</a>
                         </li>
                     </ul>
                 </div>

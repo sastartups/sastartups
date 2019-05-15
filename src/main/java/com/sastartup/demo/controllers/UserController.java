@@ -50,7 +50,7 @@ public class UserController {
     @PostMapping("/register")
     public String submitRegistration(@ModelAttribute User user) {
         userDao.save(user);
-        return "users/signup-form";
+        return "users/applyalert";
 
     }
 
@@ -64,7 +64,7 @@ public class UserController {
     public String submitStartupForm(@ModelAttribute Startup startup) {
         startup.setUser(userDao.findOne(1l));
         startupDao.save(startup);
-        return "users/create-startup";
+        return "users/applyalert";
 
     }
 
@@ -78,7 +78,7 @@ public class UserController {
     public String submitResume(@ModelAttribute Resume resume) {
         resume.setOwner(userDao.findOne(1l));
         resumeDao.save(resume);
-        return "users/resume";
+        return "users/applyalert";
     }
 
     @GetMapping("/userProfile")
@@ -106,7 +106,8 @@ public class UserController {
                 + "last name: " + userResume.getOwner().getLast_name() +"\n"
         );
 
-        return "startups/index";
+        return "users/applyalert";
     }
+
 
 }
