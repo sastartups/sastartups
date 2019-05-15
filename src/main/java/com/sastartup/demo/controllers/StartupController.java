@@ -24,17 +24,16 @@ public class StartupController {
     private final ResumeRepo resumeDao;
     private final StartupRepo startupDao;
     private final UserRepo userDao;
-    private EmailService emailService;
 
 //    constructor
 
 
-    public StartupController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao,EmailService emailService) {
+    public StartupController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao) {
         this.jobDao = jobDao;
         this.resumeDao = resumeDao;
         this.startupDao = startupDao;
         this.userDao = userDao;
-        this.emailService = emailService;
+
     }
 
 
@@ -50,16 +49,6 @@ public class StartupController {
     @GetMapping("/showpage/{id}")
     public String showOne(@PathVariable Long id,Model vmodel) {
         Startup startup = startupDao.findOne(id);
-
-
-//sends email to the company owner
-        System.out.println( "this is the :"+startup.getUser().getEmail());
-        emailService.prepareAndSend(startup, "resume uploaded","some one is intrested");
-
-
-
-
-
         vmodel.addAttribute("oneStartup", startup);
         return "startups/showone";
     }
