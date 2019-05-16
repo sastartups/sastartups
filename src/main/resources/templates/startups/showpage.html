@@ -22,17 +22,12 @@
 
                 <div class="col-md-4">
                     <!--cover image-->
-                    <img width="100%" height="100%" th:src="${item.cover_img}"/>
+                    <img style="max-height: 15em; width: 23em" th:src="${item.cover_img}"/>
                     <!--profile image-->
                     <div class="col-2 d-none d-xl-block" style="z-index: 1;">
-                        <img style=" margin-top: -370%;  margin-right: -1180%" class="rounded-circle float-right" width="100px" height="100px" th:src="${item.profile_img}" />
+                        <img style="margin-top: -370%;  margin-right: -1180%" class="rounded-circle float-right" width="100px" height="100px" th:src="${item.profile_img}" />
                     </div>
                 </div>
-
-                <!--<div style="z-index: 1; position: relative; margin-left: 100px;">-->
-                <!--profile image-->
-                <!--<img class="rounded-circle float-right" width="100px" height="100px" th:src="${item.profile_img}"/>-->
-                <!--</div>-->
 
                 <div class="col-md-8">
                     <div style="padding-left: 5%;">
