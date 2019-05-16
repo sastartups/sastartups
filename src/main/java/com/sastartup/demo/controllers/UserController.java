@@ -84,7 +84,8 @@ public class UserController {
     @GetMapping("/userProfile")
     public String userProfile(Model model) {
         model.addAttribute("user", userDao.findOne(1L));
-        model.addAttribute("resume", resumeDao.findOne(1l));
+        model.addAttribute("resumes", resumeDao.findByOwner(userDao.findOne(1l)));
+//        model.addAttribute("applicants", )
         return "users/userProfile";
     }
 
@@ -92,7 +93,7 @@ public class UserController {
     public String easyApply(@PathVariable long id) {
         Job job = jobDao.findOne(id);
         List<Resume> jobResumes = job.getResumes();
-        Resume userResume = resumeDao.findOne(userDao.findOne(1l).getId());
+        Resume userResume = resumeDao.findByOwnerId(userDao.findOne(1l).getId());
         jobResumes.add(userResume);
         jobDao.save(job);
 
