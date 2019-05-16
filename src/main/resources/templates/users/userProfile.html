@@ -22,17 +22,18 @@
         <p th:text="${job.title}"></p>
         <p th:text="${job.description}"></p>
 
-        <h2 th:if="${job.resumes.toString().length() != 0}">Submitted Applications</h2>
-        <!--<div th:text="${job.resumes}"></div>-->
-        <div th:each="resume : ${job.resumes}">
-            <a th:href="@{${resume.path}}">Click here to view submitted resume</a>
+        <div th:if="${job.resumes.size() > 0}">
+            <h1>Your resume</h1>
+            <div th:each="resume : ${job.resumes}">
+                <a th:href="@{${resume.path}}">Click here to view submitted resume</a>
+            </div>
         </div>
-    </div>
-</div>
 
-<h1>Your resume</h1>
-<div th:each="resume : ${resumes}">
-    <a th:href="@{${resume.path}}">Click here to view your resume</a>
+        <div th:if="${job.resumes.size() == 0}">
+
+        </div>
+
+    </div>
 </div>
 
 
