@@ -5,8 +5,9 @@
     <meta charset="UTF-8"/>
     <title>Title</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="/css/signup.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="/css/signup.css"/>
 
 </head>
 <body>
@@ -16,8 +17,24 @@
 
 <h1 th:text="${user.user_name}"></h1>
 <div th:each="startup : ${user.startups}">
-    <p th:text="${startup.name}"></p>
+    <a th:href="@{'/showpage/' + ${startup.id}}" th:text="${startup.name}"></a>
+    <div th:each="job : ${startup.jobs}">
+        <p th:text="${job.title}"></p>
+        <p th:text="${job.description}"></p>
+
+        <h2 th:if="${job.resumes.toString().length() != 0}">Submitted Applications</h2>
+        <!--<div th:text="${job.resumes}"></div>-->
+        <div th:each="resume : ${job.resumes}">
+            <a th:href="@{${resume.path}}">Click here to view submitted resume</a>
+        </div>
+    </div>
 </div>
+
+<h1>Your resume</h1>
+<div th:each="resume : ${resumes}">
+    <a th:href="@{${resume.path}}">Click here to view your resume</a>
+</div>
+
 
 </body>
 </html>
