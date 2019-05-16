@@ -54,18 +54,19 @@ public class StartupController {
     }
 
     //    create job
-    @GetMapping("/create-job-posting")
-    public String jobPostingForm(Model model){
+    @GetMapping("/create/{id}/job")
+    public String jobPostingForm(Model model, @PathVariable Long id){
+        model.addAttribute("startupId", id);
         model.addAttribute("job", new Job());
         return "startups/create-job-posting";
     }
 
 
-    @PostMapping("/create-job-posting")
-    public String submitJobPosting(@ModelAttribute Job job){
-        job.setStartup(startupDao.findOne(1l));
+    @PostMapping("/create/{id}/job")
+    public String submitJobPosting(@ModelAttribute Job job,@PathVariable Long id){
+        job.setStartup(startupDao.findOne(id));
         jobDao.save(job);
-        return "redirect:/";
+        return "redirect:/userProfile";
     }
 
 
