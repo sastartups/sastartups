@@ -113,17 +113,28 @@ body {
     margin: 0;
     padding: 0;
     max-width: 100%;
-    background-image: url("../img/San2.png");
+    background-image: url("../img/san4.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 50% 40%;
-    background-position-y: 28rem;
+    background-size: 50% 32%;
+    background-position-y: 35rem;
     background-position-x: 20rem;
-    /*background-color: #647E9F;*/
+    background-color: #2A3141;
+    color:white;
+}
+
+#container3 hr {
+    color: white;
 }
 
 #container4 {
     height: 29rem;
+    margin-top: -13rem;
+}
+
+/* footer */
+#contact {
+    margin-top: 3rem;
 }
 
 @media (max-width: 992px) {
