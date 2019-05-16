@@ -25,33 +25,49 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/login}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <form th:action="@{/logout}" th:method="post">
-                        <button class="border-0"><a class="nav-link">Logout</a></button>
-                    </form>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/register}">Sign Up</a>
-                </li>
-
+                <div sec:authorize="isAnonymous()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" th:method="post">
+                            <button class="border-0"><a class="nav-link">Logout</a></button>
+                        </form>
+                    </li>
+                </div>
+                <div sec:authorize="isAnonymous()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/sign-up}">Sign Up</a>
+                    </li>
+                </div>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/showpage}">All Startps</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/create-job-posting}">Create Job</a>
+                    <a class="nav-link" th:href="@{/all/jobs}">All Jobs</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/submit-resume}">submit resume</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/userProfile}">user Profile</a>
-                </li>
+                <div sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/create-job-posting}">Create Job</a>
+                    </li>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
+                    </li>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/submit-resume}">submit resume</a>
+                    </li>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/userProfile}">user Profile</a>
+                    </li>
+                </div>
             </ul>
 
         </div>
@@ -60,12 +76,12 @@
 
 <div id="container1" class="container">
     <div class="row">
-        <div style="margin-top: 15rem;" class="col-md-4 ml-3">
+        <div style="margin-top: 15rem;" class="offset-md-1 col-md-4">
             <h2>Create start up!</h2>
         </div>
     </div>
     <div  class="row">
-        <div class="col-md-4 ml-3">
+        <div class="col-md-4 ml-5">
             <p>
                 dh roihgoihgio hgiowh rgoh ogri hgro wihrgio
                 rgwhgrwoihrgwoihiorw hrgio hrogihgoriw
@@ -73,12 +89,12 @@
         </div>
     </div>
     <div class="row">
-        <div style="margin-top: 6rem;" class="col-md-4 ml-3">
-            <h2>Apply for jobs</h2>
+        <div style="margin-top: 5rem;" class="offset-md-1 col-md-4">
+            <h2>Create start up!</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 ml-3">
+    <div  class="row">
+        <div class="col-md-4 ml-5">
             <p>
                 dh roihgoihgio hgiowh rgoh ogri hgro wihrgio
                 rgwhgrwoihrgwoihiorw hrgio hrogihgoriw
@@ -193,31 +209,43 @@
 
 <div id="container3" class="container">
     <div class="row">
-        <div class="col-md-3 offset-md-1">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="mx-auto">
+                    <div id="contact">
+                        <h4>Contact</h4>
+                        <hr/>
+                        <h5>something@something.com</h5>
+                        <h5>something@something.com</h5>
+                        <h5>something@something.com</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
             <div id="contact">
-                <h4>Contact</h4>
-                <hr/>
-                <h5>something@something.com</h5>
-                <h5>something@something.com</h5>
-                <h5>something@something.com</h5>
+                <div class="row">
+                    <div class="mx-auto">
+                        <h4>Contact</h4>
+                        <hr/>
+                        <h5>something@something.com</h5>
+                        <h5>something@something.com</h5>
+                        <h5>something@something.com</h5>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="offset-md-1 col-md-3">
-            <div>
-                <h4>Contact</h4>
-                <hr/>
-                <h5>something@something.com</h5>
-                <h5>something@something.com</h5>
-                <h5>something@something.com</h5>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div>
-                <h4>Contact</h4>
-                <hr/>
-                <h5>something@something.com</h5>
-                <h5>something@something.com</h5>
-                <h5>something@something.com</h5>
+        <div class="col-md-4">
+            <div id="contact">
+                <div class="row">
+                    <div class="mx-auto">
+                        <h4>Contact</h4>
+                        <hr/>
+                        <h5>something@something.com</h5>
+                        <h5>something@something.com</h5>
+                        <h5>something@something.com</h5>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
