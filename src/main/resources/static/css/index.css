@@ -61,6 +61,12 @@ body {
     width: 5.5rem;
 }
 
+#navbar button {
+    padding: 0;
+    color:white;
+    background-color: transparent;
+}
+
 /* container-1 */
 #container1 {
     height: 58rem;

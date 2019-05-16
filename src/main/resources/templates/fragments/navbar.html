@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
     <body>
 
     <th:block th:fragment="navbar">
@@ -14,26 +14,44 @@
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/login}">Login</a>
                         </li>
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <form th:action="@{/logout}" th:method="post">
+                                    <button class="border-0"><a class="nav-link">Logout</a></button>
+                                </form>
+                            </li>
+                        </div>
                         <li class="nav-item">
-                            <form th:action="@{/logout}" th:method="post">
-                                <button class="border-0"><a class="nav-link">Logout</a></button>
-                            </form>
+                            <a class="nav-link" th:href="@{/all/jobs}">All Jobs</a>
                         </li>
+                        <div sec:authorize="isAnonymous()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/sign-up}">Register</a>
+                            </li>
+                        </div>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/showpage}">All Startups</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/create-job-posting}">Create Job</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/submit-resume}">submit resume</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/userProfile}">user Profile</a>
-                        </li>
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/create-job-posting}">Create Job</a>
+                            </li>
+                        </div>
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
+                            </li>
+                        </div>
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/submit-resume}">submit resume</a>
+                            </li>
+                        </div>
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/userProfile}">user Profile</a>
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </div>

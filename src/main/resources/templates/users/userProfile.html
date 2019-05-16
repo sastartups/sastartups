@@ -17,6 +17,7 @@
 
 <h1 th:text="${user.username}"></h1>
 
+
 <!--<div th:each="startup : ${user.startups}">-->
     <!--<a th:href="@{'/showpage/' + ${startup.id}}" th:text="${startup.name}"></a>-->
     <!--<div th:each="job : ${startup.jobs}">-->
@@ -41,6 +42,7 @@
 <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
 
 <h1>all you startups !!!!</h1>
+
 
 <div th:each="startup : ${user.startups}">
 
