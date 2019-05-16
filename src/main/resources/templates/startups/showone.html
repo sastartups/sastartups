@@ -65,6 +65,7 @@
                     <h4>job title</h4>
                     <p th:text="${item.title}"></p>
                     <div th:each="item : ${oneStartup.jobs}">
+
                         <form th:action="@{'/apply/' + ${item.id} }" method="POST">
                             <button class="btn btn-outline-success">Easy Apply</button>
                         </form>
@@ -77,6 +78,7 @@
                             <a th:href="@{'/startup/' + ${oneStartup.id} + '/delete'}">delete startup</a>
                         </button>
 
+
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -84,6 +86,9 @@
                     <p th:text="${item.description}"></p>
                 </div>
             </div>
+            <form th:action="@{'/apply/' + ${item.id} }" method="POST">
+                <button class="btn btn-outline-success">Easy Apply</button>
+            </form>
             <hr/>
         </div>
     </div><br/><br/><br/>
