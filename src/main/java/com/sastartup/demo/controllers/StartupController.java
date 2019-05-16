@@ -53,11 +53,13 @@ public class StartupController {
         return "startups/showone";
     }
 
+    //    create job
     @GetMapping("/create-job-posting")
     public String jobPostingForm(Model model){
         model.addAttribute("job", new Job());
         return "startups/create-job-posting";
     }
+
 
     @PostMapping("/create-job-posting")
     public String submitJobPosting(@ModelAttribute Job job){

@@ -63,10 +63,62 @@ public class UserController {
     @PostMapping("/create/startup")
     public String submitStartupForm(@ModelAttribute Startup startup) {
         startup.setUser(userDao.findOne(1l));
+
+//        System.out.println("here!!!!"+startup.getProfile_img());
+//          System.out.println(startup.getName());
         startupDao.save(startup);
+
         return "users/applyalert";
 
     }
+
+
+//    edit startup
+    @GetMapping("/startup/{id}/edit")
+    public String editstartup(@PathVariable Long id,Model vmodel){
+        Startup startup = startupDao.findOne(id);
+        vmodel.addAttribute("startup",startup);
+        return "startups/editstartup";
+    }
+
+//    @PostMapping("/startup/{id}/edit")
+//    public String editedstartup(@ModelAttribute Startup edit){
+//
+//        User sessionuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User dbuser = userDao.findOne(sessionuser.getId());
+//
+//        edit.setUser(userDao.findOne(dbuser.getId()));
+//        startupDao.save(edit);
+//        return "redirect:/showpage";
+//    }
+
+
+
+    //    delete startup
+    @GetMapping("/startup/{id}/delete")
+    public String deleteform(@PathVariable Long id, Model vmodel){
+
+        Startup startup = startupDao.findOne(id);
+        vmodel.addAttribute("startup",startup);
+        return ("startups/deletestartup");
+    }
+
+    @PostMapping("/startup/{id}/delete")
+    public String delete(@PathVariable Long id){
+        startupDao.delete(id);
+        return "redirect:/showpage";
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     @GetMapping("/submit-resume")
     public String resumeForm(Model model) {
@@ -93,7 +145,9 @@ public class UserController {
     public String easyApply(@PathVariable long id) {
         Job job = jobDao.findOne(id);
         List<Resume> jobResumes = job.getResumes();
+
         Resume userResume = resumeDao.findByOwnerId(userDao.findOne(1l).getId());
+
         jobResumes.add(userResume);
         jobDao.save(job);
 

@@ -65,6 +65,20 @@
                     <h4>job title</h4>
                     <p th:text="${item.title}"></p>
                     <div th:each="item : ${oneStartup.jobs}">
+
+                        <form th:action="@{'/apply/' + ${item.id} }" method="POST">
+                            <button class="btn btn-outline-success">Easy Apply</button>
+                        </form>
+
+          <!--delete and edit buttons-->
+                        <button class="btn btn-outline-success">
+                            <a th:href="@{'/startup/' + ${oneStartup.id} + '/edit'}">edit startup</a>
+                        </button>
+                        <button class="btn btn-outline-success">
+                            <a th:href="@{'/startup/' + ${oneStartup.id} + '/delete'}">delete startup</a>
+                        </button>
+
+
                     </div>
                 </div>
                 <div class="col-md-8">

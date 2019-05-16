@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ResumeRepo extends CrudRepository<Resume, Long> {
+
     List<Resume>findByOwner(User user);
     Resume findByOwnerId(Long id);
 
