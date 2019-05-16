@@ -90,16 +90,16 @@ public class UserController {
         return "startups/editstartup";
     }
 
-//    @PostMapping("/startup/{id}/edit")
-//    public String editedstartup(@ModelAttribute Startup edit){
-//
-//        User sessionuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User dbuser = userDao.findOne(sessionuser.getId());
-//
-//        edit.setUser(userDao.findOne(dbuser.getId()));
-//        startupDao.save(edit);
-//        return "redirect:/showpage";
-//    }
+    @PostMapping("/startup/{id}/edit")
+    public String editedstartup(@ModelAttribute Startup edit){
+
+        User sessionuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbuser = userDao.findOne(sessionuser.getId());
+
+        edit.setUser(userDao.findOne(dbuser.getId()));
+        startupDao.save(edit);
+        return "redirect:/userProfile";
+    }
 
 
 
@@ -115,19 +115,8 @@ public class UserController {
     @PostMapping("/startup/{id}/delete")
     public String delete(@PathVariable Long id){
         startupDao.delete(id);
-        return "redirect:/showpage";
+        return "redirect:/userProfile";
     }
-
-
-
-
-
-
-
-
-
-
-
 
     @GetMapping("/submit-resume")
     public String resumeForm(Model model) {

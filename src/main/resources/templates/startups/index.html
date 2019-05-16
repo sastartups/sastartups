@@ -25,6 +25,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+
                 <div sec:authorize="isAnonymous()">
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/login}">Login</a>
@@ -42,6 +43,7 @@
                         <a class="nav-link" th:href="@{/sign-up}">Sign Up</a>
                     </li>
                 </div>
+
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/showpage}">All Startps</a>
                 </li>
