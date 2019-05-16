@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<h1>edit startup...</h1>
+
+
+        <form method="post" th:action="@{'/startup/' + ${startup.id} + '/edit'}" th:object="${startup}">
+            <input type="text" th:field="*{address}"/>
+            <input type="text" th:field="*{cover_img}"/>
+            <textarea th:field="*{description}"></textarea>
+            <input type="text" th:field="*{name}"/>
+            <input type="text" th:field="*{profile_img}"/>
+            <button type="submit">done</button>
+        </form>
+</body>
+</html>
