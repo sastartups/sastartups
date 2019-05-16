@@ -14,7 +14,7 @@
 <th:block th:replace="fragments/navbar :: navbar"/>
 <h2>user Profile!!</h2>
 
-<h1 th:text="${user.user_name}"></h1>
+<h1 th:text="${user.username}"></h1>
 <div th:each="startup : ${user.startups}">
     <a th:href="@{'/showpage/' + ${startup.id}}" th:text="${startup.name}"></a>
     <div th:each="job : ${startup.jobs}">
