@@ -5,6 +5,7 @@ import com.sastartup.demo.repositories.JobRepo;
 import com.sastartup.demo.repositories.ResumeRepo;
 import com.sastartup.demo.repositories.StartupRepo;
 import com.sastartup.demo.repositories.UserRepo;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,31 +28,36 @@ public class UserController {
     private final StartupRepo startupDao;
     private final UserRepo userDao;
     private EmailService emailService;
+    private PasswordEncoder passwordEncoder;
+
 
 //    constructor
 
 
-    public UserController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao,EmailService emailService) {
+    public UserController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao,EmailService emailService, PasswordEncoder passwordEncoder) {
         this.jobDao = jobDao;
         this.resumeDao = resumeDao;
         this.startupDao = startupDao;
         this.userDao = userDao;
         this.emailService = emailService;
+        this.passwordEncoder = passwordEncoder;
+
     }
 
 
 
-    @GetMapping("/register")
+    @GetMapping("/sign-up")
     public String registerForm(Model model) {
         model.addAttribute("user", new User());
         return "users/signup-form";
     }
 
-    @PostMapping("/register")
-    public String submitRegistration(@ModelAttribute User user) {
+    @PostMapping("/sign-up")
+    public String saveUser(@ModelAttribute User user){
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
         userDao.save(user);
-        return "users/applyalert";
-
+        return "redirect:/login";
     }
 
     @GetMapping("/create/startup")

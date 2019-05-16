@@ -18,7 +18,7 @@ public class User {
     private String last_name;
 
     @Column(nullable = false,unique = true)
-    private String user_name;
+    private String username;
 
     @Column(nullable = false)
     private String password;
@@ -33,13 +33,21 @@ public class User {
     public User() {
     }
 
-    public User(String first_name, String last_name, String user_name, String password, String email, List<Startup> startups) {
+    public User(String first_name, String last_name, String username, String password, String email, List<Startup> startups) {
         this.first_name = first_name;
         this.last_name = last_name;
-        this.user_name = user_name;
+        this.username = username;
         this.password = password;
         this.email = email;
         this.startups = startups;
+    }
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        first_name = copy.first_name;
+        last_name = copy.last_name;
+        username = copy.username;
+        password = copy.password;
     }
 
     public Long getId() {
@@ -66,12 +74,12 @@ public class User {
         this.last_name = last_name;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
