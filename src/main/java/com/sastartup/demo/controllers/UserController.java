@@ -5,6 +5,7 @@ import com.sastartup.demo.repositories.JobRepo;
 import com.sastartup.demo.repositories.ResumeRepo;
 import com.sastartup.demo.repositories.StartupRepo;
 import com.sastartup.demo.repositories.UserRepo;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,7 +69,9 @@ public class UserController {
 
     @PostMapping("/create/startup")
     public String submitStartupForm(@ModelAttribute Startup startup) {
-        startup.setUser(userDao.findOne(1l));
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbUser = userDao.findOne(sessionUser.getId());
+        startup.setUser(dbUser);
 
 //        System.out.println("here!!!!"+startup.getProfile_img());
 //          System.out.println(startup.getName());
@@ -134,15 +137,19 @@ public class UserController {
 
     @PostMapping("/submit-resume")
     public String submitResume(@ModelAttribute Resume resume) {
-        resume.setOwner(userDao.findOne(1l));
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbUser = userDao.findOne(sessionUser.getId());
+        resume.setOwner(dbUser);
         resumeDao.save(resume);
         return "users/applyalert";
     }
 
     @GetMapping("/userProfile")
     public String userProfile(Model model) {
-        model.addAttribute("user", userDao.findOne(1L));
-        model.addAttribute("resumes", resumeDao.findByOwner(userDao.findOne(1l)));
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbUser = userDao.findOne(sessionUser.getId());
+        model.addAttribute("user", dbUser);
+        model.addAttribute("resumes", resumeDao.findByOwner(dbUser));
 //        model.addAttribute("applicants", )
         return "users/userProfile";
     }
@@ -151,9 +158,9 @@ public class UserController {
     public String easyApply(@PathVariable long id) {
         Job job = jobDao.findOne(id);
         List<Resume> jobResumes = job.getResumes();
-
-        Resume userResume = resumeDao.findByOwnerId(userDao.findOne(1l).getId());
-
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbUser = userDao.findOne(sessionUser.getId());
+        Resume userResume = resumeDao.findByOwnerId(dbUser.getId());
         jobResumes.add(userResume);
         jobDao.save(job);
 
