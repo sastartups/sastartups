@@ -75,7 +75,7 @@ body {
 
 /* Container-2 */
 #container2 {
-    height: 130rem;
+    height: 95rem;
     background-color: white;
     max-width: 100%;
     margin-top: -14rem;
@@ -98,16 +98,9 @@ body {
     background-color: #2A3141;
     color: white;
     height: 20rem;
-    margin-top: 6rem;
+    margin-bottom: 5rem;
+    border-radius: .3rem;
 }
-
-#container2 .col-md-5 {
-    background-color: #2A3141;
-    color: white;
-    height: 20rem;
-    margin-top: 6rem;
-}
-
 
 /* container3 */
 
@@ -125,11 +118,8 @@ body {
     /*background-color: #647E9F;*/
 }
 
-#container3 .col-md-4 {
-    background-color: #2A3141;
-    color: white;
-    height: 20rem;
-    margin-top: 6rem;
+#container4 {
+    height: 29rem;
 }
 
 @media (max-width: 992px) {
