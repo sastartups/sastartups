@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-    <!-- bootstrap cdn -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="/css/signup.css" />
+    <meta charset="UTF-8" />
+    <title>Log In</title>
 </head>
 <body>
-<th:block th:replace="fragments/navbar :: navbar"/>
+<h1>Log In</h1>
+<div th:if="${param.error}">
+    Invalid Username and Password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
 
-        <h1>this is login page</h1>
-
+<form th:action="@{/login}" method="post">
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text" />
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" />
+    <input type="submit" value="Log In" />
+</form>
 </body>
 </html>
