@@ -7,15 +7,11 @@ import com.sastartup.demo.repositories.JobRepo;
 import com.sastartup.demo.repositories.ResumeRepo;
 import com.sastartup.demo.repositories.StartupRepo;
 import com.sastartup.demo.repositories.UserRepo;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import org.springframework.web.bind.annotation.PathVariable;
-
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -58,15 +54,19 @@ public class StartupController {
     @GetMapping("/create/{id}/job")
     public String jobPostingForm(Model model, @PathVariable Long id){
         model.addAttribute("startupId", id);
-        model.addAttribute("job", new Job());
         return "startups/create-job-posting";
     }
 
 
     @PostMapping("/create/{id}/job")
-    public String submitJobPosting(@ModelAttribute Job job,@PathVariable Long id){
-        job.setStartup(startupDao.findOne(id));
-        jobDao.save(job);
+    public String submitJobPosting(@RequestParam String title,@RequestParam String description ,@PathVariable Long id){
+
+        Job newjob = new Job();
+        newjob.setDescription(description);
+        newjob.setTitle(title);
+        newjob.setStartup(startupDao.findOne(id));
+        jobDao.save(newjob);
+
         return "redirect:/userProfile";
     }
 

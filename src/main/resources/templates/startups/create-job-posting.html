@@ -12,12 +12,12 @@
 <body>
 <th:block th:replace="fragments/navbar :: navbar"/>
 
-<form th:action="@{'/create/' + ${startupId} + '/job'}" th:method="POST" th:object="${job}">
+<form th:action="@{'/create/' + ${startupId} + '/job'}" th:method="POST">
 
     <label for="title">Job Title</label>
-    <input id="title" th:field="*{title}"/>
+    <input name="title" id="title"/>
     <label for="description">Job Responsibilities</label>
-    <input id="description" th:field="*{description}"/>
+    <input name="description" id="description" />
 
     <button>Create my job</button>
 
