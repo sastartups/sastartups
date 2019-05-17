@@ -10,7 +10,7 @@ public class Resume {
     @Id @GeneratedValue
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String path;
 
     @OneToOne

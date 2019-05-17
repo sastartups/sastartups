@@ -129,7 +129,13 @@ public class UserController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
         resume.setOwner(dbUser);
-        resumeDao.save(resume);
+
+        if(resume.getPath() == "" || resume.toString().length() == 0){
+            return "redirect:/submit-resume";
+        } else {
+            resumeDao.save(resume);
+        }
+
         return "users/applyalert";
     }
 
