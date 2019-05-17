@@ -14,68 +14,83 @@
 <th:block th:replace="fragments/navbar :: navbar"/>
 <div class="container">
 
-<h2>user Profile!!</h2>
+    <h2>user Profile!!</h2>
 
 
     <h1>welcome to your profile </h1>
     <h1 th:text="${user.username}"></h1>
 
 
-
-<!--<div th:each="startup : ${user.startups}">-->
+    <!--<div th:each="startup : ${user.startups}">-->
     <!--<a th:href="@{'/showpage/' + ${startup.id}}" th:text="${startup.name}"></a>-->
     <!--<div th:each="job : ${startup.jobs}">-->
-        <!--<p th:text="${job.title}"></p>-->
-        <!--<p th:text="${job.description}"></p>-->
+    <!--<p th:text="${job.title}"></p>-->
+    <!--<p th:text="${job.description}"></p>-->
 
-        <!--<div th:if="${job.resumes.size() > 0}">-->
-            <!--<h1>Your resume</h1>-->
-            <!--<div th:each="resume : ${job.resumes}">-->
-                <!--<a th:href="@{${resume.path}}">Click here to view submitted resume</a>-->
-            <!--</div>-->
-        <!--</div>-->
+    <!--<div th:if="${job.resumes.size() > 0}">-->
+    <!--<h1>Your resume</h1>-->
+    <!--<div th:each="resume : ${job.resumes}">-->
+    <!--<a th:href="@{${resume.path}}">Click here to view submitted resume</a>-->
+    <!--</div>-->
+    <!--</div>-->
 
-        <!--<div th:if="${job.resumes.size() == 0}">-->
-
-        <!--</div>-->
+    <!--<div th:if="${job.resumes.size() == 0}">-->
 
     <!--</div>-->
-<!--</div>-->
+
+    <!--</div>-->
+    <!--</div>-->
 
 
-<a class="nav-link" th:href="@{/create/startup}">Create start up</a>
+    <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
 
-<h1>all you startups !!!!</h1>
-
-
-<div th:each="startup : ${user.startups}">
-
-    <n1>startup name:</n1>
-    <a th:href="@{'/showpage/' + ${startup.id}}" th:text="${startup.name}"></a>
-
-    <h1>address:</h1>
-    <p th:text="${startup.address}"></p>
-
-    <h1>description</h1>
-    <p th:text="${startup.description}"></p>
-
-    <!--delete and edit buttons-->
-    <button class="btn btn-outline-success">
-        <a th:href="@{'/startup/' + ${startup.id} + '/edit'}">edit startup</a>
-    </button>
-    <button class="btn btn-outline-success">
-        <a th:href="@{'/startup/' + ${startup.id} + '/delete'}">delete startup</a>
-    </button>
-    <button class="btn btn-outline-success">
-        <a th:href="@{'/create/' + ${startup.id} + '/job'}">create job</a>
-    </button>
+    <h1>all you startups !!!!</h1>
 
 
-<hr/>
-<hr/>
+    <div th:each="startup : ${user.startups}">
+
+        <n1>startup name:</n1>
+        <a th:href="@{'/showpage/' + ${startup.id}}" th:text="${startup.name}"></a>
+
+        <h1>address:</h1>
+        <p th:text="${startup.address}"></p>
+
+        <h1>description</h1>
+        <p th:text="${startup.description}"></p>
+
+        <div th:each="job : ${startup.jobs}">
+            <h1>Job Postings: </h1>
+            <h1>Job title: </h1>
+            <p th:text="${job.title}"></p>
+            <h1>Job Description:</h1>
+            <p th:text="${job.description}"></p>
+
+            <div th:if="${job.resumes.size() > 0}">
+                <h1>Submitted Applications: </h1>
+                <div th:each="resume : ${job.resumes}">
+                    <a th:href="@{${resume.path}}">Click here to view submitted resume</a>
+                </div>
+            </div>
+        </div>
 
 
-</div>
+        <!--delete and edit buttons-->
+        <button class="btn btn-outline-success">
+            <a th:href="@{'/startup/' + ${startup.id} + '/edit'}">edit startup</a>
+        </button>
+        <button class="btn btn-outline-success">
+            <a th:href="@{'/startup/' + ${startup.id} + '/delete'}">delete startup</a>
+        </button>
+        <button class="btn btn-outline-success">
+            <a th:href="@{'/create/' + ${startup.id} + '/job'}">create job</a>
+        </button>
+
+
+        <hr/>
+        <hr/>
+
+
+    </div>
 
 
 </div>
