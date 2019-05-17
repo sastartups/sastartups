@@ -162,7 +162,7 @@ public class UserController {
         System.out.println(job.getTitle());
         emailService.prepareAndSend(
                 job.getStartup(),
-                "resume uploaded",
+                "GrowTechSA.com",
 
                 "startup name: " + job.getStartup().getName() + "\n"
                         + "job title: " + job.getTitle() + "\n"
