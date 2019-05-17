@@ -3,9 +3,8 @@ body {
     padding: 0;
     max-width: 100%;
     overflow-x: hidden;
-    background-image: url(/img/San4.png);
-    background-size: 100% 40%;
-    background-position: .5rem;
+    background-image: url(/img/newblue3.png);
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -69,7 +68,7 @@ body {
 
 /* container-1 */
 #container1 {
-    height: 58rem;
+    height: 43rem;
     margin: 0;
     padding: 0;
     max-width: none;
@@ -86,9 +85,11 @@ body {
 /* Container-2 */
 #container2 {
     height: 95rem;
-    background-color: white;
+    background-color: transparent;
     max-width: 100%;
-    margin-top: -14rem;
+    background-image: url("/img/newblue2.png");
+    background-repeat: no-repeat;
+    background-size:100% 50%;
 }
 
 #container2 p {
