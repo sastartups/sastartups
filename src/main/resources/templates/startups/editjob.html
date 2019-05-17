@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>edit job</h1>
+
+    <form method="post" th:action="@{'/job/' + ${job.id} + '/edit'}" th:object="${job}">
+        <input type="text" th:field="*{title}"/>
+        <textarea th:field="*{description}"></textarea>
+        <button>edit job</button>
+    </form>
+
+</body>
+</html>
