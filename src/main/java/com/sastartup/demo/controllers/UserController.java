@@ -166,5 +166,27 @@ public class UserController {
         return "users/applyalert";
     }
 
+    @GetMapping("/edit")
+    public String showUserEditPage(Model model){
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbUser = userDao.findOne(sessionUser.getId());
+        model.addAttribute("user", dbUser);
+        return "users/edit-user-profile";
+    }
+
+    @PostMapping("/edit")
+    public String submitUserEditPage(@ModelAttribute User updatedUser){
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbUser = userDao.findOne(sessionUser.getId());
+        updatedUser.setId(dbUser.getId());
+        if(updatedUser.getPassword() == null){
+            updatedUser.setPassword(dbUser.getPassword());
+        } else{
+            updatedUser.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
+        }
+        userDao.save(updatedUser);
+        return "redirect:/userProfile";
+    }
+
 
 }
