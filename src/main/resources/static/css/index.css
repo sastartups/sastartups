@@ -3,9 +3,7 @@ body {
     padding: 0;
     max-width: 100%;
     overflow-x: hidden;
-    background-image: url(/img/newblue3.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: #dddfeb;
 }
 
 /*
@@ -15,7 +13,6 @@ body {
 647E9F
 776C6F
 2A3141
-
  */
 
 .hidden {
@@ -46,7 +43,7 @@ body {
 }
 
 #navbar .navbar-toggler {
-    background-color: #818B95;
+    background-color: white;
 }
 
 #navbar .nav-item {
@@ -68,18 +65,30 @@ body {
 
 /* container-1 */
 #container1 {
-    height: 43rem;
+    height: 50rem;
     margin: 0;
     padding: 0;
     max-width: none;
     margin-top: -10rem;
     background-image: url(/img/san4.png);
     background-size: 65% 70%;
-    background-position: 95% 36%;
+    background-position: 96% 60%;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-color: #2A3141;
     color:white;
+}
+
+#firsttitle {
+    margin-top: 15rem;
+}
+
+#container1 button {
+    margin-top: 1rem;
+}
+
+div#element3 {
+    margin-top: 4rem;
 }
 
 /* Container-2 */
@@ -99,6 +108,7 @@ body {
 #container2 h2 {
     margin-top: 3rem;
     font-family: 'Carrois Gothic', sans-serif;
+    font-size: 3.5em;
 }
 
 #container2 h4 {
@@ -130,6 +140,10 @@ body {
     color:white;
 }
 
+#container3 .col-md-4 {
+    border-right: 1px solid white;
+}
+
 #container3 hr {
     color: white;
 }
@@ -144,16 +158,88 @@ body {
     margin-top: 3rem;
 }
 
-@media (max-width: 992px) {
+@media (min-width: 992px) {
+
+    #container2 p {
+        width: 27rem;
+    }
+
+    #container3 {
+        background-position-x: 20rem;
+    }
+
+}
+
+@media (min-width: 768px) {
+    #container1 {
+        margin-top: -16rem;
+    }
+
+    #firsttitle {
+        margin-top: 17rem;
+    }
+
+    #container2 p {
+        width: 20rem;
+    }
+
+    #navbar .navbar-brand {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    #firsttitle {
+        margin-top: 20rem;
+    }
 
     #container1 {
-        margin-top: -14rem;
+        margin-top: -16rem;
+        height: 57rem;
+    }
+
+    #navbar .navbar-brand {
+        width: 90%;
     }
 
     #navbar .navbar-light .navbar-toggler-icon {
         margin-left: 6rem;
     }
 
+    #container2 p {
+        width: 23rem;
+    }
+
+    #container3 {
+        background-position-x: 11rem;
+        margin-top: 28rem;
+        height: 63rem;
+    }
+
 }
+
+@media (max-width: 576px) {
+
+    #navbar .navbar-brand {
+        width: 90%;
+    }
+
+    #navbar .navbar-toggler {
+        margin-right: 3rem;
+    }
+
+    #firsttitle {
+        margin-top: 20rem;
+    }
+
+    #container3{
+        margin-top: 35rem;
+        height: 54rem;
+    }
+
+}
+
+
 
 

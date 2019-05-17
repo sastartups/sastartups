@@ -4,6 +4,14 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="/css/signup.css" />
+
+    <script src="//static.filestackapi.com/filestack-js/2.x.x/filestack.min.js"></script>
+
+
 </head>
 <body>
 
@@ -12,11 +20,45 @@
 
         <form method="post" th:action="@{'/startup/' + ${startup.id} + '/edit'}" th:object="${startup}">
             <input type="text" th:field="*{address}"/>
-            <input type="text" th:field="*{cover_img}"/>
+            <!--<input type="text" th:field="*{cover_img}"/>-->
             <textarea th:field="*{description}"></textarea>
             <input type="text" th:field="*{name}"/>
-            <input type="text" th:field="*{profile_img}"/>
+            <!--<input type="text" th:field="*{profile_img}"/>-->
+
+
+
+            <input id="picture" type="button" class="btn btn-block btn-primary" name="picture" value="Upload Profile Picture"/>
+            <input id="profilePicture" th:field="*{profile_img}" type="text" style="visibility: hidden"/>
+
+            <input id="picture2" type="button" class="btn btn-block btn-primary" name="picture2" value="Upload Cover Picture"/>
+            <input id="coverPicture" th:field="*{cover_img}" type="text" style="visibility: hidden"/>
+
+
             <button type="submit">done</button>
         </form>
+
+
+<script>
+    document.getElementById("picture").addEventListener("click", function () {
+        var client = filestack.init('AEWKiu5qYTtif6jqXiYivz');
+        client.picker({
+            onFileUploadFinished: function(response){
+                this.value ="https://cdn.filestackcontent.com/" + (response.handle);
+                document.getElementById("profilePicture").value = this.value
+            }
+        }).open();
+    });
+
+    document.getElementById("picture2").addEventListener("click", function () {
+        var client = filestack.init('AEWKiu5qYTtif6jqXiYivz');
+        client.picker({
+            onFileUploadFinished: function(response){
+                this.value ="https://cdn.filestackcontent.com/" + (response.handle);
+                document.getElementById("coverPicture").value = this.value
+            }
+        }).open();
+    })
+
+</script>
 </body>
 </html>
