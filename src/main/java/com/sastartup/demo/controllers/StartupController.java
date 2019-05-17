@@ -7,6 +7,7 @@ import com.sastartup.demo.repositories.JobRepo;
 import com.sastartup.demo.repositories.ResumeRepo;
 import com.sastartup.demo.repositories.StartupRepo;
 import com.sastartup.demo.repositories.UserRepo;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -78,6 +79,44 @@ public class StartupController {
 
     }
 
+
+//    delete job
+    @GetMapping("/job/{id}/delete")
+    public String deleteform(@PathVariable Long id, Model vmodel){
+        Job job = jobDao.findOne(id);
+        vmodel.addAttribute("job",job);
+        return("startups/deletejob");
+    }
+
+    @PostMapping("/job/{id}/delete")
+    public String delete(@PathVariable Long id){
+        jobDao.delete(id);
+        return "redirect:/showpage";
+    }
+
+//    edit job
+    @GetMapping("/job/{id}/edit")
+    public String editform(@PathVariable Long id,Model vmodel){
+        Job job = jobDao.findOne(id);
+        vmodel.addAttribute("job",job);
+        return("startups/editjob");
+    }
+
+    @PostMapping("/job/{id}/edit")
+    public String edit(@ModelAttribute Job jobtoedit, @PathVariable Long id){
+
+        User sessionuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User db_user = userDao.findOne(sessionuser.getId());
+
+        jobtoedit.setStartup(startupDao.findOne(db_user.getId()));
+        Job oldJob = jobDao.findOne(id);
+        jobtoedit.setId(oldJob.getId());
+        jobtoedit.setStartup(oldJob.getStartup());
+        jobDao.save(jobtoedit);
+
+
+       return "redirect:/showpage";
+    }
 
 
 

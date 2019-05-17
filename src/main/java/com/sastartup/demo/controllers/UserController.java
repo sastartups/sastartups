@@ -91,7 +91,7 @@ public class UserController {
     }
 
     @PostMapping("/startup/{id}/edit")
-    public String editedstartup(@ModelAttribute Startup edit){
+    public String editedstartup(@ModelAttribute Startup edit,@PathVariable Long id){
 
         User sessionuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbuser = userDao.findOne(sessionuser.getId());

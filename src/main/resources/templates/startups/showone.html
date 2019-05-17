@@ -70,14 +70,11 @@
                             <button class="btn btn-outline-success">Easy Apply</button>
                         </form>
 
-          <!--&lt;!&ndash;delete and edit buttons&ndash;&gt;-->
-                        <!--<button class="btn btn-outline-success">-->
-                            <!--<a th:href="@{'/startup/' + ${oneStartup.id} + '/edit'}">edit startup</a>-->
-                        <!--</button>-->
-                        <!--<button class="btn btn-outline-success">-->
-                            <!--<a th:href="@{'/startup/' + ${oneStartup.id} + '/delete'}">delete startup</a>-->
-                        <!--</button>-->
+                        <!--delete one job-->
+                       <button class="btn btn-outline-danger"><a th:href="@{'/job/' + ${item.id} + '/delete'}">delete job</a></button>
 
+                        <!--edit one job-->
+                        <button class="btn btn-outline-warning"><a th:href="@{'/job/' + ${item.id} + '/edit'}">edit job</a></button>
 
                     </div>
                 </div>
