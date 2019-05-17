@@ -23,7 +23,7 @@ public class Startup {
     @Column(nullable = false,unique = true)
     private String address;
 
-    @Column(columnDefinition = "String default https://ichef.bbci.co.uk/news/976/cpsprodpb/27C9/production/_103158101_tha.jpg" )
+    @Column
     private String profile_img;
 
     @Column
