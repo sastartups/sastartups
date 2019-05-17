@@ -35,7 +35,7 @@ public class UserController {
 //    constructor
 
 
-    public UserController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao,EmailService emailService, PasswordEncoder passwordEncoder) {
+    public UserController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao, EmailService emailService, PasswordEncoder passwordEncoder) {
         this.jobDao = jobDao;
         this.resumeDao = resumeDao;
         this.startupDao = startupDao;
@@ -46,7 +46,6 @@ public class UserController {
     }
 
 
-
     @GetMapping("/sign-up")
     public String registerForm(Model model) {
         model.addAttribute("user", new User());
@@ -54,7 +53,7 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user){
+    public String saveUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
@@ -82,16 +81,16 @@ public class UserController {
     }
 
 
-//    edit startup
+    //    edit startup
     @GetMapping("/startup/{id}/edit")
-    public String editstartup(@PathVariable Long id,Model vmodel){
+    public String editstartup(@PathVariable Long id, Model vmodel) {
         Startup startup = startupDao.findOne(id);
-        vmodel.addAttribute("startup",startup);
+        vmodel.addAttribute("startup", startup);
         return "startups/editstartup";
     }
 
     @PostMapping("/startup/{id}/edit")
-    public String editedstartup(@ModelAttribute Startup edit,@PathVariable Long id){
+    public String editedstartup(@ModelAttribute Startup edit, @PathVariable Long id) {
 
         User sessionuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbuser = userDao.findOne(sessionuser.getId());
@@ -102,18 +101,17 @@ public class UserController {
     }
 
 
-
     //    delete startup
     @GetMapping("/startup/{id}/delete")
-    public String deleteform(@PathVariable Long id, Model vmodel){
+    public String deleteform(@PathVariable Long id, Model vmodel) {
 
         Startup startup = startupDao.findOne(id);
-        vmodel.addAttribute("startup",startup);
+        vmodel.addAttribute("startup", startup);
         return ("startups/deletestartup");
     }
 
     @PostMapping("/startup/{id}/delete")
-    public String delete(@PathVariable Long id){
+    public String delete(@PathVariable Long id) {
         startupDao.delete(id);
         return "redirect:/userProfile";
     }
@@ -130,7 +128,7 @@ public class UserController {
         User dbUser = userDao.findOne(sessionUser.getId());
         resume.setOwner(dbUser);
 
-        if(resume.getPath() == "" || resume.toString().length() == 0){
+        if (resume.getPath() == "" || resume.toString().length() == 0) {
             return "redirect:/submit-resume";
         } else {
             resumeDao.save(resume);
@@ -161,19 +159,25 @@ public class UserController {
 
         //sends email to the company owner on apply
         //System.out.println(userResume.getPath());
+        System.out.println(job.getTitle());
         emailService.prepareAndSend(
                 job.getStartup(),
                 "resume uploaded",
-                "resume link : " + userResume.getPath() +"\n"
-                + "first name: " + userResume.getOwner().getFirst_name() +"\n"
-                + "last name: " + userResume.getOwner().getLast_name() +"\n"
+
+                "startup name: " + job.getStartup().getName() + "\n"
+                        + "job title: " + job.getTitle() + "\n"
+                        + "first name: " + userResume.getOwner().getFirst_name() + "\n"
+                        + "last name: " + userResume.getOwner().getLast_name() + "\n"
+                        + "resume link : " + userResume.getPath() + "\n"
+
+
         );
 
         return "users/applyalert";
     }
 
     @GetMapping("/edit")
-    public String showUserEditPage(Model model){
+    public String showUserEditPage(Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
         model.addAttribute("user", dbUser);
@@ -181,13 +185,13 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public String submitUserEditPage(@ModelAttribute User updatedUser){
+    public String submitUserEditPage(@ModelAttribute User updatedUser) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
         updatedUser.setId(dbUser.getId());
-        if(updatedUser.getPassword() == null){
+        if (updatedUser.getPassword() == null) {
             updatedUser.setPassword(dbUser.getPassword());
-        } else{
+        } else {
             updatedUser.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
         }
         userDao.save(updatedUser);
