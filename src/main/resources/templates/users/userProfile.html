@@ -1,104 +1,93 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- title -->
+        <title>Title</title>
 
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
+        <!-- bootstrap, meta, and google fonts -->
+        <th:block th:replace="fragments/head :: header" />
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-    <link rel="stylesheet" type="text/css" href="/css/signup.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/signup.css"/>
+    </head>
+    <body>
+        <!-- navbar -->
+        <th:block th:replace="fragments/navbar :: navbar"/>
 
-</head>
-<body>
-<th:block th:replace="fragments/navbar :: navbar"/>
-<div class="container">
+        <div class="container">
 
-    <h2>user Profile!!</h2>
+            <h2>user Profile!!</h2>
 
+            <h1>welcome to your profile </h1>
+            <h1 th:text="${user.username}"></h1>
 
-    <h1>welcome to your profile </h1>
-    <h1 th:text="${user.username}"></h1>
+            <!--<div th:each="startup : ${user.startups}">-->
+            <!--<a th:href="@{'/showpage/' + ${startup.id}}" th:text="${startup.name}"></a>-->
+            <!--<div th:each="job : ${startup.jobs}">-->
+            <!--<p th:text="${job.title}"></p>-->
+            <!--<p th:text="${job.description}"></p>-->
 
+            <!--<div th:if="${job.resumes.size() > 0}">-->
+            <!--<h1>Your resume</h1>-->
+            <!--<div th:each="resume : ${job.resumes}">-->
+            <!--<a th:href="@{${resume.path}}">Click here to view submitted resume</a>-->
+            <!--</div>-->
+            <!--</div>-->
 
-    <!--<div th:each="startup : ${user.startups}">-->
-    <!--<a th:href="@{'/showpage/' + ${startup.id}}" th:text="${startup.name}"></a>-->
-    <!--<div th:each="job : ${startup.jobs}">-->
-    <!--<p th:text="${job.title}"></p>-->
-    <!--<p th:text="${job.description}"></p>-->
+            <!--<div th:if="${job.resumes.size() == 0}">-->
 
-    <!--<div th:if="${job.resumes.size() > 0}">-->
-    <!--<h1>Your resume</h1>-->
-    <!--<div th:each="resume : ${job.resumes}">-->
-    <!--<a th:href="@{${resume.path}}">Click here to view submitted resume</a>-->
-    <!--</div>-->
-    <!--</div>-->
+            <!--</div>-->
 
-    <!--<div th:if="${job.resumes.size() == 0}">-->
-
-    <!--</div>-->
-
-    <!--</div>-->
-    <!--</div>-->
-
-
-    <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
-
-    <h1>all you startups !!!!</h1>
+            <!--</div>-->
+            <!--</div>-->
 
 
-    <div th:each="startup : ${user.startups}">
+            <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
 
-        <n1>startup name:</n1>
-        <a th:href="@{'/showpage/' + ${startup.id}}" th:text="${startup.name}"></a>
+            <h1>all you startups !!!!</h1>
 
-        <h1>address:</h1>
-        <p th:text="${startup.address}"></p>
 
-        <h1>description</h1>
-        <p th:text="${startup.description}"></p>
+            <div th:each="startup : ${user.startups}">
 
-        <div th:each="job : ${startup.jobs}">
-            <h1>Job Postings: </h1>
-            <h1>Job title: </h1>
-            <p th:text="${job.title}"></p>
-            <h1>Job Description:</h1>
-            <p th:text="${job.description}"></p>
+                <h1>startup name:</h1>
+                <a th:href="@{'/showpage/' + ${startup.id}}" th:text="${startup.name}"></a>
 
-            <div th:if="${job.resumes.size() > 0}">
-                <h1>Submitted Applications: </h1>
-                <div th:each="resume : ${job.resumes}">
-                    <a th:href="@{${resume.path}}">Click here to view submitted resume</a>
+                <h1>address:</h1>
+                <p th:text="${startup.address}"></p>
+
+                <h1>description</h1>
+                <p th:text="${startup.description}"></p>
+
+                <div th:each="job : ${startup.jobs}">
+                    <h1>Job Postings: </h1>
+                    <h1>Job title: </h1>
+                    <p th:text="${job.title}"></p>
+                    <h1>Job Description:</h1>
+                    <p th:text="${job.description}"></p>
+
+                    <div th:if="${job.resumes.size() > 0}">
+                        <h1>Submitted Applications: </h1>
+                        <div th:each="resume : ${job.resumes}">
+                            <a th:href="@{${resume.path}}">Click here to view submitted resume</a>
+                        </div>
+                    </div>
                 </div>
+
+                <!--delete and edit buttons-->
+                <button class="btn btn-outline-success">
+                    <a th:href="@{'/startup/' + ${startup.id} + '/edit'}">edit startup</a>
+                </button>
+                <button class="btn btn-outline-success">
+                    <a th:href="@{'/startup/' + ${startup.id} + '/delete'}">delete startup</a>
+                </button>
+                <button class="btn btn-outline-success">
+                    <a th:href="@{'/create/' + ${startup.id} + '/job'}">create job</a>
+                </button>
+                <hr/>
+                <hr/>
             </div>
         </div>
 
+        <th:block th:replace="fragments/head :: scripts" />
 
-        <!--delete and edit buttons-->
-        <button class="btn btn-outline-success">
-            <a th:href="@{'/startup/' + ${startup.id} + '/edit'}">edit startup</a>
-        </button>
-        <button class="btn btn-outline-success">
-            <a th:href="@{'/startup/' + ${startup.id} + '/delete'}">delete startup</a>
-        </button>
-        <button class="btn btn-outline-success">
-            <a th:href="@{'/create/' + ${startup.id} + '/job'}">create job</a>
-        </button>
-
-
-        <hr/>
-        <hr/>
-
-
-    </div>
-
-
-</div>
-
-<!-- bootstrap scripts -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-</body>
+    </body>
 </html>

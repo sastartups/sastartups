@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+        <!-- title -->
+        <title>Title</title>
+
+        <!-- bootstrap, meta, and google fonts -->
+        <th:block th:replace="fragments/head :: header" />
+
+    </head>
+    <body>
         <h1>delete job....</h1>
 
+        <form th:method="post" th:action="@{'/job/' + ${job.id} + '/delete'}">
+            <input type="text" th:field="*{job.title}"/>
+            <textarea th:field="*{job.description}"></textarea>
+            <button>delete job</button>
+        </form>
 
+        <th:block th:replace="fragments/head :: scripts" />
 
-    <form th:method="post" th:action="@{'/job/' + ${job.id} + '/delete'}">
-        <input type="text" th:field="*{job.title}"/>
-        <textarea th:field="*{job.description}"></textarea>
-        <button>delete job</button>
-    </form>
-</body>
+    </body>
 </html>

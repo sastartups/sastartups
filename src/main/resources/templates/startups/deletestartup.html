@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Title</title>
 
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-</head>
-<body>
-<h1>delete startup ...</h1>
+        <!-- bootstrap, meta, and google fonts -->
+        <th:block th:replace="fragments/head :: header" />
+
+    </head>
+    <body>
+        <h1>delete startup ...</h1>
 
         <form method="post" th:action="@{'/startup/' + ${startup.id} + '/delete'}">
             <input type="text" th:field="*{startup.name}"/>
             <textarea th:field="*{startup.description}"></textarea>
             <button>delete</button>
         </form>
-</body>
+
+        <th:block th:replace="fragments/head :: scripts" />
+
+    </body>
 </html>

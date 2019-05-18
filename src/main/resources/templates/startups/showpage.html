@@ -1,60 +1,55 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
 
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
+        <title>Title</title>
 
-    <!-- bootstrap cdn -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="/css/signup.css" />
+        <!-- adding meta, bootstrap link, google fonts -->
+        <th:block th:replace="fragments/head :: header" />
 
-</head>
-<body>
+    </head>
+    <body>
 
-<th:block th:replace="fragments/navbar :: navbar"/>
+        <th:block th:replace="fragments/navbar :: navbar"/>
 
-<div class="container">
-    <h2 class="text-center">show all the start ups ...</h2>
+        <div class="container">
+            <h2 class="text-center">show all the start ups ...</h2>
 
-     <div class="card mb-3 rounded-lg" style="max-width: 100%;" th:each="item : ${allstartups}">
-            <div class="row no-gutters">
+             <div class="card mb-3 rounded-lg" style="max-width: 100%;" th:each="item : ${allstartups}">
+                    <div class="row no-gutters">
 
-                <div class="col-md-4">
-                    <!--cover image-->
-                    <img style="max-height: 15em; width: 23em" th:src="${item.cover_img}"/>
-                    <!--profile image-->
-                    <div class="col-2 d-none d-xl-block" style="z-index: 1;">
-                        <img style="margin-top: -370%;  margin-right: -1180%" class="rounded-circle float-right" width="100px" height="100px" th:src="${item.profile_img}" />
+                        <div class="col-md-4">
+                            <!--cover image-->
+                            <img style="max-height: 15em; width: 23em" th:src="${item.cover_img}"/>
+                            <!--profile image-->
+                            <div class="col-2 d-none d-xl-block" style="z-index: 1;">
+                                <img style="margin-top: -370%;  margin-right: -1180%" class="rounded-circle float-right" width="100px" height="100px" th:src="${item.profile_img}" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div style="padding-left: 5%;">
+                            <div class="card-body">
+
+                                <!--link to show one startup page-->
+                                <a th:href="@{'/showpage/' + ${item.id}}"><p th:text="${item.name}"></p></a>
+
+                                <!--company description-->
+                                <p class="card-text" th:text="${item.description}"></p>
+
+                                <!--company address-->
+                                <p class="card-text"><small class="text-muted" th:text="${item.address}"></small></p>
+                            </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-md-8">
-                    <div style="padding-left: 5%;">
-                    <div class="card-body">
-
-                        <!--link to show one startup page-->
-                        <a th:href="@{'/showpage/' + ${item.id}}"><p th:text="${item.name}"></p></a>
-
-                        <!--company description-->
-                        <p class="card-text" th:text="${item.description}"></p>
-
-                        <!--company address-->
-                        <p class="card-text"><small class="text-muted" th:text="${item.address}"></small></p>
-                    </div>
-                    </div>
-                </div>
             </div>
-    </div>
 
-</div>
-
+        </div>
 
 
-<!-- bootstrap scripts -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <th:block th:replace="fragments/head :: scripts" />
 
-</body>
+
+    </body>
 </html>

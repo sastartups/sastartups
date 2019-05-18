@@ -1,255 +1,246 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head>
-    <title>CapDesignOne</title>
+    <head>
+        <title>CapDesignOne</title>
 
-    <!-- bootstrap cdn -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+        <th:block th:replace="fragments/head :: header" />
 
-    <!-- Css Link -->
-    <link rel="stylesheet" type="text/css" href="/css/index.css" />
-    <link rel="stylesheet" type="text/css" href="/css/animation.css"/>
+        <!-- Css Link -->
+        <link rel="stylesheet" type="text/css" href="/css/index.css" />
+        <link rel="stylesheet" type="text/css" href="/css/animation.css"/>
 
-    <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic|Open+Sans" rel="stylesheet" />
+    </head>
+    <body>
 
-</head>
-<body>
+        <br/>
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/showpage}">GrowTech-SA</a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
 
-<br/>
-<nav id="navbar" class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
-        <a class="navbar-brand" th:href="@{/showpage}">GrowTech-SA</a>
-        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
+                        <div sec:authorize="isAnonymous()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/login}">Login</a>
+                            </li>
+                        </div>
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <form th:action="@{/logout}" th:method="post">
+                                    <button class="border-0"><a class="nav-link">Logout</a></button>
+                                </form>
+                            </li>
+                        </div>
+                        <div sec:authorize="isAnonymous()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/sign-up}">Sign Up</a>
+                            </li>
+                        </div>
 
-                <div sec:authorize="isAnonymous()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/login}">Login</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/showpage}">All Startps</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/all/jobs}">All Jobs</a>
+                        </li>
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/create-job-posting}">Create Job</a>
+                            </li>
+                        </div>
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
+                            </li>
+                        </div>
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/submit-resume}">submit resume</a>
+                            </li>
+                        </div>
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/userProfile}">user Profile</a>
+                            </li>
+                        </div>
+                    </ul>
+
                 </div>
-                <div sec:authorize="isAuthenticated()">
-                    <li class="nav-item">
-                        <form th:action="@{/logout}" th:method="post">
-                            <button class="border-0"><a class="nav-link">Logout</a></button>
-                        </form>
-                    </li>
-                </div>
-                <div sec:authorize="isAnonymous()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/sign-up}">Sign Up</a>
-                    </li>
-                </div>
+            </div>
+        </nav>
 
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/showpage}">All Startps</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/all/jobs}">All Jobs</a>
-                </li>
-                <div sec:authorize="isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/create-job-posting}">Create Job</a>
-                    </li>
-                </div>
-                <div sec:authorize="isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
-                    </li>
-                </div>
-                <div sec:authorize="isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/submit-resume}">submit resume</a>
-                    </li>
-                </div>
-                <div sec:authorize="isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/userProfile}">user Profile</a>
-                    </li>
-                </div>
-            </ul>
-
-        </div>
-    </div>
-    </nav>
-
-<div id="container1" class="container">
-    <div class="row">
-        <div id="firsttitle" class="offset-md-1 col-md-4">
-            <h2>Create start up!</h2>
-        </div>
-    </div>
-    <div  class="row">
-        <div class="col-md-4 ml-5">
-            <p>
-                Create a startup, start advertising your company and the jobs available.
-                Help grow San Antonio tech!!!
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
+        <div id="container1" class="container">
             <div class="row">
-                <div class="mx-auto">
-                    <button class="btn btn-primary" type="button">Create Startup!</button>
+                <div id="firsttitle" class="offset-md-1 col-md-4">
+                    <h2>Create start up!</h2>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div style="margin-top: 5rem;" class="offset-md-1 col-md-4">
-            <h2>Find Available jobs!!</h2>
-        </div>
-    </div>
-    <div  class="row">
-        <div class="col-md-4 ml-5">
-            <p>
-                See all job posting, upload your resume and apply for local jobs in San Antonio.
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
+            <div  class="row">
+                <div class="col-mdz-4 ml-5">
+                    <p>
+                        Create a startup, start advertising your company and the jobs available.
+                        Help grow San Antonio tech!!!
+                    </p>
+                </div>
+            </div>
             <div class="row">
-                <div class="mx-auto">
-                    <button class="btn btn-primary" type="button">Search all jobs</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="container2" class="container">
-    <div id="element1" class="hidden"><br/><br/><br/><br/>
-        <div class="row">
-            <div class="offset-md-1 col-md-3 d-md-none d-lg-none d-xl-none">
-                <h2>Why we are doing it?</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 offset-md-1">
-                <div class="row">
-                    <div class="mx-auto">
-                        <h4>San Antonio Tech is growing!!</h4>
-                        <p>
-                            San Antonio ranks 46th among the top 50 North American markets when
-                            it comes to tech talent, according to a commercial real estate firm’s annual ranking.
-                            The mission at GrowTechSA is to allow local startups have their presence be known to the community,
-                            and connect them with developers.
-                        </p>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="mx-auto">
+                            <button class="btn btn-primary" type="button">Create Startup!</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="offset-md-1 col-md-3 d-sm-none d-none d-md-block d-lg-block d-xl-block">
-                <h2>Why we are doing it?</h2>
+            <div class="row">
+                <div style="margin-top: 5rem;" class="offset-md-1 col-md-4">
+                    <h2>Find Available jobs!!</h2>
+                </div>
             </div>
-        </div>
-    </div>
-    <div id="element2" class="hidden"><br/><br/><br/>
-        <div class="row">
-            <div class="offset-md-1 col-md-3">
-                <h2>Why we are doing it?</h2>
+            <div  class="row">
+                <div class="col-md-4 ml-5">
+                    <p>
+                        See all job posting, upload your resume and apply for local jobs in San Antonio.
+                    </p>
+                </div>
             </div>
-            <div class="offset-md-1 col-md-6">
-                <div class="row">
-                    <div class="mx-auto">
-                        <h4>San Antonio Tech is growing!!</h4>
-                        <p>
-                            San Antonio ranks 46th among the top 50 North American markets when
-                            it comes to tech talent, according to a commercial real estate firm’s annual ranking.
-                            The mission at GrowTechSA is to allow local startups have their presence be known to the community,
-                            and connect them with developers.
-                        </p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="mx-auto">
+                            <button class="btn btn-primary" type="button">Search all jobs</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="element3" class="hidden">
-        <div class="row">
-            <div class="offset-md-1 col-md-3 d-md-none d-lg-none d-xl-none">
-                <h2>Why we are doing it?</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 offset-md-1">
+
+        <div id="container2" class="container">
+            <div id="element1" class="hidden"><br/><br/><br/><br/>
                 <div class="row">
-                    <div class="mx-auto">
-                        <h4>San Antonio Tech is growing!!</h4>
-                        <p>
-                            San Antonio ranks 46th among the top 50 North American markets when
-                            it comes to tech talent, according to a commercial real estate firm’s annual ranking.
-                            The mission at GrowTechSA is to allow local startups have their presence be known to the community,
-                            and connect them with developers.
-                        </p>
+                    <div class="offset-md-1 col-md-3 d-md-none d-lg-none d-xl-none">
+                        <h2>Why we are doing it?</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 offset-md-1">
+                        <div class="row">
+                            <div class="mx-auto">
+                                <h4>San Antonio Tech is growing!!</h4>
+                                <p>
+                                    San Antonio ranks 46th among the top 50 North American markets when
+                                    it comes to tech talent, according to a commercial real estate firm’s annual ranking.
+                                    The mission at GrowTechSA is to allow local startups have their presence be known to the community,
+                                    and connect them with developers.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="offset-md-1 col-md-3 d-sm-none d-none d-md-block d-lg-block d-xl-block">
+                        <h2>Why we are doing it?</h2>
                     </div>
                 </div>
             </div>
-            <div class="offset-md-1 col-md-3 d-sm-none d-none d-md-block d-lg-block d-xl-block">
-                <h2>Why we are doing it?</h2>
+            <div id="element2" class="hidden"><br/><br/><br/>
+                <div class="row">
+                    <div class="offset-md-1 col-md-3">
+                        <h2>Why we are doing it?</h2>
+                    </div>
+                    <div class="offset-md-1 col-md-6">
+                        <div class="row">
+                            <div class="mx-auto">
+                                <h4>San Antonio Tech is growing!!</h4>
+                                <p>
+                                    San Antonio ranks 46th among the top 50 North American markets when
+                                    it comes to tech talent, according to a commercial real estate firm’s annual ranking.
+                                    The mission at GrowTechSA is to allow local startups have their presence be known to the community,
+                                    and connect them with developers.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="element3" class="hidden">
+                <div class="row">
+                    <div class="offset-md-1 col-md-3 d-md-none d-lg-none d-xl-none">
+                        <h2>Why we are doing it?</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 offset-md-1">
+                        <div class="row">
+                            <div class="mx-auto">
+                                <h4>San Antonio Tech is growing!!</h4>
+                                <p>
+                                    San Antonio ranks 46th among the top 50 North American markets when
+                                    it comes to tech talent, according to a commercial real estate firm’s annual ranking.
+                                    The mission at GrowTechSA is to allow local startups have their presence be known to the community,
+                                    and connect them with developers.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="offset-md-1 col-md-3 d-sm-none d-none d-md-block d-lg-block d-xl-block">
+                        <h2>Why we are doing it?</h2>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
 
-<div id="container3" class="container">
-    <div class="row">
-        <div class="col-md-4">
+        <div id="container3" class="container">
             <div class="row">
-                <div class="mx-auto">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="mx-auto">
+                            <div id="contact">
+                                <h4>creator's Contact</h4>
+                                <hr/><br/>
+                                <h5>something@something.com</h5><br/>
+                                <h5>something@something.com</h5><br/>
+                                <h5>something@something.com</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
                     <div id="contact">
-                        <h4>creator's Contact</h4>
-                        <hr/><br/>
-                        <h5>something@something.com</h5><br/>
-                        <h5>something@something.com</h5><br/>
-                        <h5>something@something.com</h5>
+                        <div class="row">
+                            <div class="mx-auto">
+                                <h4>WebSite Contact</h4>
+                                <hr/><br/>
+                                <h5>something@something.com</h5><br/>
+                                <h5>something@something.com</h5><br/>
+                                <h5>something@something.com</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div id="contact">
+                        <div class="row">
+                            <div class="mx-auto">
+                                <h4>Links to pages</h4>
+                                <hr/><br/>
+                                <h5>something@something.com</h5><br/>
+                                <h5>something@something.com</h5><br/>
+                                <h5>something@something.com</h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div id="contact">
-                <div class="row">
-                    <div class="mx-auto">
-                        <h4>WebSite Contact</h4>
-                        <hr/><br/>
-                        <h5>something@something.com</h5><br/>
-                        <h5>something@something.com</h5><br/>
-                        <h5>something@something.com</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div id="contact">
-                <div class="row">
-                    <div class="mx-auto">
-                        <h4>Links to pages</h4>
-                        <hr/><br/>
-                        <h5>something@something.com</h5><br/>
-                        <h5>something@something.com</h5><br/>
-                        <h5>something@something.com</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
+        <th:block th:replace="fragments/head :: scripts" />
 
-<!-- bootstrap scripts -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <!-- js scripts -->
+        <script src="js/index.js"></script>
 
-<!-- js scripts -->
-<script src="js/index.js"></script>
-
-
-
-</body>
+    </body>
 </html>
