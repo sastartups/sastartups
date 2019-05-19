@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    background-image: url("/img/new.png");
+    background-repeat: no-repeat;
+}
+
+/* navbar */
+#navbar {
+    padding: 0;
+    background-color: transparent;
+    z-index: 1;
+}
+
+#navbar .navbar-brand {
+    width: 50%;
+    margin-left: -16rem;
+    padding-left: 17rem;
+    padding-top: -1rem;
+    font-size: 2em;
+    color: white;
+    border-bottom: .1rem solid white;
+}
+
+#navbar a{
+    font-family: 'Carrois Gothic', sans-serif;
+    font-size: 1em;
+    color: #647E9F;
+}
+
+#navbar .navbar-toggler {
+    background-color: #818B95;
+}
+
+#navbar .nav-item {
+    /*border-bottom: .1rem solid black;*/
+    /*width: 5.5rem;*/
+    margin-left: 1rem;
+}
+
+#navbar .nav-item:hover {
+    border-bottom: .1rem solid white;
+    width: 5.5rem;
+}
+
+#loginCon {
+    margin-top: 2rem;
+    background-color: #647e9f;
+    padding: 2rem;
+    border-radius: .5rem;
+    width: 33%;
+}
+
+#loginCon form {
+    background-color: lightblue;
+    border-radius: .5rem;
+    height: 20rem;
+    margin-top: 0;
+    padding-top: 4rem;
+}
