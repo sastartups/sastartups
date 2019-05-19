@@ -1,13 +1,19 @@
 body {
-    background-image: url("/img/new.png");
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    background-image: url("/img/large2.png");
     background-repeat: no-repeat;
+    background-size: 37% 54%;
+    background-position-x: 102%;
+    background-position-y: 142%;
 }
 
 /* navbar */
 #navbar {
     padding: 0;
     background-color: transparent;
-    z-index: 1;
 }
 
 #navbar .navbar-brand {
@@ -16,18 +22,18 @@ body {
     padding-left: 17rem;
     padding-top: -1rem;
     font-size: 2em;
-    color: white;
-    border-bottom: .1rem solid white;
+    color: #2A3141;
+    border-bottom: .1rem solid #2A3141;
 }
 
 #navbar a{
     font-family: 'Carrois Gothic', sans-serif;
     font-size: 1em;
-    color: #647E9F;
+    color: #2A3141;
 }
 
 #navbar .navbar-toggler {
-    background-color: #818B95;
+    background-color: #2A3141;
 }
 
 #navbar .nav-item {
@@ -41,38 +47,22 @@ body {
     width: 5.5rem;
 }
 
-#allCon img {
-    margin-left: -0.7rem;
-}
-
-#allCon p {
-    width: 260%;
-}
-
-#left {
-    background-color: transparent;
-}
-
-#right {
+#navbar button {
+    padding: 0;
+    color: #2A3141;
     background-color: transparent;
 }
 
 #left {
+    background-color: transparent;
     position: fixed;
     top: 5rem;
     bottom: 0;
 }
 
-#company {
-    margin-left: -10rem;
+#right {
+    background-color: transparent;
 }
-
-#cover {
-    max-height: 100%;
-    overflow-y: hidden;
-    overflow-x: hidden;
-}
-
 
 /*
 992px comes from the bootstrap grid sizes for 'lg'
@@ -82,7 +72,7 @@ https://v4-alpha.getbootstrap.com/layout/grid/#grid-options
 @media (min-width: 992px){
     #left {
         position: fixed;
-        top: 5rem;
+        top: 0;
         bottom: 0;
     }
 }
