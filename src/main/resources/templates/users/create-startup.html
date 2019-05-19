@@ -7,7 +7,7 @@
         <!-- bootstrap, meta, and google fonts -->
         <th:block th:replace="fragments/head :: header" />
 
-        <link rel="stylesheet" type="text/css" href="/css/signup.css" />
+        <link rel="stylesheet" type="text/css" href="/css/createStartUp.css" />
 
         <script src="//static.filestackapi.com/filestack-js/2.x.x/filestack.min.js"></script>
 
@@ -17,48 +17,57 @@
         <!-- navbar -->
         <th:block th:replace="fragments/navbar :: navbar"/>
 
-        <form th:action="@{/create/startup}" th:method="POST" th:object="${startup}">
-            <label for="name">Startup Name </label>
-            <input id="name" th:field="*{name}"/>
-            <label for="description">Tell us about your business!</label>
-            <input id="description" th:field="*{description}"/>
-            <label for="address">Where are you located?</label>
-            <input id="address" th:field="*{address}"/>
+        <div id="createStartCon1" class="container">
+            <form th:action="@{/create/startup}" th:method="POST" th:object="${startup}">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-3 offset-md-3">
+                            <label for="name">Startup Name </label><br/>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="address">Where are you located?</label><br/>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-3 offset-md-3">
+                            <input id="name" class="form-control" th:field="*{name}"/>
+                        </div>
+                        <div class="col-md-3">
+                            <input id="address" class="form-control" th:field="*{address}"/>
+                        </div>
+                    </div><br/>
+                    <div class="form-row">
+                        <div class="mx-auto">
+                            <label for="description">Tell us about your business!</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 offset-md-3">
+                            <textarea class="form-control" id="description" th:field="*{description}"></textarea>
+                        </div>
+                    </div><br/>
+                    <div class="form-row">
+                        <div class="col-md-3 offset-md-3">
+                            <input id="picture" type="button" class="btn btn-block btn-primary" name="picture" value="Upload Profile Picture"/>
+                            <input id="profilePicture" th:field="*{profile_img}" type="hidden"/>
+                        </div>
+                        <div class="col-md-3">
+                            <input id="picture2" type="button" class="btn btn-block btn-primary" name="picture2" value="Upload Cover Picture"/>
+                            <input id="coverPicture" th:field="*{cover_img}" type="hidden"/>
+                        </div>
+                    </div><br/>
+                    <div class="form-row">
+                        <div class="mx-auto">
+                            <input class="btn btn-primary" type="submit" value="submit" />
+                        </div>
+                    </div>
 
-            <input id="picture" type="button" class="btn btn-block btn-primary" name="picture" value="Upload Profile Picture"/>
-            <input id="profilePicture" th:field="*{profile_img}" type="text" style="visibility: hidden"/>
 
-            <!--<label for="profilePicture">Profile Picture</label>-->
-            <!--<input id="profilePicture" th:field="*{profile_img}"/>-->
+                </div>
+            </form>
+        </div>
 
-
-            <input id="picture2" type="button" class="btn btn-block btn-primary" name="picture2" value="Upload Cover Picture"/>
-            <input id="coverPicture" th:field="*{cover_img}" type="text" style="visibility: hidden"/>
-
-            <button>Create my Profile</button>
-        </form>
-
-        <script>
-            document.getElementById("picture").addEventListener("click", function () {
-                var client = filestack.init('AEWKiu5qYTtif6jqXiYivz');
-                client.picker({
-                    onFileUploadFinished: function(response){
-                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);
-                        document.getElementById("profilePicture").value = this.value
-                    }
-                }).open();
-            });
-
-            document.getElementById("picture2").addEventListener("click", function () {
-                var client = filestack.init('AEWKiu5qYTtif6jqXiYivz');
-                client.picker({
-                    onFileUploadFinished: function(response){
-                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);
-                        document.getElementById("coverPicture").value = this.value
-                    }
-                }).open();
-            })
-        </script>
+        <script src="/js/create-startup.js"></script>
 
         <!-- bootstrap scripts -->
         <th:block th:replace="fragments/head :: scripts" />
