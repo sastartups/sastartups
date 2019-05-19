@@ -106,10 +106,6 @@ div#element3 {
     background-size:100% 50%;
 }
 
-#container2 p {
-    width: 36rem;
-}
-
 #container2 h2 {
     margin-top: 3rem;
     font-family: 'Carrois Gothic', sans-serif;
@@ -117,13 +113,19 @@ div#element3 {
 }
 
 #container2 h4 {
-    margin-top: 5rem;
+    margin-top: 3rem;
+}
+
+#container2 hr {
+    border-top: 1px solid white;
 }
 
 #container2 .col-md-6 {
     background-color: #2A3141;
     color: white;
     height: 20rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     margin-bottom: 5rem;
     border-radius: .3rem;
 }
@@ -163,11 +165,7 @@ div#element3 {
     margin-top: 3rem;
 }
 
-@media (min-width: 992px) {
-
-    #container2 p {
-        width: 27rem;
-    }
+@media (max-width: 992px) {
 
     #container3 {
         background-position-x: 20rem;
@@ -175,17 +173,13 @@ div#element3 {
 
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     #container1 {
         margin-top: -16rem;
     }
 
     #firsttitle {
-        margin-top: 17rem;
-    }
-
-    #container2 p {
-        width: 20rem;
+        margin-top: 19rem;
     }
 
     #navbar .navbar-brand {
@@ -210,10 +204,6 @@ div#element3 {
 
     #navbar .navbar-light .navbar-toggler-icon {
         margin-left: 6rem;
-    }
-
-    #container2 p {
-        width: 23rem;
     }
 
     #container3 {

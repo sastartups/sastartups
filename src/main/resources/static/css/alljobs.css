@@ -43,6 +43,7 @@ body {
 
 #allCon img {
     margin-left: -0.7rem;
+    max-height: 10rem;
 }
 
 #allCon p {
