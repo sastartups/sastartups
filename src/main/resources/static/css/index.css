@@ -4,6 +4,11 @@ body {
     max-width: 100%;
     overflow-x: hidden;
     background-color: #dddfeb;
+    background-image: url("/img/large2.png");
+    background-repeat: no-repeat;
+    background-size: 56% 99%;
+    background-position-x: 102%;
+    background-position-y: 142%;
 }
 
 /*

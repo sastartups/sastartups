@@ -4,7 +4,7 @@ window.setInterval(function(){
         document.documentElement["scrollWidth"],
         document.body["offsetWidth"],
     document.documentElement["offsetWidth"] >= 767){
-        window.onscroll = function() {animation(), animation2(), animation3(), animation4()};
+        window.onscroll = function() {animation(), animation2(), animation3()};
     } else {
 
     }
@@ -31,10 +31,3 @@ function animation3() {
     }
 }
 
-function animation4(){
-    if (document.body.scrollTop > 1800 || document.documentElement.scrollTop > 1800) {
-        document.getElementById("card1").classList.remove("hidden");
-        document.getElementById("card2").classList.remove("hidden");
-        document.getElementById("card3").classList.remove("hidden");
-    }
-}

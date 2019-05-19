@@ -11,22 +11,31 @@
 
     </head>
     <body>
-
         <th:block th:replace="fragments/navbar :: navbar"/>
 
-        <div id="alljobCon1" class="container">
-            <div th:each="job : ${jobs}">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img th:src="${job.startup.getProfile_img()}" />
-                    </div>
-                    <div class="col-md-4">
-                        <p>Title: <span th:text="${job.title}"></span></p>
-                        <h5>description</h5>
-                        <p th:text="${job.description}"></p>
+        <div id="allCon" class="container-fluid">
+            <div class="row">
+                <div id="left" class="col-lg-2">
+                    I want this to always be visible as the right side scrolls.
+                </div>
+                <div id="right" class="col offset-lg-2">
+                    <div th:each="job : ${jobs}">
+                        <div id="cover" class="row" th:style="'background-image:url(' + ${job.startup.cover_img} + ');'">
+                            <div class="col-md-4">
+                                <img th:src="${job.startup.getProfile_img()}" />
+                            </div>
+                            <div id="company" class="col-md-4">
+                                <p>Title: <span th:text="${job.title}"></span></p>
+                                <h5>description</h5>
+                                <p th:text="${job.description}"></p>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Company: <span th:text="${job.startup.name}"></span><span>|</span><span th:text="${job.startup.address}"></span></p>
+                            </div>
+                        </div>
+                        <hr/>
                     </div>
                 </div>
-                <hr/>
             </div>
         </div>
 
