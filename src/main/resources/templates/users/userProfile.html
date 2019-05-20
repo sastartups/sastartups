@@ -87,7 +87,7 @@
         <hr/>
     </div>
 
-    <div>
+    <div th:if="${user.resume != null &amp;&amp; user.resume.jobs.size() > 0}">
         <h1>Your Submitted Applications</h1>
         <div th:each="job : ${user.resume.jobs}">
             <h1>Job Postings: </h1>
