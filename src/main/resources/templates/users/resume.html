@@ -16,7 +16,7 @@
         <th:block th:replace="fragments/navbar :: navbar"/>
 
         <form th:action="@{/submit-resume}" th:method="POST" th:object="${resume}">
-            <!--<input id="resumeFile" th:field="*{path}" type="file"/>-->
+            <input id="resumeFile" th:field="*{path}" type="file"/>
             <input id="resumeButton" type="button" class="btn btn-block btn-primary" value="Upload your resume for Startups to see!"/><br/>
             <input class="btn btn-primary" type="submit" value="submit" />
         </form>
