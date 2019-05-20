@@ -6,7 +6,7 @@ window.setInterval(function(){
     document.documentElement["offsetWidth"] >= 767){
         window.onscroll = function() {animation(), animation2(), animation3()};
     } else {
-
+        window.onscroll = function() {animation(), animation2(), animation3()};
     }
 }, 300);
 
