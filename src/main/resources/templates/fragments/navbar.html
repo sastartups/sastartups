@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
     <body>
 
-    <th:block th:fragment="navbar">
+    <th:block th:fragment="showone">
         <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
             <div class="container">
                 <a class="navbar-brand" th:href="@{/}">GrowTech-SA</a>
@@ -15,11 +15,7 @@
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/all/jobs}">Jobs</a>
                         </li>
-                        <div sec:authorize="isAnonymous()">
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/sign-up}">Register</a>
-                            </li>
-                        </div>
+
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/showpage}">Startups</a>
                         </li>
@@ -37,6 +33,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" th:href="@{/userProfile}">Profile</a>
                             </li>
+
+                            <div sec:authorize="isAnonymous()">
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/sign-up}">Register</a>
+                                </li>
+                            </div>
 
                             <div sec:authorize="isAnonymous()">
                                 <li class="nav-item">
@@ -221,6 +223,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
+
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/submit-resume}">Submit Resume</a>
+                            </li>
+                        </div>
 
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/all/jobs}">Jobs</a>

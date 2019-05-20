@@ -5,59 +5,90 @@
 
         <th:block th:replace="fragments/head :: header" />
 
-        <link rel="stylesheet" type="text/css" href="/css/signup.css" />
+        <link rel="stylesheet" type="text/css" href="/css/createStartUp.css" />
 
         <script src="//static.filestackapi.com/filestack-js/2.x.x/filestack.min.js"></script>
     </head>
     <body>
 
     <!-- navbar -->
+
         <th:block th:replace="fragments/navbar :: startupchange"/>
 
-        <h1>edit startup...</h1>
+        <h2 style="margin-left: 12%">Edit <span th:text="*{startup.name}"></span> ?</h2>
 
 
-        <form method="post" th:action="@{'/startup/' + ${startup.id} + '/edit'}" th:object="${startup}">
-            <input type="text" th:field="*{address}"/>
-            <!--<input type="text" th:field="*{cover_img}"/>-->
-            <textarea th:field="*{description}"></textarea>
-            <input type="text" th:field="*{name}"/>
-            <!--<input type="text" th:field="*{profile_img}"/>-->
+        <div id="createStartCon1" class="container">
+            <form style="height: 30rem;" method="post" th:action="@{'/startup/' + ${startup.id} + '/edit'}" th:object="${startup}">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-3 offset-md-3">
+                            <label for="name">Startup Name</label><br/>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="address">Where are you located?</label><br/>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-3 offset-md-3">
+                            <input id="name" class="form-control" th:field="*{name}"/>
+                        </div>
+                        <div class="col-md-3">
+                            <input id="address" class="form-control" th:field="*{address}"/>
+                        </div>
+                    </div><br/>
+                    <div class="form-row">
+                        <div class="mx-auto">
+                            <label for="description">Tell us about your business!</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 offset-md-3">
+                            <textarea class="form-control" id="description" th:field="*{description}"></textarea>
+                        </div>
+                    </div><br/>
+                    <div class="form-row">
+                        <div class="col-md-3 offset-md-3">
+                            <input id="picture" type="button" class="btn btn-block btn-primary" name="picture" value="Upload Profile Picture"/>
+                            <input id="profilePicture" th:field="*{profile_img}" type="text" style="visibility: hidden"/>
+                        </div>
+                        <div class="col-md-3">
+                            <input id="picture2" type="button" class="btn btn-block btn-primary" name="picture2" value="Upload Cover Picture"/>
+                            <input id="coverPicture" th:field="*{cover_img}" type="text" style="visibility: hidden"/>
+                        </div>
+                    </div><br/>
+                    <div class="form-row">
+                        <div class="mx-auto">
+                            <input class="btn btn-primary" type="submit" value="submit" />
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
 
 
+                                <script>
+                                    document.getElementById("picture").addEventListener("click", function () {
+                                        var client = filestack.init('ANjhOz5feQ0OWiw2r1EEgz');
+                                        client.picker({
+                                            onFileUploadFinished: function(response){
+                                                this.value ="https://cdn.filestackcontent.com/" + (response.handle);
+                                                document.getElementById("profilePicture").value = this.value
+                                            }
+                                        }).open();
+                                    });
 
-            <input id="picture" type="button" class="btn btn-block btn-primary" name="picture" value="Upload Profile Picture"/>
-            <input id="profilePicture" th:field="*{profile_img}" type="text" style="visibility: hidden"/>
-
-            <input id="picture2" type="button" class="btn btn-block btn-primary" name="picture2" value="Upload Cover Picture"/>
-            <input id="coverPicture" th:field="*{cover_img}" type="text" style="visibility: hidden"/>
-
-
-            <button type="submit">done</button>
-        </form>
-
-
-        <script>
-            document.getElementById("picture").addEventListener("click", function () {
-                var client = filestack.init('ANjhOz5feQ0OWiw2r1EEgz');
-                client.picker({
-                    onFileUploadFinished: function(response){
-                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);
-                        document.getElementById("profilePicture").value = this.value
-                    }
-                }).open();
-            });
-
-            document.getElementById("picture2").addEventListener("click", function () {
-                var client = filestack.init('ANjhOz5feQ0OWiw2r1EEgz');
-                client.picker({
-                    onFileUploadFinished: function(response){
-                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);
-                        document.getElementById("coverPicture").value = this.value
-                    }
-                }).open();
-            })
-        </script>
+                                    document.getElementById("picture2").addEventListener("click", function () {
+                                        var client = filestack.init('ANjhOz5feQ0OWiw2r1EEgz');
+                                        client.picker({
+                                            onFileUploadFinished: function(response){
+                                                this.value ="https://cdn.filestackcontent.com/" + (response.handle);
+                                                document.getElementById("coverPicture").value = this.value
+                                            }
+                                        }).open();
+                                    })
+                                </script>
 
         <th:block th:replace="fragments/head :: scripts" />
 
