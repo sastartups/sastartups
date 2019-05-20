@@ -16,24 +16,24 @@
         <th:block th:replace="fragments/navbar :: navbar"/>
 
 
-        <form class="mt-2" th:action="@{/submit-resume}" th:method="POST" th:object="${resume}">
-            <input id="resumeFile" th:field="*{path}" type="hidden"/>
+        <!--<form class="mt-2" th:action="@{/submit-resume}" th:method="POST" th:object="${resume}">-->
+            <!--<input id="resumeFile" th:field="*{path}" type="hidden"/>-->
 
-            <input id="resumeButton" type="button" class="btn btn-block btn-primary" value="Upload your resume for Startups to see!"/><br/>
-            <input class="btn btn-primary" type="submit" value="submit" />
-        </form>
+            <!--<input id="resumeButton" type="button" class="btn btn-block btn-primary" value="Upload your resume for Startups to see!"/><br/>-->
+            <!--<input class="btn btn-primary" type="submit" value="submit" />-->
+        <!--</form>-->
 
-        <script>
-            document.getElementById("resumeButton").addEventListener("click", function () {
-                var client = filestack.init('ANjhOz5feQ0OWiw2r1EEgz');
-                client.picker({
-                    onFileUploadFinished: function(response){
-                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);
-                        document.getElementById("resumeFile").value = this.value
-                    }
-                }).open();
-            })
-        </script>
+        <!--<script>-->
+            <!--document.getElementById("resumeButton").addEventListener("click", function () {-->
+                <!--var client = filestack.init('ANjhOz5feQ0OWiw2r1EEgz');-->
+                <!--client.picker({-->
+                    <!--onFileUploadFinished: function(response){-->
+                        <!--this.value ="https://cdn.filestackcontent.com/" + (response.handle);-->
+                        <!--document.getElementById("resumeFile").value = this.value-->
+                    <!--}-->
+                <!--}).open();-->
+            <!--})-->
+        <!--</script>-->
 
         <th:block th:replace="fragments/head :: header" />
 

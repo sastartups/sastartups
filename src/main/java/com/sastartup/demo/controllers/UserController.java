@@ -122,11 +122,11 @@ public class UserController {
         return "redirect:/userProfile";
     }
 
-    @GetMapping("/submit-resume")
-    public String resumeForm(Model model) {
-        model.addAttribute("resume", new Resume());
-        return "users/resume";
-    }
+//    @GetMapping("/submit-resume")
+//    public String resumeForm(Model model) {
+//        model.addAttribute("resume", new Resume());
+//        return "users/resume";
+//    }
 
     @PostMapping("/submit-resume")
     public String submitResume(@ModelAttribute Resume resume) {
@@ -142,13 +142,14 @@ public class UserController {
             userDao.save(dbUser);
         }
 
-        return "users/applyalert";
+        return "redirect:/userProfile";
     }
 
     @GetMapping("/userProfile")
     public String userProfile(Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
+        model.addAttribute("resume", new Resume());
         model.addAttribute("user", dbUser);
 //        model.addAttribute("resumes", resumeDao.findByOwner(dbUser));
 //        model.addAttribute("applicants", )
