@@ -1,7 +1,12 @@
+html {
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     padding: 0;
     max-width: 100%;
+    overflow-x: hidden;
     background-image: url("/img/new.png");
     background-repeat: no-repeat;
 }
@@ -59,3 +64,69 @@ body {
     margin-top: 0;
     padding-top: 4rem;
 }
+
+
+@media (max-width: 575.98px) {
+    #navbar .navbar-brand{
+        width: 121%;
+    }
+
+    #navbar a{
+        font-family: 'Carrois Gothic', sans-serif;
+        font-size: 1em;
+        color: white;
+    }
+
+    #navbar .navbar-toggler{
+        margin-right: 3rem;
+    }
+    
+    #loginCon {
+        width: 94%;
+        margin-top: 2rem;
+    }
+
+}
+
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+    #navbar .navbar-brand {
+        width: 107%;
+    }
+
+    #navbar a{
+        font-family: 'Carrois Gothic', sans-serif;
+        font-size: 1em;
+        color: white;
+    }
+
+    #loginCon {
+        width: 50%;
+    }
+
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #navbar .navbar-brand{
+        width: 121%;
+    }
+
+    #navbar a{
+        font-family: 'Carrois Gothic', sans-serif;
+        font-size: 1em;
+        color: white;
+    }
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+
+
+}
+
+
+@media (min-width: 1200px) {}
