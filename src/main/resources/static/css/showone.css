@@ -79,3 +79,16 @@ body {
 #map {
     margin-top: -14rem;
 }
+
+@media (max-width: 767.98px) {
+
+    #map {
+        margin-top: 0;
+    }
+
+    div#profileImg {
+        margin-top: 7rem;
+        padding-top: 0;
+    }
+
+}

@@ -34,11 +34,6 @@
                         </li>
                         <div sec:authorize="isAuthenticated()">
                             <li class="nav-item">
-                                <a class="nav-link" th:href="@{/create-job-posting}">Create Job</a>
-                            </li>
-                        </div>
-                        <div sec:authorize="isAuthenticated()">
-                            <li class="nav-item">
                                 <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
                             </li>
                         </div>

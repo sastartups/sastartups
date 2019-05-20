@@ -76,7 +76,6 @@ public class StartupController {
     public String viewAllJobs(Model model){
         model.addAttribute("jobs", jobDao.findAll());
         return "startups/alljobs";
-
     }
 
 

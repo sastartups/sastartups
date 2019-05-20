@@ -9,4 +9,5 @@ import java.util.List;
 
 @Repository
 public interface JobRepo extends CrudRepository<Job,Long> {
+
 }
