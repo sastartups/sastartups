@@ -29,17 +29,22 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Startup> startups;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "resume_id", referencedColumnName = "id")
+    private Resume resume;
+
 
     public User() {
     }
 
-    public User(String first_name, String last_name, String username, String password, String email, List<Startup> startups) {
+    public User(String first_name, String last_name, String username, String password, String email, List<Startup> startups,Resume resume) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;
         this.password = password;
         this.email = email;
         this.startups = startups;
+        this.resume = resume;
     }
     public User(User copy) {
         id = copy.id; // This line is SUPER important! Many things won't work if it's absent
@@ -104,6 +109,14 @@ public class User {
 
     public void setStartups(List<Startup> startups) {
         this.startups = startups;
+    }
+
+    public Resume getResume() {
+        return resume;
+    }
+
+    public void setResume(Resume resume) {
+        this.resume = resume;
     }
 }
 
