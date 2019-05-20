@@ -11,20 +11,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <div sec:authorize="isAnonymous()">
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/login}">Login</a>
-                            </li>
-                        </div>
-                        <div sec:authorize="isAuthenticated()">
-                            <li class="nav-item">
-                                <form th:action="@{/logout}" th:method="post">
-                                    <button class="border-0"><a class="nav-link">Logout</a></button>
-                                </form>
-                            </li>
-                        </div>
+
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/all/jobs}">All Jobs</a>
+                            <a class="nav-link" th:href="@{/all/jobs}">Jobs</a>
                         </li>
                         <div sec:authorize="isAnonymous()">
                             <li class="nav-item">
@@ -32,11 +21,11 @@
                             </li>
                         </div>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/showpage}">All Startups</a>
+                            <a class="nav-link" th:href="@{/showpage}">Startups</a>
                         </li>
                         <div sec:authorize="isAuthenticated()">
                             <li class="nav-item">
-                                <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
+                                <a class="nav-link" th:href="@{/create/startup}">Create startup</a>
                             </li>
                         </div>
                         <div sec:authorize="isAuthenticated()">
@@ -46,14 +35,277 @@
                         </div>
                         <div sec:authorize="isAuthenticated()">
                             <li class="nav-item">
-                                <a class="nav-link" th:href="@{/userProfile}">user Profile</a>
+                                <a class="nav-link" th:href="@{/userProfile}">Profile</a>
                             </li>
+
+                            <div sec:authorize="isAnonymous()">
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/login}">Login</a>
+                                </li>
+                            </div>
+
+                            <div sec:authorize="isAuthenticated()">
+                                <li class="nav-item">
+                                    <form th:action="@{/logout}" th:method="post">
+                                        <button class="border-0"><a class="nav-link">Logout</a></button>
+                                    </form>
+                                </li>
+                            </div>
+
                         </div>
                     </ul>
                 </div>
             </div>
         </nav>
     </th:block>
+
+
+
+<!--signup page-->
+
+    <th:block th:fragment="signup">
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/}">GrowTech-SA</a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/all/jobs}">Jobs</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/showpage}">Startups</a>
+                        </li>
+
+                        <li class="nav-item">
+                             <a class="nav-link" th:href="@{/login}">Login</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </th:block>
+
+    <!--login page-->
+
+    <th:block th:fragment="login">
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/}">GrowTech-SA</a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/all/jobs}">Jobs</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/showpage}">Startups</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </th:block>
+
+    <!--create startup page-->
+
+    <th:block th:fragment="createstartup">
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/}">GrowTech-SA</a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/userProfile}">Profile</a>
+                            </li>
+                        </div>
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/all/jobs}">Jobs</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/showpage}">Startups</a>
+                        </li>
+
+                        <div sec:authorize="isAnonymous()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/login}">Login</a>
+                            </li>
+                        </div>
+
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <form th:action="@{/logout}" th:method="post">
+                                    <button class="border-0"><a class="nav-link">Logout</a></button>
+                                </form>
+                            </li>
+                        </div>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </th:block>
+
+
+    <!--create job page-->
+
+    <th:block th:fragment="createjob">
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/}">GrowTech-SA</a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/userProfile}">Profile</a>
+                            </li>
+                        </div>
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/all/jobs}">Jobs</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/showpage}">Startups</a>
+                        </li>
+
+                        <div sec:authorize="isAnonymous()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/login}">Login</a>
+                            </li>
+                        </div>
+
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <form th:action="@{/logout}" th:method="post">
+                                    <button class="border-0"><a class="nav-link">Logout</a></button>
+                                </form>
+                            </li>
+                        </div>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </th:block>
+
+    <!--user profile-->
+
+    <th:block th:fragment="profile">
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/}">GrowTech-SA</a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/all/jobs}">Jobs</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/showpage}">Startups</a>
+                        </li>
+
+                        <div sec:authorize="isAnonymous()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/login}">Login</a>
+                            </li>
+                        </div>
+
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <form th:action="@{/logout}" th:method="post">
+                                    <button class="border-0"><a class="nav-link">Logout</a></button>
+                                </form>
+                            </li>
+                        </div>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </th:block>
+
+
+    <!--edit and delete startup -->
+
+    <th:block th:fragment="startupchange">
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/}">GrowTech-SA</a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/all/jobs}">Jobs</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/showpage}">Startups</a>
+                        </li>
+
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/userProfile}">Profile</a>
+                            </li>
+                        </div>
+
+                        <div sec:authorize="isAnonymous()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/login}">Login</a>
+                            </li>
+                        </div>
+
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <form th:action="@{/logout}" th:method="post">
+                                    <button class="border-0"><a class="nav-link">Logout</a></button>
+                                </form>
+                            </li>
+                        </div>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </th:block>
+
+
+
+
+
+
+
+
+
+
 
     </body>
 </html>

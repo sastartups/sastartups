@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
     <head>
         <!-- title -->
         <title>Title</title>
@@ -10,15 +11,31 @@
         <link rel="stylesheet" type="text/css" href="/css/signup.css" />
     </head>
     <body>
-        <th:block th:replace="fragments/navbar :: navbar"/>
+        <th:block th:replace="fragments/navbar :: createjob"/>
 
-        <form th:action="@{'/create/' + ${startupId} + '/job'}" th:method="POST">
-            <label for="title">Job Title</label>
-            <input name="title" id="title"/>
-            <label for="description">Job Responsibilities</label>
-            <input name="description" id="description" />
-            <button>Create my job</button>
-        </form>
+        <div id="formCon1" class="container">
+            <form th:action="@{'/create/' + ${startupId} + '/job'}" th:method="POST">
+                <div class="row">
+                    <div class="col-md-3 offset-md-3">
+                        <div class="form-group">
+                            <label for="title">Job Title:</label>
+                            <input name="title" id="title" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="description">job Responsibilities:</label><br/>
+                            <textarea rows="5" cols="100" class="form-control" id="description" name="description"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mx-auto">
+                        <input class="btn btn-primary" value="submit" type="submit" />
+                    </div>
+                </div>
+            </form>
+        </div>
 
         <th:block th:replace="fragments/head :: scripts" />
 

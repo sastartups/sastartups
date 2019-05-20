@@ -82,7 +82,7 @@ public class UserController {
 //          System.out.println(startup.getName());
         startupDao.save(startup);
 
-        return "users/applyalert";
+        return "redirect:/userProfile";
 
     }
 

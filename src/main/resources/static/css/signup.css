@@ -66,6 +66,7 @@ body {
     height: 27rem;
 }
 
+
 body {
     background-image: url("/img/san4.png");
     background-repeat: no-repeat;
@@ -99,3 +100,4 @@ body {
 @media (min-width: 992px) and (max-width: 1199.98px) {}
 
 @media (min-width: 1200px) {}
+
