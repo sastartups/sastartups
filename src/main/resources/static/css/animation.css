@@ -6,8 +6,8 @@
 }
 
 @keyframes left {
-    0% {margin-left: -130rem}
-    100% {margin-left: 0}
+    0% {opacity: 0}
+    100% {opacity: 1}
 }
 
 .right {

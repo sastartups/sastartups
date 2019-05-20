@@ -133,11 +133,13 @@ public class UserController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
         resume.setOwner(dbUser);
+        dbUser.setResume(resume);
 
         if (resume.getPath() == "" || resume.toString().length() == 0) {
             return "redirect:/submit-resume";
         } else {
             resumeDao.save(resume);
+            userDao.save(dbUser);
         }
 
         return "users/applyalert";
@@ -148,7 +150,7 @@ public class UserController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
         model.addAttribute("user", dbUser);
-        model.addAttribute("resumes", resumeDao.findByOwner(dbUser));
+//        model.addAttribute("resumes", resumeDao.findByOwner(dbUser));
 //        model.addAttribute("applicants", )
         return "users/userProfile";
     }

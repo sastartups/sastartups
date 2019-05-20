@@ -13,7 +13,7 @@ public class Resume {
     @Column(nullable = false)
     private String path;
 
-    @OneToOne
+    @OneToOne(mappedBy = "resume")
     private User owner;
 
     @ManyToMany(mappedBy = "resumes")
