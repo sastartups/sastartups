@@ -71,6 +71,12 @@ public class UserController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
         startup.setUser(dbUser);
+        if(startup.getProfile_img().equals("")) {
+            startup.setProfile_img("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
+        }
+        if(startup.getCover_img().equals("")){
+            startup.setCover_img("https://coverfiles.alphacoders.com/372/37214.jpg");
+        }
 
 //        System.out.println("here!!!!"+startup.getProfile_img());
 //          System.out.println(startup.getName());
