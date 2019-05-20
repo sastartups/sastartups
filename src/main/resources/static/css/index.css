@@ -1,8 +1,13 @@
+html {
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     padding: 0;
     max-width: 100%;
     overflow-x: hidden;
+    position: relative;
     background-color: #dddfeb;
     background-image: url("/img/large2.png");
     background-repeat: no-repeat;
@@ -79,7 +84,7 @@ p {
     height: 50rem;
     margin: 0;
     padding: 0;
-    max-width: none;
+    max-width: 100%;
     margin-top: -10rem;
     background-image: url(/img/san4.png);
     background-size: 65% 70%;
@@ -240,6 +245,10 @@ div#element3 {
 
 @media (max-width: 576px) {
 
+    body {
+        
+    }
+
     #navbar .navbar-brand {
         width: 90%;
     }
@@ -254,11 +263,9 @@ div#element3 {
 
     #container3{
         margin-top: 35rem;
-        height: 54rem;
+        height: 57rem;
     }
 
 }
-
-
 
 
