@@ -1,6 +1,6 @@
 
 document.getElementById("picture").addEventListener("click", function () {
-    var client = filestack.init('AEWKiu5qYTtif6jqXiYivz');
+    var client = filestack.init('ANjhOz5feQ0OWiw2r1EEgz');
     client.picker({
         onFileUploadFinished: function(response){
             this.value ="https://cdn.filestackcontent.com/" + (response.handle);
@@ -10,7 +10,7 @@ document.getElementById("picture").addEventListener("click", function () {
 });
 
 document.getElementById("picture2").addEventListener("click", function () {
-    var client = filestack.init('AEWKiu5qYTtif6jqXiYivz');
+    var client = filestack.init('ANjhOz5feQ0OWiw2r1EEgz');
     client.picker({
         onFileUploadFinished: function(response){
             this.value ="https://cdn.filestackcontent.com/" + (response.handle);
