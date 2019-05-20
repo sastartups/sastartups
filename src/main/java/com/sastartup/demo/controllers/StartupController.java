@@ -36,15 +36,15 @@ public class StartupController {
 
     //    shows all the startup  in the table
     @GetMapping("/showpage")
-    public String showpage(Model vmodel){
-        vmodel.addAttribute("allstartups",startupDao.findAll());
+    public String showpage(Model vmodel) {
+        vmodel.addAttribute("allstartups", startupDao.findAll());
         return "startups/showpage";
     }
 
 
     //    show one startup and details
     @GetMapping("/showpage/{id}")
-    public String showOne(@PathVariable Long id,Model vmodel) {
+    public String showOne(@PathVariable Long id, Model vmodel) {
         Startup startup = startupDao.findOne(id);
         vmodel.addAttribute("oneStartup", startup);
         return "startups/showone";
@@ -52,14 +52,14 @@ public class StartupController {
 
     //    create job
     @GetMapping("/create/{id}/job")
-    public String jobPostingForm(Model model, @PathVariable Long id){
+    public String jobPostingForm(Model model, @PathVariable Long id) {
         model.addAttribute("startupId", id);
         return "startups/create-job-posting";
     }
 
 
     @PostMapping("/create/{id}/job")
-    public String submitJobPosting(@RequestParam String title,@RequestParam String description ,@PathVariable Long id){
+    public String submitJobPosting(@RequestParam String title, @RequestParam String description, @PathVariable Long id) {
 
         Job newjob = new Job();
         newjob.setDescription(description);
@@ -71,32 +71,30 @@ public class StartupController {
     }
 
 
-
-
-//    delete job
+    //    delete job
     @GetMapping("/job/{id}/delete")
-    public String deleteform(@PathVariable Long id, Model vmodel){
+    public String deleteform(@PathVariable Long id, Model vmodel) {
         Job job = jobDao.findOne(id);
-        vmodel.addAttribute("job",job);
-        return("startups/deletejob");
+        vmodel.addAttribute("job", job);
+        return ("startups/deletejob");
     }
 
     @PostMapping("/job/{id}/delete")
-    public String delete(@PathVariable Long id){
+    public String delete(@PathVariable Long id) {
         jobDao.delete(id);
         return "redirect:/showpage";
     }
 
-//    edit job
+    //    edit job
     @GetMapping("/job/{id}/edit")
-    public String editform(@PathVariable Long id,Model vmodel){
+    public String editform(@PathVariable Long id, Model vmodel) {
         Job job = jobDao.findOne(id);
-        vmodel.addAttribute("job",job);
-        return("startups/editjob");
+        vmodel.addAttribute("job", job);
+        return ("startups/editjob");
     }
 
     @PostMapping("/job/{id}/edit")
-    public String edit(@ModelAttribute Job jobtoedit, @PathVariable Long id){
+    public String edit(@ModelAttribute Job jobtoedit, @PathVariable Long id) {
 
         User sessionuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User db_user = userDao.findOne(sessionuser.getId());
@@ -108,17 +106,22 @@ public class StartupController {
         jobDao.save(jobtoedit);
 
 
-       return "redirect:/showpage";
+        return "redirect:/showpage";
     }
 
     @GetMapping("/all/jobs")
-    public String viewAllJobs(@RequestParam(defaultValue = "") String searchFor, Model model){
-        if(searchFor.toString().equals("")){
+    public String viewAllJobs(@RequestParam(defaultValue = "") String searchFor, Model model) {
+        if (searchFor.toString().equals("")) {
             model.addAttribute("jobs", jobDao.findAll());
-        } else if(! searchFor.toString().equals("") ){
-            model.addAttribute("jobs", jobDao.findByTitle(searchFor));
-        }
+        } else if (!searchFor.toString().equals("")) {
+            if (jobDao.findByTitle(searchFor).size() == 0) {
+                model.addAttribute("jobs", jobDao.findAll());
+            }else {
+                model.addAttribute("jobs", jobDao.findByTitle(searchFor));
+            }
 
+        }
+        System.out.println(jobDao.findAll());
         return "startups/alljobs";
     }
 
