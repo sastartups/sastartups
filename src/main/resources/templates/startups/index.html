@@ -23,24 +23,6 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
 
-                        <div sec:authorize="isAnonymous()">
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/login}">Login</a>
-                            </li>
-                        </div>
-                        <div sec:authorize="isAuthenticated()">
-                            <li class="nav-item">
-                                <form th:action="@{/logout}" th:method="post">
-                                    <button class="border-0"><a class="nav-link">Logout</a></button>
-                                </form>
-                            </li>
-                        </div>
-                        <div sec:authorize="isAnonymous()">
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/sign-up}">Sign Up</a>
-                            </li>
-                        </div>
-
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/showpage}">Startps</a>
                         </li>
@@ -59,9 +41,30 @@
                         </div>
                         <div sec:authorize="isAuthenticated()">
                             <li class="nav-item">
-                                <a class="nav-link" th:href="@{/userProfile}">User Profile</a>
+                                <a class="nav-link" th:href="@{/userProfile}">Profile</a>
                             </li>
                         </div>
+
+                        <div sec:authorize="isAnonymous()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/sign-up}">Sign Up</a>
+                            </li>
+                        </div>
+
+                        <div sec:authorize="isAnonymous()">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/login}">Login</a>
+                            </li>
+                        </div>
+
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <form th:action="@{/logout}" th:method="post">
+                                    <button class="border-0"><a class="nav-link">Logout</a></button>
+                                </form>
+                            </li>
+                        </div>
+
                     </ul>
 
                 </div>

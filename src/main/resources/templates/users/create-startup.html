@@ -15,7 +15,7 @@
     <body>
 
         <!-- navbar -->
-        <th:block th:replace="fragments/navbar :: navbar"/>
+        <th:block th:replace="fragments/navbar :: createstartup"/>
 
         <div id="createStartCon1" class="container">
             <form th:action="@{/create/startup}" th:method="POST" th:object="${startup}">

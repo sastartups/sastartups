@@ -66,8 +66,8 @@ body {
     height: 27rem;
 }
 
-body {
-    background-image: url("/img/san4.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+/*body {*/
+    /*background-image: url("/img/san4.png");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+/*}*/

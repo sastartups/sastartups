@@ -13,7 +13,7 @@
     <body>
 
         <!-- navbar -->
-        <th:block th:replace="fragments/navbar :: navbar"/>
+        <th:block th:replace="fragments/navbar :: signup"/>
 
         <div id="formCon1" class="container">
             <form th:action="@{/sign-up}" th:method="POST" th:object="${user}">
