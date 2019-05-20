@@ -72,12 +72,6 @@ public class StartupController {
 
 
 
-    @GetMapping("/all/jobs")
-    public String viewAllJobs(Model model){
-        model.addAttribute("jobs", jobDao.findAll());
-        return "startups/alljobs";
-    }
-
 
 //    delete job
     @GetMapping("/job/{id}/delete")
@@ -117,7 +111,16 @@ public class StartupController {
        return "redirect:/showpage";
     }
 
+    @GetMapping("/all/jobs")
+    public String viewAllJobs(@RequestParam(defaultValue = "") String searchFor, Model model){
+        if(searchFor.toString().equals("")){
+            model.addAttribute("jobs", jobDao.findAll());
+        } else if(! searchFor.toString().equals("") ){
+            model.addAttribute("jobs", jobDao.findByTitle(searchFor));
+        }
 
+        return "startups/alljobs";
+    }
 
 
 }
