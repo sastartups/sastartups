@@ -122,5 +122,4 @@ public class StartupController {
         return "startups/alljobs";
     }
 
-
 }
