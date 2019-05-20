@@ -45,7 +45,16 @@ body {
 }
 
 #createStartCon1 {
-    margin-top: 4rem;
+    background-color: #647e9f;
+    padding: 5rem;
+    border-radius: .5rem;
+}
+
+#createStartCon1 form{
+    background-color: lightblue;
+    border-radius: .5rem;
+    height: 27rem;
+    padding-top: 1rem;
 }
 
 #description {

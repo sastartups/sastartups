@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div id="Con3" class="container">
             <div class="row">
                 <div class="col-md-4">
                     <h4>company name:</h4>
@@ -52,12 +52,13 @@
                     <p th:text="${oneStartup.description}"></p>
                 </div>
             </div>
+            <hr/>
             <div class="row">
-                <div class="col-md-4">
+                <div class="mx-auto">
                     <h4>Jobs available</h4>
                     <hr/>
                 </div>
-            </div>
+            </div><br/>
             <div th:each="item : ${oneStartup.jobs}">
                 <div class="row">
                     <div class="col-md-4">
