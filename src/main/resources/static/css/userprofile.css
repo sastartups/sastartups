@@ -3,11 +3,6 @@ body {
     padding: 0;
     max-width: 100%;
     overflow-x: hidden;
-    background-image: url("/img/large2.png");
-    background-repeat: no-repeat;
-    background-size: 37% 54%;
-    background-position-x: 102%;
-    background-position-y: 142%;
 }
 
 /* navbar */
@@ -56,7 +51,7 @@ body {
 #left {
     background-color: transparent;
     position: fixed;
-    top: 5rem;
+    top: 4rem;
     bottom: 0;
 }
 
@@ -64,15 +59,3 @@ body {
     background-color: transparent;
 }
 
-/*
-992px comes from the bootstrap grid sizes for 'lg'
-
-https://v4-alpha.getbootstrap.com/layout/grid/#grid-options
-*/
-@media (min-width: 992px){
-    #left {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-    }
-}
