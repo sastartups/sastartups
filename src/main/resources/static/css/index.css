@@ -194,78 +194,122 @@ div#element3 {
     height: 16rem;
 }
 
-@media (max-width: 992px) {
-
-    #container3 {
-        background-position-x: 20rem;
-    }
-
+@media (min-width: 1200px) {
+    
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1199.98px) {
+
+    #navbar .navbar-brand{
+        width: 70%;
+    }
+
     #container1 {
         margin-top: -16rem;
+        height: 51rem;
+    }
+
+    #firsttitle {
+        margin-top: 17rem;
+    }
+
+    #container2 h2{
+        margin-top: 0;
+    }
+
+    #container3 {
+        background-position-x: 13rem;
+    }
+    
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #navbar .navbar-brand{
+        width: 88%;
+    }
+
+    #container1 {
+        margin-top: -16rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     #firsttitle {
         margin-top: 19rem;
     }
 
-    #navbar .navbar-brand {
-        width: 100%;
-    }
-}
-
-@media (max-width: 767.98px) {
-
-    #firsttitle {
-        margin-top: 20rem;
-    }
-
-    #container1 {
-        margin-top: -16rem;
-        height: 57rem;
-    }
-
-    #navbar .navbar-brand {
-        width: 90%;
-    }
-
-    #navbar .navbar-light .navbar-toggler-icon {
-        margin-left: 6rem;
+    #container2 {
+        padding-right: 1rem;
+        padding-left: 1rem;
     }
 
     #container3 {
-        background-position-x: 11rem;
-        margin-top: 28rem;
-        height: 63rem;
+        margin-top: 18rem;
+        height: 57rem;
+        background-position-x: 12rem;
     }
 
 }
 
-@media (max-width: 576px) {
+@media (max-width: 575.98px) {
 
-    body {
-        
+    #navbar .navbar-brand{
+        width: 88%;
     }
 
-    #navbar .navbar-brand {
-        width: 90%;
-    }
-
-    #navbar .navbar-toggler {
-        margin-right: 3rem;
+    #container1 {
+        margin-top: -17rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     #firsttitle {
-        margin-top: 20rem;
+        margin-top: 19rem;
     }
 
-    #container3{
+    #container2 {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    #container3 {
         margin-top: 35rem;
         height: 57rem;
+        background-position-x: 9rem;
     }
 
 }
 
+@media (max-width: 351px) {
+
+    #navbar .navbar-brand{
+        width: 146%;
+    }
+
+    #container1 {
+        margin-top: -17rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    #firsttitle {
+        margin-top: 19rem;
+    }
+
+    #container2 .col-md-6 {
+        height: 26rem;
+    }
+
+    #container2 {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    #container3 {
+        margin-top: 54rem;
+        height: 57rem;
+        background-position-x: 9rem;
+    }
+
+}
 
