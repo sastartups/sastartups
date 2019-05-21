@@ -11,24 +11,34 @@
 
     </head>
     <body>
-        <th:block th:replace="fragments/navbar :: navbar"/>
+        <th:block th:replace="fragments/navbar :: navbar"/><br/>
 
-        <div th:each="job : ${jobs}">
             <div id="allCon" class="container-fluid">
                 <div class="row">
-                    <div id="left" class="col-md-2">
-                        <form action="/all/jobs" method="get">
-                            <input name="searchFor" type="search" class="form-control" />
-                            <input type="submit" value="search" class="btn btn-sm btn-primary" />
-                        </form>
-                        I want this to always be visible as the right side scrolls.
+                    <div class="col-md-6">
+                        <h2>All Jobs Available</h2>
                     </div>
-                    <div id="right" class="col offset-md-2">
-                        <div id="cover" class="row" th:style="'background-image:url(' + ${job.startup.cover_img} + ');'">
+                    <div class="col-md-6">
+                        <form action="/all/jobs" method="get">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <input type="submit" value="search" class="btn btn-primary" />
+                                </div>
+                                <div class="col-md-4">
+                                    <input name="searchFor" type="search" class="form-control" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div><hr/><br/>
+                <div class="row">
+                    <div th:each="job : ${jobs}">
+                    <div class="col-md-12">
+                        <div id="cover" class="row" style="background-color: #dddfeb; border: 1px solid black">
                             <div class="col-md-4">
                                 <img th:src="${job.startup.getProfile_img()}" />
                             </div>
-                            <div id="company" class="col-md-4">
+                            <div id="company" class="col-md-4 offset-md-4">
                                 <h5>Title: <span th:text="${job.title}"></span></h5>
                                 <h5>description</h5>
                                 <p id="para" th:text="${job.description}"></p>
@@ -38,9 +48,9 @@
                             </div>
                         </div><br/>
                     </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
         <th:block th:replace="fragments/head :: scripts" />
 
