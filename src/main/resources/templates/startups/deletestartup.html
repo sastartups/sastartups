@@ -48,7 +48,36 @@
                     </div><br/>
                     <div class="form-row">
                         <div class="mx-auto">
-                            <input class="btn btn-primary" type="submit" value="DELETE" />
+                            <!--<input class="btn btn-primary" type="submit" value="DELETE" />-->
+                            <!--old delete button-->
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                                DELETE STARTUP
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header" id="modal">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">DELETE STARTUP</h5>
+                                            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                                            <!--<span aria-hidden="true">&times;</span>-->
+                                            <!--</button>-->
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to <span class="text-danger">DELETE </span><span th:text="*{startup.name}"> ?</span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">DELETE</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>

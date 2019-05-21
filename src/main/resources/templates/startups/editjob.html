@@ -33,7 +33,38 @@
                 </div>
                 <div class="row">
                     <div class="mx-auto">
-                        <input class="btn btn-primary" value="EDIT" type="submit" />
+
+                        <!--old submit button-->
+                        <!--<input class="btn btn-primary" value="EDIT" type="submit" />-->
+
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                            Save changes
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header" id="modal">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">EDIT JOB</h5>
+                                        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                                            <!--<span aria-hidden="true">&times;</span>-->
+                                        <!--</button>-->
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </form>
@@ -41,6 +72,8 @@
 
 
         <th:block th:replace="fragments/head :: scripts" />
+
+
 
     </body>
 </html>

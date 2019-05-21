@@ -182,8 +182,8 @@ public class UserController {
 
         );
 
-        return "users/applyalert";
-    }
+        return "redirect:/showpage/" + job.getStartup().getId();
+}
 
     @GetMapping("/edit")
     public String showUserEditPage(Model model) {

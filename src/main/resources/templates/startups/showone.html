@@ -16,8 +16,9 @@
     </head>
     <body>
 
+<div style="padding-bottom: 5px">
         <th:block th:replace="fragments/navbar :: navbar"/>
-
+</div>
 
         <!-- container-1 -->
         <div id="showoneCon1" class="container">
@@ -68,7 +69,37 @@
                         <!--<div th:each="item : ${oneStartup.jobs}">-->
 
                         <form th:action="@{'/apply/' + ${item.id} }" method="POST">
-                            <button class="btn btn-outline-success">Easy Apply</button>
+
+                            <!--old button-->
+                            <!--<button class="btn btn-outline-success">Easy Apply</button>-->
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                                Easy Apply
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header" id="modal">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">SEND MY RESUME</h5>
+                                            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                                            <!--<span aria-hidden="true">&times;</span>-->
+                                            <!--</button>-->
+                                        </div>
+                                        <div class="modal-body">
+                                            You are applying for <span th:text="${item.title}"></span> job at <span th:text="${oneStartup.name}"></span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">SEND</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </form>
                         <div sec:authorize="isAuthenticated()">
                             <div th:if="${#authentication.principal.id == oneStartup.user.id}">
@@ -95,48 +126,48 @@
         <th:block th:replace="fragments/head :: scripts" />
 
 
-        <script>
+                                        <script>
 
-            mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA';
+                                            mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA';
 
-            var map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/light-v10',
-                zoom: 13
-            });
+                                            var map = new mapboxgl.Map({
+                                                container: 'map',
+                                                style: 'mapbox://styles/mapbox/light-v10',
+                                                zoom: 13
+                                            });
 
-            let address = document.getElementById("address").innerText;
+                                            let address = document.getElementById("address").innerText;
 
-            geocode(address, "pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA").then(function (data) {
+                                            geocode(address, "pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA").then(function (data) {
 
-                map.setCenter(data);
-                var marker = new mapboxgl.Marker({
-                    draggable: true
-                })
-                    .setLngLat(data)
-                    .addTo(map);
+                                                map.setCenter(data);
+                                                var marker = new mapboxgl.Marker({
+                                                    draggable: true
+                                                })
+                                                    .setLngLat(data)
+                                                    .addTo(map);
 
-                map.addControl(new MapboxGeocoder({
-                    accessToken: mapBoxKey
+                                                map.addControl(new MapboxGeocoder({
+                                                    accessToken: mapBoxKey
 
-                }));
+                                                }));
 
-            });
+                                            });
 
 
-            function geocode(search, token) {
-                var baseUrl = 'https://api.mapbox.com';
-                var endPoint = '/geocoding/v5/mapbox.places/';
-                return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-                    .then(function (res) {
-                        return res.json();
-                        // to get all the data from the request, comment out the following three lines...
-                    }).then(function (data) {
-                        return data.features[0].center;
-                    });
-            }
+                                            function geocode(search, token) {
+                                                var baseUrl = 'https://api.mapbox.com';
+                                                var endPoint = '/geocoding/v5/mapbox.places/';
+                                                return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+                                                    .then(function (res) {
+                                                        return res.json();
+                                                        // to get all the data from the request, comment out the following three lines...
+                                                    }).then(function (data) {
+                                                        return data.features[0].center;
+                                                    });
+                                            }
 
-        </script>
+                                        </script>
 
     </body>
 </html>

@@ -81,10 +81,12 @@ public class StartupController {
 
     @PostMapping("/job/{id}/delete")
     public String delete(@PathVariable Long id) {
+        System.out.println(jobDao.findOne(id).getStartup().getId());
+        Long startupId = jobDao.findOne(id).getStartup().getId();
         jobDao.delete(id);
-//        System.out.println(jobDao.findOne(id).getStartup().getId());
 
-        return "redirect:/showpage/" + jobDao.findOne(id).getStartup().getId();
+
+        return "redirect:/showpage/" + startupId;
     }
 
 
