@@ -148,7 +148,7 @@ div#element3 {
 /* container3 */
 
 #container3 {
-    height: 30rem;
+    height: 43rem;
     margin: 0;
     padding: 0;
     max-width: 100%;
@@ -157,7 +157,7 @@ div#element3 {
     background-attachment: fixed;
     background-size: 50% 32%;
     background-position-y: 35rem;
-    background-position-x: 22rem;
+    background-position-x: 20rem;
     background-color: #2A3141;
     color:white;
 }
