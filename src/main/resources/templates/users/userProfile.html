@@ -8,129 +8,131 @@
     <th:block th:replace="fragments/head :: header"/>
 
 
-
-  <link rel="stylesheet" type="text/css" href="/css/userprofile.css" />
+    <link rel="stylesheet" type="text/css" href="/css/userprofile.css"/>
 
 
     <script src="//static.filestackapi.com/filestack-js/2.x.x/filestack.min.js"></script>
 
 </head>
-    <body>
-        <!-- navbar -->
-        <th:block th:replace="fragments/navbar :: profile"/>
-
-        
+<body>
+<!-- navbar -->
+<th:block th:replace="fragments/navbar :: profile"/>
 
 
-            <div class="container">
-                <div class="row">
-                    <div id="left" class="col-md-3">
-                        <h2>welcome <span th:text="${user.username}"></span> </h2>
-                        <hr/>
-                        <form class="mt-2" th:action="@{/submit-resume}" th:method="POST" th:object="${resume}">
-                            <input id="resumeFile" th:field="*{path}" type="hidden"/>
-                            <input id="resumeButton" type="button" class="btn btn-block btn-primary" value="Upload resume"/><br/>
-                            <input class="btn btn-primary" type="submit" value="submit" />
-                        </form>
-                        <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
-                    </div>
-                    <div id="right" class="col-md-8 offset-md-4">
-                        <h2>your startups</h2>
-                        <hr/>
-                        <div th:each="startup : ${user.startups}">
-                            <h3>startup name: <span><a th:href="@{'/showpage/' + ${startup.id}}" th:text="${startup.name}"></a></span></h3>
-                            <button class="btn btn-outline-success btn-sm">
-                                <a th:href="@{'/startup/' + ${startup.id} + '/edit'}">edit startup</a>
-                            </button>
-                            <button class="btn btn-outline-success btn-sm">
-                                <a th:href="@{'/startup/' + ${startup.id} + '/delete'}">delete startup</a>
-                            </button>
-                            <button class="btn btn-outline-success btn-sm">
-                                <a th:href="@{'/create/' + ${startup.id} + '/job'}">create job</a>
-                            </button>
-                            
-                            <h3>address: <span th:text="${startup.address}"></span></h3>
+<div class="container">
+    <div class="row">
+        <div id="left" class="col-md-3">
+            <h2>welcome <span th:text="${user.username}"></span></h2>
+            <hr/>
+            <form class="mt-2" th:action="@{/submit-resume}" th:method="POST" th:object="${resume}">
+                <input id="resumeFile" th:field="*{path}" type="hidden"/>
+                <input id="resumeButton" type="button" class="btn btn-block btn-primary" value="Upload resume"/><br/>
+                <input class="btn btn-primary" type="submit" value="submit"/>
+            </form>
+            <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
+        </div>
+        <div id="right" class="col-md-8 offset-md-4">
+            <h2>your startups</h2>
+            <hr/>
+            <div th:each="startup : ${user.startups}">
+                <h3>startup name: <span><a th:href="@{'/showpage/' + ${startup.id}}"
+                                           th:text="${startup.name}"></a></span></h3>
+                <button class="btn btn-outline-success btn-sm">
+                    <a th:href="@{'/startup/' + ${startup.id} + '/edit'}">edit startup</a>
+                </button>
+                <button class="btn btn-outline-success btn-sm">
+                    <a th:href="@{'/startup/' + ${startup.id} + '/delete'}">delete startup</a>
+                </button>
+                <button class="btn btn-outline-success btn-sm">
+                    <a th:href="@{'/create/' + ${startup.id} + '/job'}">create job</a>
+                </button>
 
-                            <h3>description:</h3>
-                            <p th:text="${startup.description}"></p>
-                            <hr/>
+                <h3>address: <span th:text="${startup.address}"></span></h3>
 
-                            <h2>Job Postings at <span th:text="${startup.name}"></span></h2>
-                            <div th:each="job : ${startup.jobs}">
-                                <h3>Job title: <span th:text="${job.title}"></span></h3>
-                                <h3>Job Description:</h3>
-                                <p th:text="${job.description}"></p>
+                <h3>description:</h3>
+                <p th:text="${startup.description}"></p>
+                <hr/>
 
-                                <div th:if="${job.resumes.size() > 0}">
-                                    <h1>Submitted Applications: </h1>
-                                    <div th:each="resume : ${job.resumes}">
-                                        <a th:href="@{${resume.path}}">Click here to view submitted resume</a>
-                                    </div>
-                                </div><hr/>
-                            </div>
+                <h2>Job Postings at <span th:text="${startup.name}"></span></h2>
+                <div th:each="job : ${startup.jobs}">
+                    <h3>Job title: <span th:text="${job.title}"></span></h3>
+                    <h3>Job Description:</h3>
+                    <p th:text="${job.description}"></p>
+
+                    <div th:if="${job.resumes.size() > 0}">
+                        <h1>Submitted Applications: </h1>
+                        <div th:each="resume : ${job.resumes}">
+                            <a th:href="@{${resume.path}}">Click here to view submitted resume</a>
+                            <form th:action="@{'/resume/' + ${job.id} + '/pass/' + ${resume.id}}" method="post">
+                                <button>Not Interested</button>
+                            </form>
+                            <form th:action="@{'/resume/' + ${job.id} + '/interested/' + ${resume.owner.id}}" method="post">
+                                <button>Interested</button>
+                            </form>
                         </div>
                     </div>
-                </div>
-            </div>
-        
-
-
-        <div class="container">
-
-            
-            <!--<h1 th:text="${user.resume.path}"></h1>-->
-
-            <!--<div th:each="startup : ${user.startups}">-->
-            <!--<a th:href="@{'/showpage/' + ${startup.id}}" th:text="${startup.name}"></a>-->
-            <!--<div th:each="job : ${startup.jobs}">-->
-            <!--<p th:text="${job.title}"></p>-->
-            <!--<p th:text="${job.description}"></p>-->
-
-            <!--<div th:if="${job.resumes.size() > 0}">-->
-            <!--<h1>Your resume</h1>-->
-            <!--<div th:each="resume : ${job.resumes}">-->
-            <!--<a th:href="@{${resume.path}}">Click here to view submitted resume</a>-->
-            <!--</div>-->
-            <!--</div>-->
-
-            <!--<div th:if="${job.resumes.size() == 0}">-->
-
-
-            <!--</div>-->
-
-            <!--</div>-->
-            <!--</div>-->
-
-
-
-
-            <div th:if="${user.resume != null &amp;&amp; user.resume.jobs.size() > 0}">
-                <h1>Your Submitted Applications</h1>
-                <div th:each="job : ${user.resume.jobs}">
-                    <h1>Job Postings: </h1>
-                    <h1>Job title: </h1>
-                    <p th:text="${job.title}"></p>
-                    <h1>Job Description:</h1>
-                    <p th:text="${job.description}"></p>
+                    <hr/>
                 </div>
             </div>
         </div>
-
-        <th:block th:replace="fragments/head :: scripts"/>
-
-
-        <script>
-            document.getElementById("resumeButton").addEventListener("click", function () {
-                var client = filestack.init('ANjhOz5feQ0OWiw2r1EEgz');
-                client.picker({
-                    onFileUploadFinished: function(response){
-                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);
-                        document.getElementById("resumeFile").value = this.value
-                    }
-                }).open();
-            })
-        </script>
+    </div>
+</div>
 
 
-    </body>
+<div class="container">
+
+
+    <!--<h1 th:text="${user.resume.path}"></h1>-->
+
+    <!--<div th:each="startup : ${user.startups}">-->
+    <!--<a th:href="@{'/showpage/' + ${startup.id}}" th:text="${startup.name}"></a>-->
+    <!--<div th:each="job : ${startup.jobs}">-->
+    <!--<p th:text="${job.title}"></p>-->
+    <!--<p th:text="${job.description}"></p>-->
+
+    <!--<div th:if="${job.resumes.size() > 0}">-->
+    <!--<h1>Your resume</h1>-->
+    <!--<div th:each="resume : ${job.resumes}">-->
+    <!--<a th:href="@{${resume.path}}">Click here to view submitted resume</a>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--<div th:if="${job.resumes.size() == 0}">-->
+
+
+    <!--</div>-->
+
+    <!--</div>-->
+    <!--</div>-->
+
+
+    <div th:if="${user.resume != null &amp;&amp; user.resume.jobs.size() > 0}">
+        <h1>Your Submitted Applications</h1>
+        <div th:each="job : ${user.resume.jobs}">
+            <h1>Job Postings: </h1>
+            <h1>Job title: </h1>
+            <p th:text="${job.title}"></p>
+            <h1>Job Description:</h1>
+            <p th:text="${job.description}"></p>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="fragments/head :: scripts"/>
+
+
+<script>
+    document.getElementById("resumeButton").addEventListener("click", function () {
+        var client = filestack.init('ANjhOz5feQ0OWiw2r1EEgz');
+        client.picker({
+            onFileUploadFinished: function (response) {
+                this.value = "https://cdn.filestackcontent.com/" + (response.handle);
+                document.getElementById("resumeFile").value = this.value
+            }
+        }).open();
+    })
+</script>
+
+
+</body>
 </html>
