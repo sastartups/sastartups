@@ -54,7 +54,18 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user) {
+    public String saveUser(@ModelAttribute User user, Model model) {
+        for(User registeredUser : userDao.findAll()){
+            if(user.getUsername().equals(registeredUser.getUsername()) || user.getEmail().equals(registeredUser.getEmail())){
+                if((user.getUsername().equals(registeredUser.getUsername()))){
+                    model.addAttribute("invalidUserName", "Username already taken");
+                    return "users/signup-form";
+                } else if(user.getEmail().equals(registeredUser.getEmail())){
+                    model.addAttribute("duplicateEmail", "Email already in use");
+                    return "users/signup-form";
+                }
+            }
+        }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
