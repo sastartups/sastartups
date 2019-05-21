@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.persistence.JoinColumn;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -53,7 +54,18 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user) {
+    public String saveUser(@ModelAttribute User user, Model model) {
+        for(User registeredUser : userDao.findAll()){
+            if(user.getUsername().equals(registeredUser.getUsername()) || user.getEmail().equals(registeredUser.getEmail())){
+                if((user.getUsername().equals(registeredUser.getUsername()))){
+                    model.addAttribute("invalidUserName", "Username already taken");
+                    return "users/signup-form";
+                } else if(user.getEmail().equals(registeredUser.getEmail())){
+                    model.addAttribute("duplicateEmail", "Email already in use");
+                    return "users/signup-form";
+                }
+            }
+        }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
@@ -182,8 +194,10 @@ public class UserController {
 
         );
 
+
         return "redirect:/showpage/" + job.getStartup().getId();
 }
+
 
     @GetMapping("/edit")
     public String showUserEditPage(Model model) {
@@ -206,6 +220,31 @@ public class UserController {
         userDao.save(updatedUser);
         return "redirect:/userProfile";
     }
+
+
+    //ARASH try to see if you can incorporate the email service here to email the resume owner that the startup owner is not interested
+    @PostMapping("/resume/{jobId}/pass/{resumeId}")
+    public String notInterestedApplication(@PathVariable long jobId, @PathVariable long resumeId){
+        Job job = jobDao.findOne(jobId);
+        List<Resume> resumes = job.getResumes();
+        for(Iterator<Resume> resume  = resumes.iterator(); resume.hasNext();){
+            Resume r = resume.next();
+            if(r.getId() == resumeId){
+                Resume userResume = r;
+                List<Job> jobs = userResume.getJobs();
+                jobs.remove(job);
+                userResume.setJobs(jobs);
+                resumeDao.save(userResume);
+                resume.remove();
+            }
+        }
+        job.setResumes(resumes);
+        jobDao.save(job);
+        return "redirect:/userProfile";
+
+    }
+
+
 
 
 }

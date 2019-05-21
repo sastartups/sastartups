@@ -59,3 +59,16 @@ body {
     background-color: transparent;
 }
 
+@media (max-width: 767.98px) {
+
+    #left {
+
+        position: relative;
+
+    }
+
+    #right {
+        margin-top: 5rem;
+    }
+
+}
