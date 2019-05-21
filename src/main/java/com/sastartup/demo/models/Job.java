@@ -11,10 +11,10 @@ public class Job {
     @Id @GeneratedValue
     private Long id;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false,unique = true,length = 2000)
+    @Column(nullable = false, length = 2000)
     private String description;
 
     @ManyToOne @JoinColumn(name = "startup_id")
