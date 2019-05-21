@@ -82,8 +82,11 @@ public class StartupController {
     @PostMapping("/job/{id}/delete")
     public String delete(@PathVariable Long id) {
         jobDao.delete(id);
-        return "redirect:/showpage";
+//        System.out.println(jobDao.findOne(id).getStartup().getId());
+
+        return "redirect:/showpage/" + jobDao.findOne(id).getStartup().getId();
     }
+
 
     //    edit job
     @GetMapping("/job/{id}/edit")
@@ -106,7 +109,7 @@ public class StartupController {
         jobDao.save(jobtoedit);
 
 
-        return "redirect:/showpage";
+        return "redirect:/showpage/" + jobtoedit.getStartup().getId();
     }
 
     @GetMapping("/all/jobs")

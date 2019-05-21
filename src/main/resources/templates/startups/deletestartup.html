@@ -6,15 +6,78 @@
         <!-- bootstrap, meta, and google fonts -->
         <th:block th:replace="fragments/head :: header" />
 
+        <link rel="stylesheet" type="text/css" href="/css/createStartUp.css" />
+
     </head>
     <body>
-        <h1>delete startup ...</h1>
 
-        <form method="post" th:action="@{'/startup/' + ${startup.id} + '/delete'}">
-            <input type="text" th:field="*{startup.name}"/>
-            <textarea th:field="*{startup.description}"></textarea>
-            <button>delete</button>
-        </form>
+        <!-- navbar -->
+        <th:block th:replace="fragments/navbar :: startupchange"/>
+
+        <h2 style="margin-left: 12%">Delete <span th:text="${startup.name}"></span> ?</h2>
+
+
+        <div id="createStartCon1" class="container">
+            <form method="post" th:action="@{'/startup/' + ${startup.id} + '/delete'}">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-3 offset-md-3">
+                            <label for="name">Startup Name</label><br/>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="address">Where are you located?</label><br/>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-3 offset-md-3">
+                            <input id="name" class="form-control" th:field="${startup.name}"/>
+                        </div>
+                        <div class="col-md-3">
+                            <input id="address" class="form-control" th:field="${startup.address}"/>
+                        </div>
+                    </div><br/>
+                    <div class="form-row">
+                        <div class="mx-auto">
+                            <label for="description">Tell us about your business!</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 offset-md-3">
+                            <textarea class="form-control" id="description" th:field="${startup.description}"></textarea>
+                        </div>
+                    </div><br/>
+                    <div class="form-row">
+                        <div class="mx-auto">
+                            <input class="btn btn-primary" type="submit" value="DELETE" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--<form method="post" th:action="@{'/startup/' + ${startup.id} + '/delete'}">-->
+            <!--<input type="text" th:field="*{startup.name}"/>-->
+            <!--<textarea th:field="*{startup.description}"></textarea>-->
+            <!--<button>delete</button>-->
+        <!--</form>-->
 
         <th:block th:replace="fragments/head :: scripts" />
 
