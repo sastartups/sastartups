@@ -217,12 +217,18 @@ public class UserController {
         for(Iterator<Resume> resume  = resumes.iterator(); resume.hasNext();){
             Resume r = resume.next();
             if(r.getId() == resumeId){
+                Resume userResume = r;
+                List<Job> jobs = userResume.getJobs();
+                jobs.remove(job);
+                userResume.setJobs(jobs);
+                resumeDao.save(userResume);
                 resume.remove();
             }
         }
         job.setResumes(resumes);
         jobDao.save(job);
         return "redirect:/userProfile";
+
     }
 
 
