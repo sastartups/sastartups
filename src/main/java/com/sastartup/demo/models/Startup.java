@@ -14,13 +14,13 @@ public class Startup {
     @Id @GeneratedValue
     private Long id;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false,length = 2000)
     private String description;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false)
     private String address;
 
     @Column
