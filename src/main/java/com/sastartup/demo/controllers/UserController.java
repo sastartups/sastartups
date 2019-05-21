@@ -194,8 +194,10 @@ public class UserController {
 
         );
 
-        return "redirect:/userProfile";
-    }
+
+        return "redirect:/showpage/" + job.getStartup().getId();
+}
+
 
     @GetMapping("/edit")
     public String showUserEditPage(Model model) {
