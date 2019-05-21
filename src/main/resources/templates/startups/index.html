@@ -13,7 +13,6 @@
     </head>
     <body>
 
-        <br/>
         <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
             <div class="container">
                 <a class="navbar-brand" th:href="@{/showpage}">GrowTech-SA</a>
@@ -22,43 +21,42 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-
-                        <li class="nav-item">
+                        <li>
                             <a class="nav-link" th:href="@{/showpage}">Startps</a>
                         </li>
-                        <li class="nav-item">
+                        <li>
                             <a class="nav-link" th:href="@{/all/jobs}">Jobs</a>
                         </li>
                         <div sec:authorize="isAuthenticated()">
-                            <li class="nav-item">
+                            <li>
                                 <a class="nav-link" th:href="@{/create/startup}">Create startup</a>
                             </li>
                         </div>
                         <div sec:authorize="isAuthenticated()">
-                            <li class="nav-item">
+                            <li>
                                 <a class="nav-link" th:href="@{/submit-resume}">Submit resume</a>
                             </li>
                         </div>
                         <div sec:authorize="isAuthenticated()">
-                            <li class="nav-item">
+                            <li>
                                 <a class="nav-link" th:href="@{/userProfile}">Profile</a>
                             </li>
                         </div>
 
                         <div sec:authorize="isAnonymous()">
-                            <li class="nav-item">
+                            <li>
                                 <a class="nav-link" th:href="@{/sign-up}">Sign Up</a>
                             </li>
                         </div>
 
                         <div sec:authorize="isAnonymous()">
-                            <li class="nav-item">
+                            <li>
                                 <a class="nav-link" th:href="@{/login}">Login</a>
                             </li>
                         </div>
 
                         <div sec:authorize="isAuthenticated()">
-                            <li class="nav-item">
+                            <li>
                                 <form th:action="@{/logout}" th:method="post">
                                     <button class="border-0"><a class="nav-link">Logout</a></button>
                                 </form>
@@ -72,127 +70,190 @@
         </nav>
 
         <div id="container1" class="container">
-            <div class="row">
-                <div id="firsttitle" class="offset-md-1 col-md-4">
-                    <h2>Create start up!</h2>
-                </div>
-            </div>
-            <div  class="row">
-                <div class="col-md-4 ml-5">
-                    <p>
-                        Create a startup, start advertising your company and the jobs available.
-                        Help grow San Antonio tech!!!
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="mx-auto">
-                            <a th:href="@{/create/startup}"><button class="btn btn-primary" type="button">Create Startup!</button></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div style="margin-top: 5rem;" class="offset-md-1 col-md-4">
-                    <h2>Find Available jobs!!</h2>
-                </div>
-            </div>
-            <div  class="row">
-                <div class="col-md-4 ml-5">
-                    <p>
-                        See all job posting, upload your resume and apply for local jobs in San Antonio.
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="mx-auto">
-                            <a th:href="@{/all/jobs}"><button class="btn btn-primary" type="button">See all Jobs!</button></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
         <div id="container2" class="container">
-            <div id="element1" class="hidden"><br/><br/><br/><br/>
-                <div class="row">
-                    <div class="offset-md-1 col-md-3 d-md-none d-lg-none d-xl-none">
-                        <h2>Why we are doing it?</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 offset-md-1">
-                        <div class="row">
-                            <div class="mx-auto">
-                                <h4>San Antonio Tech is growing!!</h4>
-                                <hr/>
-                                <p>
-                                    San Antonio ranks 46th among the top 50 North American markets when
-                                    it comes to tech talent, according to a commercial real estate firm’s annual ranking.
-                                    The mission at GrowTechSA is to allow local startups have their presence be known to the community,
-                                    and connect them with developers.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="offset-md-1 col-md-3 d-sm-none d-none d-md-block d-lg-block d-xl-block">
-                        <h2>Why we are doing it?</h2>
-                    </div>
+            <div class="row">
+                <div class="mx-auto"><br/><br/>
+                    <img src="/img/enterprise.svg" />
                 </div>
             </div>
-            <div id="element2" class="hidden"><br/><br/><br/>
-                <div class="row">
-                    <div class="offset-md-1 col-md-3">
-                        <h2>Drive Innovation!</h2>
-                    </div>
-                    <div class="offset-md-1 col-md-6">
-                        <div class="row">
-                            <div class="mx-auto">
-                                <h4>We know startups drive innovation to our economy</h4>
-                                <hr/>
-                                <p>
-                                    which is why supporting the startup community is one of our
-                                    primary goals. By connecting potential job seekers to local startup companies will help
-                                    boast the success rate of the company and inspire many other to create a start up of their own.
-                                </p>
-                            </div>
+            <div class="row">
+                <div class="mx-auto">
+                    <h2>Why we are doing it?</h2>
+                </div>
+            </div>
+            <div id="para1" class="row"><br/><br/>
+                <div class="mx-auto">
+                    <p>
+                    San Antonio ranks 46th among the top 50 North American markets when
+                    it comes to tech talent, according to a commercial real estate firm’s annual ranking.
+                    The mission at GrowTechSA is to allow local startups have their presence be known to the community,
+                    and connect them with developers.
+                    </p>
+                </div>
+            </div>
+        </div><br/><br/><br/><br/><br/><br/>
+
+        <div id="container3" class="container"><br/><br/>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="mx-auto">
+                            <img src="/img/enterprise.svg" />
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="element3" class="hidden">
-                <div class="row">
-                    <div class="offset-md-1 col-md-3 d-md-none d-lg-none d-xl-none">
-                        <h2>getting started is easy!</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 offset-md-1">
-                        <div class="row">
-                            <div class="mx-auto">
-                                <h4>Just sign up, create or apply!!!</h4>
-                                <hr/>
-                                <p>
-                                    which sign up you'll be able to create your startup company profile and start marketing
-                                    job placements available ar your company. If you are a job seeker you can upload your resume and start
-                                    looking for potential employers.
-                                </p>
-                            </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="mx-auto">
+                            <img src="/img/enterprise.svg" />
                         </div>
                     </div>
-                    <div class="offset-md-1 col-md-3 d-sm-none d-none d-md-block d-lg-block d-xl-block">
-                        <h2>getting started is easy!</h2>
+                </div>
+            </div><br/><br/><br/>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="mx-auto">
+                            <h2>Drive Innovation!</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="mx-auto">
+                            <h4>Just sign up, create or apply!!!</h4>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>
+                        which is why supporting the startup community is one of our
+                        primary goals. By connecting potential job seekers to local startup companies will help
+                        boast the success rate of the company and inspire many other to create a start up of their own.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p>
+                        sign up you'll be able to create your startup company profile and start marketing
+                        job placements available ar your company. If you are a job seeker you can upload your resume and start
+                        looking for potential employers.
+                    </p>
+                </div>
+            </div>
+        </div><br/><br/><br/>
+
+        <div id="contact4" class="container">
+            <div class="row">
+                <div class="offset-md-1 col-md-2">
+                    <img src="/img/enterprise.svg" />
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="offset-md-2 col-md-2">
+                    <img src="/img/enterprise.svg" />
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="offset-md-2 col-md-2">
+                    <img src="/img/enterprise.svg" />
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="offset-md-1 col-md-2">
+                    <img src="/img/enterprise.svg" />
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="offset-md-2 col-md-2">
+                    <img src="/img/enterprise.svg" />
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="offset-md-2 col-md-2">
+                    <img src="/img/enterprise.svg" />
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+        </div><br/><br/><br/><br/>
+
+        <!--<div id="container2" class="container">-->
+            <!--<div id="element1" class="hidden"><br/><br/><br/><br/>-->
+                <!--<div class="row">-->
+                    <!--<div class="offset-md-1 col-md-3 d-md-none d-lg-none d-xl-none">-->
+                        <!--<h2>Why we are doing it?</h2>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="col-md-6 offset-md-1">-->
+                        <!--<div class="row">-->
+                            <!--<div class="mx-auto">-->
+                                <!--<h4>San Antonio Tech is growing!!</h4>-->
+                                <!--<hr/>-->
+                                <!--<p>-->
+                                    <!--San Antonio ranks 46th among the top 50 North American markets when-->
+                                    <!--it comes to tech talent, according to a commercial real estate firm’s annual ranking.-->
+                                    <!--The mission at GrowTechSA is to allow local startups have their presence be known to the community,-->
+                                    <!--and connect them with developers.-->
+                                <!--</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="offset-md-1 col-md-3 d-sm-none d-none d-md-block d-lg-block d-xl-block">-->
+                        <!--<h2>Why we are doing it?</h2>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div id="element2" class="hidden"><br/><br/><br/>-->
+                <!--<div class="row">-->
+                    <!--<div class="offset-md-1 col-md-3">-->
+                        <!--<h2>Drive Innovation!</h2>-->
+                    <!--</div>-->
+                    <!--<div class="offset-md-1 col-md-6">-->
+                        <!--<div class="row">-->
+                            <!--<div class="mx-auto">-->
+                                <!--<h4>We know startups drive innovation to our economy</h4>-->
+                                <!--<hr/>-->
+                                <!--<p>-->
+                                    <!--which is why supporting the startup community is one of our-->
+                                    <!--primary goals. By connecting potential job seekers to local startup companies will help-->
+                                    <!--boast the success rate of the company and inspire many other to create a start up of their own.-->
+                                <!--</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div id="element3" class="hidden">-->
+                <!--<div class="row">-->
+                    <!--<div class="offset-md-1 col-md-3 d-md-none d-lg-none d-xl-none">-->
+                        <!--<h2>getting started is easy!</h2>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="col-md-6 offset-md-1">-->
+                        <!--<div class="row">-->
+                            <!--<div class="mx-auto">-->
+                                <!--<h4>Just sign up, create or apply!!!</h4>-->
+                                <!--<hr/>-->
+                                <!--<p>-->
+                                    <!--which sign up you'll be able to create your startup company profile and start marketing-->
+                                    <!--job placements available ar your company. If you are a job seeker you can upload your resume and start-->
+                                    <!--looking for potential employers.-->
+                                <!--</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="offset-md-1 col-md-3 d-sm-none d-none d-md-block d-lg-block d-xl-block">-->
+                        <!--<h2>getting started is easy!</h2>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
 
 
-        <div id="container3" class="container">
+        <div id="footer" class="container">
             <div class="row">
                 <div class="col-md-4">
                     <div id="contact">

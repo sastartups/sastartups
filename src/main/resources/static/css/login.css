@@ -19,9 +19,9 @@ body {
 }
 
 #navbar .navbar-brand {
-    width: 50%;
-    margin-left: -16rem;
-    padding-left: 17rem;
+    width: 59%;
+    margin-left: -21rem;
+    padding-left: 22rem;
     padding-top: -1rem;
     font-size: 2em;
     color: white;
@@ -129,4 +129,3 @@ body {
 }
 
 
-@media (min-width: 1200px) {}
