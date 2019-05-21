@@ -68,15 +68,28 @@ body {
     #createStartCon1 form {
         height: 35rem;
         padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
+
+    #navbar a{
+        color: white;
+    }
+
 
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
 
-    #createStartCon1 form{
-        height: 29rem;
+    #createStartCon1 form {
+        height: 35rem;
         padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    #navbar a{
+        color: white;
     }
 
 }
