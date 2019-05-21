@@ -49,10 +49,15 @@ div#allCon {
 #allCon img {
     margin-left: -15px;
     max-height: 10rem;
+    width: 82%;
 }
 
 #allCon p {
     width: 260%;
+}
+
+#allCon h5 {
+    font-size: 100%;
 }
 
 #left {
@@ -72,7 +77,8 @@ div#allCon {
 }
 
 #company {
-    margin-left: -11rem;
+    margin-left: -5rem;
+    width: 10rem;
 }
 
 #cover {
@@ -82,15 +88,42 @@ div#allCon {
 }
 
 
-/*
-992px comes from the bootstrap grid sizes for 'lg'
+@media (max-width: 575.98px) {
+    #company {
+         margin-left: 0;
+        width: 10rem;
+    }
 
-https://v4-alpha.getbootstrap.com/layout/grid/#grid-options
-*/
-@media (min-width: 992px){
-    #left {
-        position: fixed;
-        top: 5rem;
-        bottom: 0;
+    #allCon img {
+        margin-left: -15px;
+        max-height: 10rem;
+        width: auto;
     }
 }
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #company {
+        margin-left: 0;
+        width: 10rem;
+    }
+
+    #allCon img {
+        margin-left: -15px;
+        max-height: 10rem;
+        width: auto;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+
