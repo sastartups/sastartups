@@ -16,14 +16,14 @@
     </head>
     <body>
 
-        <th:block th:replace="fragments/navbar :: showone"/>
+        <th:block th:replace="fragments/navbar :: navbar"/>
 
 
         <!-- container-1 -->
         <div id="showoneCon1" class="container">
             <div id="images" class="row">
                 <div id="coverImg" class="col-md-12">
-                    <img class="rounded mx-auto d-block" th:src="${oneStartup.cover_img}" alt="cover img"/>
+                    <img th:src="${oneStartup.cover_img}" alt="cover img"/>
                 </div>
             </div>
         </div>
@@ -66,21 +66,20 @@
                         <p th:text="${item.title}"></p>
 
                         <!--<div th:each="item : ${oneStartup.jobs}">-->
-                <div class="mb-1">
+
                         <form th:action="@{'/apply/' + ${item.id} }" method="POST">
                             <button class="btn btn-outline-success">Easy Apply</button>
                         </form>
-                </div>
                         <div sec:authorize="isAuthenticated()">
-                        <div th:if="${#authentication.principal.id == oneStartup.user.id}">
+                            <div th:if="${#authentication.principal.id == oneStartup.user.id}">
 
-                            <button class="btn btn-outline-danger"><a th:href="@{'/job/' + ${item.id} + '/delete'}">Delete
-                                Job</a></button>
+                                <button class="btn btn-outline-danger"><a th:href="@{'/job/' + ${item.id} + '/delete'}">delete
+                                    job</a></button>
 
-                            <!--edit one job-->
-                            <button class="btn btn-outline-warning"><a th:href="@{'/job/' + ${item.id} + '/edit'}">Edit
-                                Job</a></button>
-                        </div>
+                                <!--edit one job-->
+                                <button class="btn btn-outline-warning"><a th:href="@{'/job/' + ${item.id} + '/edit'}">edit
+                                    job</a></button>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -93,7 +92,8 @@
         </div>
         <br/><br/><br/>
 
-            <th:block th:replace="fragments/head :: scripts" />
+        <th:block th:replace="fragments/head :: scripts" />
+
 
         <script>
 
