@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.persistence.JoinColumn;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -182,7 +183,7 @@ public class UserController {
 
         );
 
-        return "users/applyalert";
+        return "redirect:/userProfile";
     }
 
     @GetMapping("/edit")
@@ -206,6 +207,25 @@ public class UserController {
         userDao.save(updatedUser);
         return "redirect:/userProfile";
     }
+
+
+    //ARASH try to see if you can incorporate the email service here to email the resume owner that the startup owner is not interested
+    @PostMapping("/resume/{jobId}/pass/{resumeId}")
+    public String notInterestedApplication(@PathVariable long jobId, @PathVariable long resumeId){
+        Job job = jobDao.findOne(jobId);
+        List<Resume> resumes = job.getResumes();
+        for(Iterator<Resume> resume  = resumes.iterator(); resume.hasNext();){
+            Resume r = resume.next();
+            if(r.getId() == resumeId){
+                resume.remove();
+            }
+        }
+        job.setResumes(resumes);
+        jobDao.save(job);
+        return "redirect:/userProfile";
+    }
+
+
 
 
 }
