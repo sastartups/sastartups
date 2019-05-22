@@ -32,10 +32,10 @@
                         </form>
                     </div>
                 </div><hr/><br/>
-                <div class="row">
+                <div id="row" class="row">
                     <div th:each="job : ${jobs}">
-                    <div class="col-md-12">
-                        <div id="cover" class="row" style="background-color: #dddfeb; border: 1px solid black">
+                    <div id="cover2" class="col-md-12">
+                        <div id="cover" class="row" style="border: 1px solid black">
                             <div class="col-md-4">
                                 <img th:src="${job.startup.getProfile_img()}" />
                             </div>
