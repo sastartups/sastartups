@@ -4,6 +4,7 @@
         <title>Title</title>
 
         <th:block th:replace="fragments/head :: header" />
+        <th:block th:replace="fragments/navbar :: navbarCss" />
 
         <link rel="stylesheet" type="text/css" href="/css/createStartUp.css" />
 
@@ -13,7 +14,7 @@
 
     <!-- navbar -->
 
-        <th:block th:replace="fragments/navbar :: startupchange"/>
+        <th:block th:replace="fragments/navbar :: navbar"/>
 
         <h2 style="margin-left: 12%">Edit <span th:text="*{startup.name}"></span> ?</h2>
 

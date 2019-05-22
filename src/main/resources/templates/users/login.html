@@ -6,13 +6,14 @@
 
         <!-- bootstrap, meta, and google fonts -->
         <th:block th:replace="fragments/head :: header" />
+        <th:block th:replace="fragments/navbar :: navbarCss" />
 
         <link rel="stylesheet" type="text/css" href="/css/login.css" />
 
     </head>
     <body>
 
-        <th:block th:replace="fragments/navbar :: login" />
+        <th:block th:replace="fragments/navbar :: navbar" />
 
 
         <div id="loginCon" class="container">
