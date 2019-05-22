@@ -162,6 +162,7 @@ public class UserController {
         User dbUser = userDao.findOne(sessionUser.getId());
         model.addAttribute("resume", new Resume());
         model.addAttribute("user", dbUser);
+        model.addAttribute("notifications", dbUser.getNotifications());
 //        model.addAttribute("resumes", resumeDao.findByOwner(dbUser));
 //        model.addAttribute("applicants", )
         return "users/userProfile";

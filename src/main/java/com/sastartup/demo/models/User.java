@@ -40,7 +40,15 @@ public class User {
     public User() {
     }
 
-    public User(String first_name, String last_name, String username, String password, String email, List<Startup> startups,Resume resume) {
+    public List<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
+    }
+
+    public User(String first_name, String last_name, String username, String password, String email, List<Startup> startups, Resume resume, List<Notification> notifications) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;
@@ -48,6 +56,7 @@ public class User {
         this.email = email;
         this.startups = startups;
         this.resume = resume;
+        this.notifications = notifications;
     }
     public User(User copy) {
         id = copy.id; // This line is SUPER important! Many things won't work if it's absent
@@ -56,6 +65,7 @@ public class User {
         last_name = copy.last_name;
         username = copy.username;
         password = copy.password;
+        notifications = copy.notifications;
     }
 
     public Long getId() {
