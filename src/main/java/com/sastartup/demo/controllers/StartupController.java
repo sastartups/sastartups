@@ -36,6 +36,13 @@ public class StartupController {
     //    shows all the startup  in the table
     @GetMapping("/showpage")
     public String showpage(Model vmodel) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User dbUser = userDao.findOne(sessionUser.getId());
+            vmodel.addAttribute("user", dbUser);
+        } else {
+            vmodel.addAttribute("user", null);
+        }
         vmodel.addAttribute("allstartups", startupDao.findAll());
         return "startups/showpage";
     }
@@ -44,6 +51,13 @@ public class StartupController {
     //    show one startup and details
     @GetMapping("/showpage/{id}")
     public String showOne(@PathVariable Long id, Model vmodel) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User dbUser = userDao.findOne(sessionUser.getId());
+            vmodel.addAttribute("user", dbUser);
+        } else {
+            vmodel.addAttribute("user", null);
+        }
         Startup startup = startupDao.findOne(id);
         vmodel.addAttribute("oneStartup", startup);
         return "startups/showone";
@@ -52,14 +66,19 @@ public class StartupController {
     //    create job
     @GetMapping("/create/{id}/job")
     public String jobPostingForm(Model model, @PathVariable Long id) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbUser = userDao.findOne(sessionUser.getId());
+        model.addAttribute("user", dbUser);
         model.addAttribute("startupId", id);
         return "startups/create-job-posting";
     }
 
 
     @PostMapping("/create/{id}/job")
-    public String submitJobPosting(@RequestParam String title, @RequestParam String description, @PathVariable Long id) {
-
+    public String submitJobPosting(@RequestParam String title, @RequestParam String description, @PathVariable Long id, Model model) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbUser = userDao.findOne(sessionUser.getId());
+        model.addAttribute("user", dbUser);
         Job newjob = new Job();
         newjob.setDescription(description);
         newjob.setTitle(title);
@@ -73,6 +92,9 @@ public class StartupController {
     //    delete job
     @GetMapping("/job/{id}/delete")
     public String deleteform(@PathVariable Long id, Model vmodel) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbUser = userDao.findOne(sessionUser.getId());
+        vmodel.addAttribute("user", dbUser);
         Job job = jobDao.findOne(id);
         vmodel.addAttribute("job", job);
         return ("startups/deletejob");
@@ -100,17 +122,20 @@ public class StartupController {
     //    edit job
     @GetMapping("/job/{id}/edit")
     public String editform(@PathVariable Long id, Model vmodel) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbUser = userDao.findOne(sessionUser.getId());
+        vmodel.addAttribute("user", dbUser);
         Job job = jobDao.findOne(id);
         vmodel.addAttribute("job", job);
         return ("startups/editjob");
     }
 
     @PostMapping("/job/{id}/edit")
-    public String edit(@ModelAttribute Job jobtoedit, @PathVariable Long id) {
+    public String edit(@ModelAttribute Job jobtoedit, @PathVariable Long id, Model model) {
 
         User sessionuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User db_user = userDao.findOne(sessionuser.getId());
-
+        model.addAttribute("user", db_user);
         jobtoedit.setStartup(startupDao.findOne(db_user.getId()));
         Job oldJob = jobDao.findOne(id);
         jobtoedit.setId(oldJob.getId());
@@ -123,6 +148,14 @@ public class StartupController {
 
     @GetMapping("/all/jobs")
     public String viewAllJobs(@RequestParam(defaultValue = "") String searchFor, Model model) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User dbUser = userDao.findOne(sessionUser.getId());
+            model.addAttribute("user", dbUser);
+        } else {
+            model.addAttribute("user", null);
+        }
+
         if (searchFor.toString().equals("")) {
             model.addAttribute("jobs", jobDao.findAll());
         } else if (!searchFor.toString().equals("")) {
