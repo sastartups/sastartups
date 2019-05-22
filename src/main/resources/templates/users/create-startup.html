@@ -24,7 +24,7 @@
                         <div class="col-md-3 offset-md-3">
                             <label for="name">Startup Name </label><br/>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 d-none d-md-block">
                             <label for="address">Where are you located?</label><br/>
                         </div>
                     </div>
@@ -33,6 +33,7 @@
                             <input id="name" class="form-control" th:field="*{name}"/>
                         </div>
                         <div class="col-md-3">
+                            <label class="d-md-none d-lg-none d-xl-none" for="address">Where are you located?</label>
                             <input id="address" class="form-control" th:field="*{address}"/>
                         </div>
                     </div><br/>
@@ -50,6 +51,9 @@
                         <div class="col-md-3 offset-md-3">
                             <input id="picture" type="button" class="btn btn-block btn-primary" name="picture" value="Upload Profile Picture"/>
                             <input id="profilePicture" th:field="*{profile_img}" type="hidden"/>
+                        </div>
+                        <div class="d-md-none d-lg-none d-xl-none">
+                            <br/>
                         </div>
                         <div class="col-md-3">
                             <input id="picture2" type="button" class="btn btn-block btn-primary" name="picture2" value="Upload Cover Picture"/>
