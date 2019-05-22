@@ -5,7 +5,7 @@ body{
 #center{
     width: 50%;
     margin-left: 25%;
-    margin-top: 10%;
+    margin-top: 7%;
 }
 
 #header{
@@ -17,3 +17,9 @@ body{
 .red{
     color: #c50009;
 }
+
+.uploadbutt{
+    background-color: rgba(239, 106, 40, 0.73);
+    color: white;
+}
+
