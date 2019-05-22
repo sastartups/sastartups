@@ -2,7 +2,7 @@
     animation: left;
     animation-fill-mode: forwards;
     animation-name: left;
-    animation-duration: 3s;
+    animation-duration: 2s;
 }
 
 @keyframes left {
@@ -12,7 +12,7 @@
 
 .right {
     animation-fill-mode: forwards;
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-name: right;
 }
 

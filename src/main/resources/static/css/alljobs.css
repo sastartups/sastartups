@@ -1,6 +1,5 @@
 body {
-    background-image: url("/img/new.png");
-    background-repeat: no-repeat;
+    
 }
 
 div#allCon {
@@ -16,6 +15,9 @@ div#allCon {
 
 #allCon p {
     width: 260%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #allCon h5 {
@@ -25,6 +27,7 @@ div#allCon {
 #left {
     background-color: transparent;
 }
+
 
 #right {
     background-color: transparent;
@@ -47,6 +50,11 @@ div#allCon {
     max-height: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
+    background-image: url("/img/formback.png");
+}
+
+#cover2 {
+
 }
 
 
