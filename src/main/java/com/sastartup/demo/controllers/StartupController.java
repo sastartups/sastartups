@@ -3,10 +3,7 @@ package com.sastartup.demo.controllers;
 
 import com.sastartup.demo.models.*;
 
-import com.sastartup.demo.repositories.JobRepo;
-import com.sastartup.demo.repositories.ResumeRepo;
-import com.sastartup.demo.repositories.StartupRepo;
-import com.sastartup.demo.repositories.UserRepo;
+import com.sastartup.demo.repositories.*;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -21,15 +18,17 @@ public class StartupController {
     private final ResumeRepo resumeDao;
     private final StartupRepo startupDao;
     private final UserRepo userDao;
+    private final NotificationRepo notificationRepo;
 
 //    constructor
 
 
-    public StartupController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao) {
+    public StartupController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao, NotificationRepo notificationRepo) {
         this.jobDao = jobDao;
         this.resumeDao = resumeDao;
         this.startupDao = startupDao;
         this.userDao = userDao;
+        this.notificationRepo = notificationRepo;
 
     }
 
@@ -83,6 +82,14 @@ public class StartupController {
     public String delete(@PathVariable Long id) {
         System.out.println(jobDao.findOne(id).getStartup().getId());
         Long startupId = jobDao.findOne(id).getStartup().getId();
+        Job job = jobDao.findOne(id);
+        for(Resume resume : job.getResumes()){
+            User user = resume.getOwner();
+            Notification notification = new Notification("" + job.getStartup().getName() + " has closed their job search for position " + job.getTitle() +
+                    ". Thank you for your interest.", user);
+            notificationRepo.save(notification);
+        }
+
         jobDao.delete(id);
 
 

@@ -33,7 +33,7 @@
             <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
         </div>
         <div id="right" class="col-md-8 offset-md-4">
-            <h2>your startups</h2>
+            <h2>Your startups: </h2>
             <hr/>
             <div th:each="startup : ${user.startups}">
                 <h3>startup name: <span><a th:href="@{'/showpage/' + ${startup.id}}"
@@ -53,27 +53,30 @@
                 <h3>description:</h3>
                 <p th:text="${startup.description}"></p>
                 <hr/>
-
-                <h2>Job Postings at <span th:text="${startup.name}"></span></h2>
+                <h1>Applications Dashboard</h1>
                 <div th:each="job : ${startup.jobs}">
-                    <h3>Job title: <span th:text="${job.title}"></span></h3>
-                    <h3>Job Description:</h3>
-                    <p th:text="${job.description}"></p>
-
                     <div th:if="${job.resumes.size() > 0}">
-                        <h1>Submitted Applications: </h1>
                         <div th:each="resume : ${job.resumes}">
-                            <a th:href="@{${resume.path}}">Click here to view submitted resume</a>
+                            <h6><span th:text="${resume.owner.first_name}"></span> has applied to position <span th:text="${job.title}"></span> at <span th:text="${startup.name}"></span>
+                            <span><a th:href="@{${resume.path}}">Click here to view submitted resume</a></span></h6>
                             <form th:action="@{'/resume/' + ${job.id} + '/pass/' + ${resume.id}}" method="post">
                                 <button>Not Interested</button>
                             </form>
-                            <form th:action="@{'/resume/' + ${job.id} + '/interested/' + ${resume.owner.id}}" method="post">
+                            <form th:action="@{'/resume/' + ${job.id} + '/interested/' + ${resume.owner.id}}"
+                                  method="post">
                                 <button>Interested</button>
                             </form>
                         </div>
                     </div>
                     <hr/>
                 </div>
+
+                <div th:if="${notifications.size() > 0}">
+                    <div th:each="notification : ${notifications}">
+                        <h6 th:text="${notification.message}"></h6>
+                    </div>
+                </div>
+                <div></div>
             </div>
         </div>
     </div>
@@ -81,7 +84,6 @@
 
 
 <div class="container">
-
 
     <!--<h1 th:text="${user.resume.path}"></h1>-->
 
