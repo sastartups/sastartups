@@ -5,49 +5,6 @@ body {
     overflow-x: hidden;
 }
 
-/* navbar */
-#navbar {
-    padding: 0;
-    background-color: transparent;
-}
-
-#navbar .navbar-brand {
-    width: 50%;
-    margin-left: -16rem;
-    padding-left: 17rem;
-    padding-top: -1rem;
-    font-size: 2em;
-    color: #2A3141;
-    border-bottom: .1rem solid #2A3141;
-}
-
-#navbar a{
-    font-family: 'Carrois Gothic', sans-serif;
-    font-size: 1em;
-    color: #2A3141;
-}
-
-#navbar .navbar-toggler {
-    background-color: #2A3141;
-}
-
-#navbar .nav-item {
-    /*border-bottom: .1rem solid black;*/
-    /*width: 5.5rem;*/
-    margin-left: 1rem;
-}
-
-#navbar .nav-item:hover {
-    border-bottom: .1rem solid white;
-    width: 5.5rem;
-}
-
-#navbar button {
-    padding: 0;
-    color: #2A3141;
-    background-color: transparent;
-}
-
 #left {
     background-color: transparent;
     position: fixed;

@@ -5,55 +5,59 @@
     <title>Title</title>
     <!-- bootstrap, meta, and google fonts -->
     <th:block th:replace="fragments/head :: header" />
+    <th:block th:replace="fragments/navbar :: navbarCss" />
+
     <link rel="stylesheet" type="text/css" href="/css/form.css" />
 </head>
 <body>
 
+        <th:block th:replace="fragments/navbar :: navbar" />
 
-<div id="center">
+            <div id="center">
 
-    <div class="card text-center">
-        <div id="header" class="card-header">
-            LOG IN
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">WELCOME TO GrowTech-SA</h5>
-            <div class="card-text">
-
-
-                <form th:action="@{/login}" method="post">
-                    <div class="form-group mx-auto">
-                        <label for="username">Username</label>
-                        <input name="username" type="text" class="form-control" id="username" aria-describedby="username" placeholder="Username"/>
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your Username with anyone else.</small>
+                <div class="card text-center">
+                    <div id="header" class="card-header">
+                        LOG IN
                     </div>
+                    <div class="card-body">
+                        <h5 class="card-title">WELCOME TO GrowTech-SA</h5>
+                        <div class="card-text">
 
-                    <div class="form-group mx-auto">
-                        <label for="password">Password</label>
-                        <input name="password" type="password" class="form-control" id="password" placeholder="Password"/>
+
+                            <form th:action="@{/login}" method="post">
+                                <div class="form-group mx-auto">
+                                    <label for="username">Username</label>
+                                    <input name="username" type="text" class="form-control" id="username" aria-describedby="username" placeholder="Username"/>
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your Username with anyone else.</small>
+                                </div>
+
+                                <div class="form-group mx-auto">
+                                    <label for="password">Password</label>
+                                    <input name="password" type="password" class="form-control" id="password" placeholder="Password"/>
+                                </div>
+
+
+                                <button id="butt" type="submit" class="btn btn-primary">LOG IN</button>
+                            </form>
+
+
+                        </div>
                     </div>
+                    <div class="card-footer text-muted" id="header">
 
+                        <div class="red" th:if="${param.error}">
+                            Invalid Username and Password.
+                        </div>
+                        <div class="red" th:if="${param.logout}">
+                            You have been logged out.
+                        </div>
 
-                    <button id="butt" type="submit" class="btn btn-primary">LOG IN</button>
-                </form>
-
-
-            </div>
-        </div>
-        <div class="card-footer text-muted" id="header">
-
-            <div class="red" th:if="${param.error}">
-                Invalid Username and Password.
-            </div>
-            <div class="red" th:if="${param.logout}">
-                You have been logged out.
+                    </div>
+                </div>
             </div>
 
-        </div>
-    </div>
-</div>
 
-<th:block th:replace="fragments/head :: scripts" />
+            <th:block th:replace="fragments/head :: scripts" />
 </body>
 </html>
 

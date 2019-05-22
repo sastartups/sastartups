@@ -1,10 +1,7 @@
 package com.sastartup.demo.controllers;
 
 import com.sastartup.demo.models.*;
-import com.sastartup.demo.repositories.JobRepo;
-import com.sastartup.demo.repositories.ResumeRepo;
-import com.sastartup.demo.repositories.StartupRepo;
-import com.sastartup.demo.repositories.UserRepo;
+import com.sastartup.demo.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -31,18 +28,20 @@ public class UserController {
     private final UserRepo userDao;
     private EmailService emailService;
     private PasswordEncoder passwordEncoder;
+    private final NotificationRepo notificationRepo;
 
 
 //    constructor
 
 
-    public UserController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao, EmailService emailService, PasswordEncoder passwordEncoder) {
+    public UserController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao, EmailService emailService, PasswordEncoder passwordEncoder, NotificationRepo notificationRepo) {
         this.jobDao = jobDao;
         this.resumeDao = resumeDao;
         this.startupDao = startupDao;
         this.userDao = userDao;
         this.emailService = emailService;
         this.passwordEncoder = passwordEncoder;
+        this.notificationRepo = notificationRepo;
 
     }
 
@@ -235,11 +234,23 @@ public class UserController {
                 jobs.remove(job);
                 userResume.setJobs(jobs);
                 resumeDao.save(userResume);
+                Notification notification = new Notification("" + job.getStartup().getName() + " has reviewed your resume, and at this time they have decided to move on with other candidates. Thank you for your interest.", userResume.getOwner());
+                notificationRepo.save(notification);
                 resume.remove();
             }
         }
         job.setResumes(resumes);
         jobDao.save(job);
+        return "redirect:/userProfile";
+
+    }
+
+    @PostMapping("/resume/{jobId}/interested/{resumeId}")
+    public String interestedApplication(@PathVariable long jobId, @PathVariable long resumeId){
+        Job job = jobDao.findOne(jobId);
+        Resume resume = resumeDao.findOne(resumeId);
+        Notification notification = new Notification("Good news, " + job.getStartup().getName() + " has reviewed your resume, and are interested in meeting for an interview. Check your email for next steps.", resume.getOwner());
+        notificationRepo.save(notification);
         return "redirect:/userProfile";
 
     }
