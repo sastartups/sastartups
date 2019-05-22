@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
+    <!-- title -->
     <title>Title</title>
+
     <!-- bootstrap, meta, and google fonts -->
-    <!--<th:block th:replace="fragments/head :: header" />-->
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <th:block th:replace="fragments/head :: header" />
 
 
+    <!-- css links -->
+    <th:block th:replace="fragments/navbar :: navbarCss" />
+
+    <link rel="stylesheet" type="text/css" href="/css/signup.css" />
 
     <link rel="stylesheet" type="text/css" href="/css/form.css" />
 </head>
 <body>
+
+<!-- navbar -->
+<th:block th:replace="fragments/navbar :: navbar"/>
 
 
 <div id="center">
 
     <div class="card text-center">
         <div id="header" class="card-header">
-            EDIT USER PROFILE
+            DELETE JOB
         </div>
         <div class="card-body">
             <h5 class="card-title">WELCOME TO GrowTech-SA</h5>
@@ -43,44 +49,50 @@
                 <!--</form>-->
 
 
-                <form th:action="@{/edit}" method="post" th:object="${user}">
+                <form th:method="post" th:action="@{'/job/' + ${job.id} + '/delete'}">
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
-                            <label for="firstName">FIRS NAME</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="FIRS NAME" th:field="*{first_name}"/>
+                            <label>Job Title</label>
+                            <h5 class="form-control" th:text="*{job.title}"></h5>
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <label for="lastName">LAST NAME</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="LAST NAME" th:field="*{last_name}"/>
-                        </div>
+                        <!--<div class="form-group col-md-6">-->
+                            <!--<label for="description">Job Responsibilities</label>-->
+                            <!--<textarea rows="10" class="form-control" id="description" placeholder="Where are you looking for?"></textarea>-->
+                        <!--</div>-->
 
                     </div>
 
-
-                    <div class="form-row">
-
-                        <div class="form-group col-md-6">
-                            <label for="email">EMAIL ADDRESS</label>
-                            <input type="text" class="form-control" id="email" placeholder="EMAIL ADDRESS" th:field="*{email}"/>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="username">USER NAME</label>
-                            <input type="text" class="form-control" id="username" placeholder="USER NAME" th:field="*{username}"/>
-                        </div>
-
-                    </div>
 
                     <div class="form-row">
 
                         <div class="form-group col-md-12">
-                            <label for="password">PASSWORD</label>
-                            <input type="password" class="form-control" id="password" placeholder="PASSWORD" th:field="*{password}"/>
+                            <label>Job Responsibilities</label>
+                            <textarea rows="10" class="form-control" th:text="*{job.description}"></textarea>
                         </div>
 
+
+                        <!--<div class="form-group col-md-6">-->
+                            <!--<label for="username">USER NAME</label>-->
+                            <!--<input type="text" class="form-control" id="username" placeholder="USER NAME" th:field="*{username}"/>-->
+                        <!--</div>-->
+
                     </div>
+
+                    <!--<div class="form-row">-->
+
+                        <!--<div class="form-group col-md-6">-->
+                            <!--<label for="picture">PASSWORD</label>-->
+                            <!--<input type="password" class="form-control" id="picture" placeholder="PASSWORD" th:field="*{password}"/>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-md-6">-->
+                            <!--<label for="username">USER NAME</label>-->
+                            <!--<input type="text" class="form-control" id="username" placeholder="USER NAME" th:field="*{username}"/>-->
+                        <!--</div>-->
+
+                    <!--</div>-->
 
 
 
@@ -125,7 +137,56 @@
                             <!--</label>-->
                         <!--</div>-->
                     <!--</div>-->
-                    <button id="butt" type="submit" class="btn btn-primary">UPDATE PROFILE</button>
+
+
+
+                    <!--<button id="butt" type="submit" class="btn btn-primary">SUBMIT</button>-->
+
+
+
+
+
+                    <!-- Button trigger modal -->
+                    <button type="button" id="butt" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                        DELETE JOB
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" id="header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">DELETE JOB</h5>
+                                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                                    <!--<span aria-hidden="true">&times;</span>-->
+                                    <!--</button>-->
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to <span class="text-danger">DELETE </span><span th:text="*{job.title}"> ?</span>
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="butt" type="button" class="btn" data-dismiss="modal">Close</button>
+                                    <button id="butt" type="submit" class="btn">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </form>
 
 
