@@ -33,6 +33,9 @@ public class User {
     @JoinColumn(name = "resume_id", referencedColumnName = "id")
     private Resume resume;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Notification> notifications;
+
 
     public User() {
     }
