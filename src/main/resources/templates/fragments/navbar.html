@@ -72,14 +72,23 @@
                                 <a class="nav-link" th:href="@{/create/startup}">Create startup</a>
                             </li>
                         </div>
+                        <div sec:authorize="isAuthenticated()">
+                            <li>
+                                <a class="nav-link" th:href="@{/userProfile}">Profile</a>
                             </li>
                         </div>
+
+                        <div sec:authorize="isAnonymous()">
+                            <li>
+                                <a class="nav-link" th:href="@{/sign-up}">Sign Up</a>
+                            </li>
+                        </div>
+
                         <div sec:authorize="isAnonymous()">
                             <li>
                                 <a class="nav-link" th:href="@{/login}">Login</a>
                             </li>
                         </div>
-
                         <div sec:authorize="isAuthenticated()">
                             <li>
                                 <form th:action="@{/logout}" th:method="post">
@@ -87,7 +96,9 @@
                                 </form>
                             </li>
                         </div>
+
                     </ul>
+
                 </div>
             </div>
         </nav>
