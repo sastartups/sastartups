@@ -6,11 +6,12 @@
 
         <!-- adding meta, bootstrap link, google fonts -->
         <th:block th:replace="fragments/head :: header" />
+        <th:block th:replace="fragments/navbar :: navbarCss" />
 
     </head>
     <body>
 
-        <th:block th:replace="fragments/navbar :: showpage"/>
+        <th:block th:replace="fragments/navbar :: navbar"/>
 
         <div class="container">
             <h2 class="text-center">show all the start ups ...</h2>

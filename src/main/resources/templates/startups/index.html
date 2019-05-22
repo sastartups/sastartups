@@ -5,6 +5,7 @@
         <title>CapDesignOne</title>
 
         <th:block th:replace="fragments/head :: header" />
+        <th:block th:replace="fragments/navbar :: navbarCss" />
 
         <!-- Css Link -->
         <link rel="stylesheet" type="text/css" href="/css/index.css" />
@@ -21,10 +22,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-
                         <li>
                             <a class="nav-link" th:href="@{/showpage}">Startps</a>
-
                         </li>
                         <li>
                             <a class="nav-link" th:href="@{/all/jobs}">Jobs</a>
@@ -33,14 +32,7 @@
                             <li>
                                 <a class="nav-link" th:href="@{/create/startup}">Create startup</a>
                             </li>
-                        </div>
-
-                        <div sec:authorize="isAuthenticated()">
-                            <li>
-                                <a class="nav-link" th:href="@{/submit-resume}">Submit resume</a>
-                            </li>
-                        </div>
-
+                        </div>                   
                         <div sec:authorize="isAuthenticated()">
                             <li>
                                 <a class="nav-link" th:href="@{/userProfile}">Profile</a>
@@ -58,7 +50,6 @@
                                 <a class="nav-link" th:href="@{/login}">Login</a>
                             </li>
                         </div>
-
                         <div sec:authorize="isAuthenticated()">
                             <li>
                                 <form th:action="@{/logout}" th:method="post">
@@ -78,183 +69,115 @@
         </div>
 
         <div id="container2" class="container">
-            <div class="row">
-                <div class="mx-auto"><br/><br/>
-                    <img src="/img/enterprise.svg" />
+            <div id="element1" class="hidden">
+                <div class="row">
+                    <div class="mx-auto"><br/><br/>
+                        <img src="/img/enterprise.svg" />
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="mx-auto">
-                    <h2>Why we are doing it?</h2>
+                <div class="row">
+                    <div class="mx-auto">
+                        <h2>Why we are doing it?</h2>
+                    </div>
                 </div>
-            </div>
-            <div id="para1" class="row"><br/><br/>
-                <div class="mx-auto">
-                    <p>
-                    San Antonio ranks 46th among the top 50 North American markets when
-                    it comes to tech talent, according to a commercial real estate firm’s annual ranking.
-                    The mission at GrowTechSA is to allow local startups have their presence be known to the community,
-                    and connect them with developers.
-                    </p>
+                <div id="para1" class="row"><br/><br/>
+                    <div class="mx-auto">
+                        <p>
+                        San Antonio ranks 46th among the top 50 North American markets when
+                        it comes to tech talent, according to a commercial real estate firm’s annual ranking.
+                        The mission at GrowTechSA is to allow local startups have their presence be known to the community,
+                        and connect them with developers.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div><br/><br/><br/><br/><br/><br/>
 
         <div id="container3" class="container"><br/><br/>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="mx-auto">
-                            <img src="/img/enterprise.svg" />
-                        </div>
+            <div id="element2" class="hidden">
+                <div class="row">
+                    <div class="offset-md-1 col-md-2">
+                        <img src="/img/briefcase.svg" />
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="offset-md-2 col-md-2">
+                        <img src="/img/computer.svg" />
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="offset-md-2 col-md-2">
+                        <img src="/img/growth.svg" />
+                        <p>Lorem ipsum dolor sit amet.</p>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="mx-auto">
-                            <img src="/img/enterprise.svg" />
-                        </div>
+                <div class="row">
+                    <div class="offset-md-1 col-md-2">
+                        <img src="/img/hierarchy.svg" />
+                        <p>Lorem ipsum dolor sit amet.</p>
                     </div>
-                </div>
-            </div><br/><br/><br/>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="mx-auto">
-                            <h2>Drive Innovation!</h2>
-                        </div>
+                    <div class="offset-md-2 col-md-2">
+                        <img src="/img/laptop.svg" />
+                        <p>Lorem ipsum dolor sit amet.</p>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="mx-auto">
-                            <h4>Just sign up, create or apply!!!</h4>
-                        </div>
+                    <div class="offset-md-2 col-md-2">
+                        <img src="/img/user.svg" />
+                        <p>Lorem ipsum dolor sit amet.</p>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>
-                        which is why supporting the startup community is one of our
-                        primary goals. By connecting potential job seekers to local startup companies will help
-                        boast the success rate of the company and inspire many other to create a start up of their own.
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <p>
-                        sign up you'll be able to create your startup company profile and start marketing
-                        job placements available ar your company. If you are a job seeker you can upload your resume and start
-                        looking for potential employers.
-                    </p>
-                </div>
-            </div>
-        </div><br/><br/><br/>
-
-        <div id="contact4" class="container">
-            <div class="row">
-                <div class="offset-md-1 col-md-2">
-                    <img src="/img/enterprise.svg" />
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="offset-md-2 col-md-2">
-                    <img src="/img/enterprise.svg" />
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="offset-md-2 col-md-2">
-                    <img src="/img/enterprise.svg" />
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="offset-md-1 col-md-2">
-                    <img src="/img/enterprise.svg" />
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="offset-md-2 col-md-2">
-                    <img src="/img/enterprise.svg" />
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="offset-md-2 col-md-2">
-                    <img src="/img/enterprise.svg" />
-                    <p>Lorem ipsum dolor sit amet.</p>
                 </div>
             </div>
         </div><br/><br/><br/><br/>
 
-        <!--<div id="container2" class="container">-->
-            <!--<div id="element1" class="hidden"><br/><br/><br/><br/>-->
-                <!--<div class="row">-->
-                    <!--<div class="offset-md-1 col-md-3 d-md-none d-lg-none d-xl-none">-->
-                        <!--<h2>Why we are doing it?</h2>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="row">-->
-                    <!--<div class="col-md-6 offset-md-1">-->
-                        <!--<div class="row">-->
-                            <!--<div class="mx-auto">-->
-                                <!--<h4>San Antonio Tech is growing!!</h4>-->
-                                <!--<hr/>-->
-                                <!--<p>-->
-                                    <!--San Antonio ranks 46th among the top 50 North American markets when-->
-                                    <!--it comes to tech talent, according to a commercial real estate firm’s annual ranking.-->
-                                    <!--The mission at GrowTechSA is to allow local startups have their presence be known to the community,-->
-                                    <!--and connect them with developers.-->
-                                <!--</p>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="offset-md-1 col-md-3 d-sm-none d-none d-md-block d-lg-block d-xl-block">-->
-                        <!--<h2>Why we are doing it?</h2>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div id="element2" class="hidden"><br/><br/><br/>-->
-                <!--<div class="row">-->
-                    <!--<div class="offset-md-1 col-md-3">-->
-                        <!--<h2>Drive Innovation!</h2>-->
-                    <!--</div>-->
-                    <!--<div class="offset-md-1 col-md-6">-->
-                        <!--<div class="row">-->
-                            <!--<div class="mx-auto">-->
-                                <!--<h4>We know startups drive innovation to our economy</h4>-->
-                                <!--<hr/>-->
-                                <!--<p>-->
-                                    <!--which is why supporting the startup community is one of our-->
-                                    <!--primary goals. By connecting potential job seekers to local startup companies will help-->
-                                    <!--boast the success rate of the company and inspire many other to create a start up of their own.-->
-                                <!--</p>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div id="element3" class="hidden">-->
-                <!--<div class="row">-->
-                    <!--<div class="offset-md-1 col-md-3 d-md-none d-lg-none d-xl-none">-->
-                        <!--<h2>getting started is easy!</h2>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="row">-->
-                    <!--<div class="col-md-6 offset-md-1">-->
-                        <!--<div class="row">-->
-                            <!--<div class="mx-auto">-->
-                                <!--<h4>Just sign up, create or apply!!!</h4>-->
-                                <!--<hr/>-->
-                                <!--<p>-->
-                                    <!--which sign up you'll be able to create your startup company profile and start marketing-->
-                                    <!--job placements available ar your company. If you are a job seeker you can upload your resume and start-->
-                                    <!--looking for potential employers.-->
-                                <!--</p>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="offset-md-1 col-md-3 d-sm-none d-none d-md-block d-lg-block d-xl-block">-->
-                        <!--<h2>getting started is easy!</h2>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
+        <div class="container"><br/><br/>
+            <div id="element3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="mx-auto">
+                                <img src="/img/education-chart.svg" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="mx-auto">
+                                <img src="/img/network.svg" />
+                            </div>
+                        </div>
+                    </div>
+                </div><br/><br/><br/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="mx-auto">
+                                <h2>Drive Innovation!</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="mx-auto">
+                                <h4>Just sign up, create or apply!!!</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            which is why supporting the startup community is one of our
+                            primary goals. By connecting potential job seekers to local startup companies will help
+                            boast the success rate of the company and inspire many other to create a start up of their own.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            sign up you'll be able to create your startup company profile and start marketing
+                            job placements available ar your company. If you are a job seeker you can upload your resume and start
+                            looking for potential employers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div><br/><br/><br/>
 
 
         <div id="footer" class="container">
@@ -265,9 +188,9 @@
                             <div class="mx-auto">
                                 <h4>creator's Contact</h4>
                                 <hr/><br/>
-                                <a href="mailto:markasky.josh@gmail.com?"><h5 style="color: white">markasky.josh@gmail.com</h5></a><br/>
-                                <a href="mailto:arash.arghavan@gmail.com?"><h5 style="color: white">arash.arghavan@gmail.com</h5></a><br/>
-                                <a href="mailto:laroblesaguilar@gmail.com?"><h5 style="color: white">laroblesaguilar@gmail.com</h5></a><br/>
+                                <a href="mailto:markasky.josh@gmail.com?"><h5>markasky.josh@gmail.com</h5></a><br/>
+                                <a href="mailto:arash.arghavan@gmail.com?"><h5>arash.arghavan@gmail.com</h5></a><br/>
+                                <a href="mailto:laroblesaguilar@gmail.com?"><h5>laroblesaguilar@gmail.com</h5></a><br/>
                             </div>
                         </div>
                     </div>
@@ -278,7 +201,7 @@
                             <div class="mx-auto">
                                 <h4>WebSite Contact</h4>
                                 <hr/><br/>
-                                <a href="mailto:growingtech.sa@gmail.com?"><h5 style="color: white">growingtech.sa@gmail.com</h5></a><br/>
+                                <a href="mailto:growingtech.sa@gmail.com?"><h5>growingtech.sa@gmail.com</h5></a><br/>
                             </div>
                         </div>
                     </div>
@@ -289,17 +212,18 @@
                             <div class="mx-auto">
                                 <h4>About us</h4>
                                 <hr/><br/>
-                                <a th:href="@{https://alumni.codeup.com/students/624}"><h5 style="color: white">Joshua Markasky</h5></a>
+                                <a th:href="@{https://alumni.codeup.com/students/624}"><h5>Joshua Markasky</h5></a>
                                 <br/>
-                                <a th:href="@{https://alumni.codeup.com/students/630}"><h5 style="color: white">Arash Arghavan</h5></a>
+                                <a th:href="@{https://alumni.codeup.com/students/630}"><h5>Arash Arghavan</h5></a>
                                 <br/>
-                                <a th:href="@{https://alumni.codeup.com/students/618}"><h5 style="color: white">Luis Robles</h5></a>
+                                <a th:href="@{https://alumni.codeup.com/students/618}"><h5>Luis Robles</h5></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <th:block th:replace="fragments/head :: scripts" />
 

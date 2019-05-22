@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+    <th:block th:replace="fragments/navbar :: navbarCss" />
+
 </head>
 <body>
+
+<th:block th:replace="fragments/navbar :: navbar" />
 
 <div th:each="job : ${jobs}">
     <div id="allCon" class="container-fluid">
