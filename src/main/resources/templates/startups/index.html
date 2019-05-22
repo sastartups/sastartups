@@ -32,7 +32,7 @@
                             <li>
                                 <a class="nav-link" th:href="@{/create/startup}">Create startup</a>
                             </li>
-                        </div>
+                        </div>                   
                         <div sec:authorize="isAuthenticated()">
                             <li>
                                 <a class="nav-link" th:href="@{/userProfile}">Profile</a>
@@ -50,7 +50,6 @@
                                 <a class="nav-link" th:href="@{/login}">Login</a>
                             </li>
                         </div>
-
                         <div sec:authorize="isAuthenticated()">
                             <li>
                                 <form th:action="@{/logout}" th:method="post">

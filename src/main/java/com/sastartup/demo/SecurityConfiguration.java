@@ -57,7 +57,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/job/{id}/delete",
                         "/job/{id}/edit",
                         "/create/{id}/job",
-                        "/edit"
+                        "/edit",
+                        "/create/startup"
                 )
                 .authenticated()
         ;

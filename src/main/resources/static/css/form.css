@@ -1,0 +1,19 @@
+body{
+    background-image: url("/img/formback.png");
+}
+
+#center{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 10%;
+}
+
+#header{
+    background-color: #f0f2f9;
+}
+#butt{
+    background-color: #06baf8;
+}
+.red{
+    color: #c50009;
+}
