@@ -27,13 +27,13 @@ img {
 
 /* container-1 */
 #container1 {
-    height: 27rem;
+    height: 20rem;
     margin: 0;
     padding: 0;
     max-width: 100%;
     background-image: url(/img/sancity.png);
     background-attachment: fixed;
-    background-size: contain;
+    background-size: 100% 65%;
     background-repeat: no-repeat;
     color:white;
 }
@@ -57,11 +57,17 @@ div#element3 {
     border-top: 1px solid black;
 }
 
-#para1 {
+.para1 {
     margin-left: 20rem;
     margin-right: 20rem;
     font-size: 1.5em;
     text-align: center;
+}
+
+.para2 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    
 }
 
 #container3{
@@ -70,10 +76,9 @@ div#element3 {
     max-width: 100%;
     background-color: lightgray;
     opacity: .7;
-    background-image: url("/img/san4.png");
-    background-position-x: 18rem;
+    background-image: url("/img/formback.png");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-attachment: fixed;
 }
 
