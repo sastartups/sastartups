@@ -1,89 +1,222 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Title</title>
+<head>
+    <!-- title -->
+    <title>Title</title>
 
-        <!-- bootstrap, meta, and google fonts -->
-        <th:block th:replace="fragments/head :: header" />
-        <th:block th:replace="fragments/navbar :: navbarCss" />
-
-        <link rel="stylesheet" type="text/css" href="/css/createStartUp.css" />
-
-    </head>
-    <body>
-
-        <!-- navbar -->
-        <th:block th:replace="fragments/navbar :: navbar"/>
-
-        <h2 style="margin-left: 12%">Delete <span th:text="${startup.name}"></span> ?</h2>
+    <!-- bootstrap, meta, and google fonts -->
+    <th:block th:replace="fragments/head :: header" />
 
 
-        <div id="createStartCon1" class="container">
-            <form method="post" th:action="@{'/startup/' + ${startup.id} + '/delete'}">
-                <div class="form-group">
+    <!-- css links -->
+    <th:block th:replace="fragments/navbar :: navbarCss" />
+
+    <link rel="stylesheet" type="text/css" href="/css/signup.css" />
+
+    <link rel="stylesheet" type="text/css" href="/css/form.css" />
+</head>
+<body>
+
+<!-- navbar -->
+<th:block th:replace="fragments/navbar :: navbar"/>
+
+
+<div id="center">
+
+    <div class="card text-center">
+        <div id="header" class="card-header">
+            <span class="text-danger">DELETE </span><span class="text-warning" th:text="*{startup.name}"></span> STARTUP ?
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">WELCOME TO GrowTech-SA</h5>
+            <div class="card-text">
+
+
+                <!--<form th:action="@{/login}" method="post">-->
+                <!--<div class="form-group mx-auto">-->
+                <!--<label for="username">Username</label>-->
+                <!--<input type="text" class="form-control" id="username" aria-describedby="username" placeholder="Username"/>-->
+                <!--<small id="emailHelp" class="form-text text-muted">We'll never share your Username with anyone else.</small>-->
+                <!--</div>-->
+
+                <!--<div class="form-group mx-auto">-->
+                <!--<label for="password">Password</label>-->
+                <!--<input type="password" class="form-control" id="password" placeholder="Password"/>-->
+                <!--</div>-->
+
+
+                <!--<button id="butt" type="submit" class="btn btn-primary">Submit</button>-->
+                <!--</form>-->
+
+
+                <form method="post" th:action="@{'/startup/' + ${startup.id} + '/delete'}">
+
                     <div class="form-row">
-                        <div class="col-md-3 offset-md-3">
-                            <label for="name">Startup Name</label><br/>
+
+                        <div class="form-group col-md-6">
+                            <label>Startup Name</label>
+                            <h5 class="form-control" th:text="*{startup.name}"></h5>
                         </div>
-                        <div class="col-md-3">
-                            <label for="address">Where are you located?</label><br/>
+
+                        <div class="form-group col-md-6">
+                            <label>Startup Address</label>
+                            <h5 class="form-control" th:text="*{startup.address}"></h5>
                         </div>
+
                     </div>
+
+
                     <div class="form-row">
-                        <div class="col-md-3 offset-md-3">
-                            <input id="name" class="form-control" th:field="${startup.name}"/>
+
+                        <div class="form-group col-md-12">
+                            <label>STARTUP DESCRIPTION</label>
+                            <h5 class="form-control" th:text="*{startup.description}"></h5>
                         </div>
-                        <div class="col-md-3">
-                            <input id="address" class="form-control" th:field="${startup.address}"/>
-                        </div>
-                    </div><br/>
-                    <div class="form-row">
-                        <div class="mx-auto">
-                            <label for="description">Tell us about your business!</label>
-                        </div>
+
+                        <!--<div class="form-group col-md-6">-->
+                        <!--<label for="username">USER NAME</label>-->
+                        <!--<input type="text" class="form-control" id="username" placeholder="USER NAME" th:field="*{username}"/>-->
+                        <!--</div>-->
+
                     </div>
-                    <div class="form-row">
-                        <div class="col-md-6 offset-md-3">
-                            <textarea class="form-control" id="description" th:field="${startup.description}"></textarea>
-                        </div>
-                    </div><br/>
-                    <div class="form-row">
-                        <div class="mx-auto">
-                            <!--<input class="btn btn-primary" type="submit" value="DELETE" />-->
-                            <!--old delete button-->
 
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-                                DELETE STARTUP
-                            </button>
+                    <!--<div class="form-row">-->
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header" id="modal">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">DELETE STARTUP</h5>
-                                            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                                            <!--<span aria-hidden="true">&times;</span>-->
-                                            <!--</button>-->
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure you want to <span class="text-danger">DELETE </span><span th:text="*{startup.name}"> ?</span>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">DELETE</button>
-                                        </div>
-                                    </div>
+                    <!--<div class="form-group col-md-6">-->
+                    <!--<input type="button" class="form-control" id="picture" name="picture" value="Edit Profile Picture"/>-->
+                    <!--<input class="form-control" id="profilePicture" th:field="*{profile_img}" type="hidden"/>-->
+                    <!--</div>-->
+
+                    <!--<div class="form-group col-md-6">-->
+                    <!--<input id="picture2" type="button" class="form-control" name="picture2" value="Edit Cover Picture"/>-->
+                    <!--<input class="form-control" id="coverPicture" th:field="*{cover_img}" type="hidden"/>-->
+                    <!--</div>-->
+
+                    <!--</div>-->
+
+
+
+
+
+
+
+
+
+
+                    <!---->
+                    <!--<div class="form-group">-->
+                    <!--<label for="inputAddress">Address</label>-->
+                    <!--<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                    <!--<label for="inputAddress2">Address 2</label>-->
+                    <!--<input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">-->
+                    <!--</div>-->
+                    <!--<div class="form-row">-->
+                    <!--<div class="form-group col-md-6">-->
+                    <!--<label for="inputCity">City</label>-->
+                    <!--<input type="text" class="form-control" id="inputCity">-->
+                    <!--</div>-->
+                    <!--<div class="form-group col-md-4">-->
+                    <!--<label for="inputState">State</label>-->
+                    <!--<select id="inputState" class="form-control">-->
+                    <!--<option selected>Choose...</option>-->
+                    <!--<option>...</option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="form-group col-md-2">-->
+                    <!--<label for="inputZip">Zip</label>-->
+                    <!--<input type="text" class="form-control" id="inputZip">-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                    <!--<div class="form-check">-->
+                    <!--<input class="form-check-input" type="checkbox" id="gridCheck">-->
+                    <!--<label class="form-check-label" for="gridCheck">-->
+                    <!--Check me out-->
+                    <!--</label>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<button id="butt" type="submit" class="btn btn-danger">DELETE</button>-->
+
+
+
+
+
+
+
+
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" id="butt" data-toggle="modal" data-target="#exampleModalLong">
+                        DELETE STARTUP
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div id="header">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle butt">DELETE STARTUP</h5>
+                                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                                    <!--<span aria-hidden="true">&times;</span>-->
+                                    <!--</button>-->
+                                </div>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to <span class="text-danger">DELETE </span><span th:text="*{startup.name}"> ?</span>
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="butt" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                    <button id="butt" type="submit" class="btn btn-primary">DELETE</button>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-                </div>
-            </form>
+
+
+
+
+
+
+
+
+
+
+
+                </form>
+
+
+            </div>
         </div>
+        <div class="card-footer text-muted" id="header">
+
+            <!--<div class="red" th:if="${param.error}">-->
+            <!--Invalid Username and Password.-->
+            <!--</div>-->
+            <!--<div class="red" th:if="${param.logout}">-->
+            <!--You have been logged out.-->
+            <!--</div>-->
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/create-startup.js"></script>
+
+<th:block th:replace="fragments/head :: scripts" />
 
 
 
@@ -98,18 +231,156 @@
 
 
 
-
-
-
-
-
-        <!--<form method="post" th:action="@{'/startup/' + ${startup.id} + '/delete'}">-->
-            <!--<input type="text" th:field="*{startup.name}"/>-->
-            <!--<textarea th:field="*{startup.description}"></textarea>-->
-            <!--<button>delete</button>-->
-        <!--</form>-->
-
-        <th:block th:replace="fragments/head :: scripts" />
-
-    </body>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+    <!--<head>-->
+        <!--<title>Title</title>-->
+
+        <!--&lt;!&ndash; bootstrap, meta, and google fonts &ndash;&gt;-->
+        <!--<th:block th:replace="fragments/head :: header" />-->
+        <!--<th:block th:replace="fragments/navbar :: navbarCss" />-->
+
+        <!--<link rel="stylesheet" type="text/css" href="/css/createStartUp.css" />-->
+
+    <!--</head>-->
+    <!--<body>-->
+
+        <!--&lt;!&ndash; navbar &ndash;&gt;-->
+        <!--<th:block th:replace="fragments/navbar :: navbar"/>-->
+
+        <!--<h2 style="margin-left: 12%">Delete <span th:text="${startup.name}"></span> ?</h2>-->
+
+
+        <!--<div id="createStartCon1" class="container">-->
+            <!--<form method="post" th:action="@{'/startup/' + ${startup.id} + '/delete'}">-->
+                <!--<div class="form-group">-->
+                    <!--<div class="form-row">-->
+                        <!--<div class="col-md-3 offset-md-3">-->
+                            <!--<label for="name">Startup Name</label><br/>-->
+                        <!--</div>-->
+                        <!--<div class="col-md-3">-->
+                            <!--<label for="address">Where are you located?</label><br/>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-row">-->
+                        <!--<div class="col-md-3 offset-md-3">-->
+                            <!--<input id="name" class="form-control" th:field="${startup.name}"/>-->
+                        <!--</div>-->
+                        <!--<div class="col-md-3">-->
+                            <!--<input id="address" class="form-control" th:field="${startup.address}"/>-->
+                        <!--</div>-->
+                    <!--</div><br/>-->
+                    <!--<div class="form-row">-->
+                        <!--<div class="mx-auto">-->
+                            <!--<label for="description">Tell us about your business!</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-row">-->
+                        <!--<div class="col-md-6 offset-md-3">-->
+                            <!--<textarea class="form-control" id="description" th:field="${startup.description}"></textarea>-->
+                        <!--</div>-->
+                    <!--</div><br/>-->
+                    <!--<div class="form-row">-->
+                        <!--<div class="mx-auto">-->
+                            <!--&lt;!&ndash;<input class="btn btn-primary" type="submit" value="DELETE" />&ndash;&gt;-->
+                            <!--&lt;!&ndash;old delete button&ndash;&gt;-->
+
+                            <!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
+                            <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">-->
+                                <!--DELETE STARTUP-->
+                            <!--</button>-->
+
+                            <!--&lt;!&ndash; Modal &ndash;&gt;-->
+                            <!--<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">-->
+                                <!--<div class="modal-dialog" role="document">-->
+                                    <!--<div class="modal-content">-->
+                                        <!--<div class="modal-header" id="modal">-->
+                                            <!--<h5 class="modal-title" id="exampleModalLongTitle">DELETE STARTUP</h5>-->
+                                            <!--&lt;!&ndash;<button type="button" class="close" data-dismiss="modal" aria-label="Close">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<span aria-hidden="true">&times;</span>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                                        <!--</div>-->
+                                        <!--<div class="modal-body">-->
+                                            <!--Are you sure you want to <span class="text-danger">DELETE </span><span th:text="*{startup.name}"> ?</span>-->
+                                        <!--</div>-->
+                                        <!--<div class="modal-footer">-->
+                                            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                                            <!--<button type="submit" class="btn btn-primary">DELETE</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</form>-->
+        <!--</div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--&lt;!&ndash;<form method="post" th:action="@{'/startup/' + ${startup.id} + '/delete'}">&ndash;&gt;-->
+            <!--&lt;!&ndash;<input type="text" th:field="*{startup.name}"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<textarea th:field="*{startup.description}"></textarea>&ndash;&gt;-->
+            <!--&lt;!&ndash;<button>delete</button>&ndash;&gt;-->
+        <!--&lt;!&ndash;</form>&ndash;&gt;-->
+
+        <!--<th:block th:replace="fragments/head :: scripts" />-->
+
+    <!--</body>-->
+<!--</html>-->

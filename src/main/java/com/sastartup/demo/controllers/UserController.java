@@ -73,6 +73,9 @@ public class UserController {
 
     @GetMapping("/create/startup")
     public String createStartupForm(Model model) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbUser = userDao.findOne(sessionUser.getId());
+        model.addAttribute("user", dbUser);
         model.addAttribute("startup", new Startup());
         return "users/create-startup";
     }
@@ -103,6 +106,9 @@ public class UserController {
     public String editstartup(@PathVariable Long id, Model vmodel) {
         Startup startup = startupDao.findOne(id);
         vmodel.addAttribute("startup", startup);
+        User sessionuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbuser = userDao.findOne(sessionuser.getId());
+        vmodel.addAttribute("user", dbuser);
         return "startups/editstartup";
     }
 
@@ -121,8 +127,10 @@ public class UserController {
     //    delete startup
     @GetMapping("/startup/{id}/delete")
     public String deleteform(@PathVariable Long id, Model vmodel) {
-
         Startup startup = startupDao.findOne(id);
+        User sessionuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbuser = userDao.findOne(sessionuser.getId());
+        vmodel.addAttribute("user", dbuser);
         vmodel.addAttribute("startup", startup);
         return ("startups/deletestartup");
     }
