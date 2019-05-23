@@ -5,27 +5,13 @@ body {
     overflow-x: hidden;
 }
 
-#left {
-    background-color: transparent;
-    position: fixed;
-    top: 4rem;
-    bottom: 0;
+h2 {
+    font-family: 'Carrois Gothic', sans-serif;
+    font-weight: bold;
 }
 
-#right {
-    background-color: transparent;
+h3 {
+    font-family: 'Open Sans', sans-serif;
 }
 
-@media (max-width: 767.98px) {
 
-    #left {
-
-        position: relative;
-
-    }
-
-    #right {
-        margin-top: 5rem;
-    }
-
-}

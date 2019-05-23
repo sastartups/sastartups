@@ -19,7 +19,7 @@
 <!-- navbar -->
 <th:block th:replace="fragments/navbar :: navbar"/>
 
-
+<br/>
 <div class="container">
     <div class="row">
         <div id="left" class="col-md-3">
@@ -32,16 +32,17 @@
             </form>
             <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
         </div>
-        <div id="right" class="col-md-8 offset-md-4">
+        <div id="right" class="col-md-9">
+            <div th:if="${user.startups.size() > 0}">
             <h2>Your startups: </h2>
             <hr/>
             <div th:each="startup : ${user.startups}">
                 <h3>startup name: <span><a th:href="@{'/showpage/' + ${startup.id}}"
                                            th:text="${startup.name}"></a></span></h3>
-                <button class="btn btn-outline-success btn-sm">
+                <button class="btn btn-outline-warning btn-sm">
                     <a th:href="@{'/startup/' + ${startup.id} + '/edit'}">edit startup</a>
                 </button>
-                <button class="btn btn-outline-success btn-sm">
+                <button class="btn btn-outline-danger btn-sm">
                     <a th:href="@{'/startup/' + ${startup.id} + '/delete'}">delete startup</a>
                 </button>
                 <button class="btn btn-outline-success btn-sm">
@@ -53,22 +54,14 @@
                 <h3>description:</h3>
                 <p th:text="${startup.description}"></p>
                 <hr/>
-                <h1>Applications Dashboard</h1>
-                <div th:each="job : ${startup.jobs}">
-                    <div th:if="${job.resumes.size() > 0}">
-                        <div th:each="resume : ${job.resumes}">
-                            <h6><span th:text="${resume.owner.first_name}"></span> has applied to position <span th:text="${job.title}"></span> at <span th:text="${startup.name}"></span>
-                            <span><a th:href="@{${resume.path}}">Click here to view submitted resume</a></span></h6>
-                            <form th:action="@{'/resume/' + ${job.id} + '/pass/' + ${resume.id}}" method="post">
-                                <button>Not Interested</button>
-                            </form>
-                            <form th:action="@{'/resume/' + ${job.id} + '/interested/' + ${resume.owner.id}}"
-                                  method="post">
-                                <button>Interested</button>
-                            </form>
-                        </div>
+                <div th:if="${user.resume != null &amp;&amp; user.resume.jobs.size() > 0}">
+                    <h2>Your Submitted Applications</h2>
+                    <div th:each="job : ${user.resume.jobs}">
+                        <h3>Job title: </h3>
+                        <p th:text="${job.title}"></p>
+                        <h3>Job Description:</h3>
+                        <p th:text="${job.description}"></p>
                     </div>
-                    <hr/>
                 </div>
 
                 <div th:if="${notifications.size() > 0}">
@@ -80,10 +73,32 @@
             </div>
         </div>
     </div>
+    <hr/>
 </div>
 
 
 <div class="container">
+    <div class="row">
+        <div th:each="startup : ${user.startups}">
+            <h1>Applications Dashboard</h1>
+            <div th:each="job : ${startup.jobs}">
+                <div th:if="${job.resumes.size() > 0}">
+                    <div th:each="resume : ${job.resumes}">
+                        <h6><span th:text="${resume.owner.first_name}"></span> has applied to position <span th:text="${job.title}"></span> at <span th:text="${startup.name}"></span>
+                            <span><a th:href="@{${resume.path}}">Click here to view submitted resume</a></span></h6>
+                        <form th:action="@{'/resume/' + ${job.id} + '/pass/' + ${resume.id}}" method="post">
+                            <input type="submit" class="btn btn-primary btn-sm" value="not Interested" />
+                        </form><br/>
+                        <form th:action="@{'/resume/' + ${job.id} + '/interested/' + ${resume.owner.id}}"
+                              method="post">
+                            <input type="submit" class="btn btn-primary btn-sm" value="Interested" />
+                        </form>
+                    </div>
+                </div>
+                <hr/>
+            </div>
+        </div>
+    </div>
 
     <!--<h1 th:text="${user.resume.path}"></h1>-->
 
@@ -108,17 +123,8 @@
     <!--</div>-->
     <!--</div>-->
 
-
-    <div th:if="${user.resume != null &amp;&amp; user.resume.jobs.size() > 0}">
-        <h1>Your Submitted Applications</h1>
-        <div th:each="job : ${user.resume.jobs}">
-            <h1>Job Postings: </h1>
-            <h1>Job title: </h1>
-            <p th:text="${job.title}"></p>
-            <h1>Job Description:</h1>
-            <p th:text="${job.description}"></p>
-        </div>
-    </div>
+</div>
+    
 </div>
 
 <th:block th:replace="fragments/head :: scripts"/>
