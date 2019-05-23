@@ -3,10 +3,11 @@ body {
     padding: 0;
     max-width: 100%;
     overflow-x: hidden;
+    background-image: url("/img/formback.png");
 }
 
 #container1 {
-    width: 100%;
+    background-color: white;
 }
 
 #container1 img {
@@ -36,6 +37,10 @@ body {
     margin-top: 8rem;
 }
 
+#profileImg {
+    background-color: white;
+}
+
 #profileImg img{
     width: 100%;
     min-height: 15rem;
@@ -45,7 +50,9 @@ body {
     margin-top: -23rem;
 }
 
-
+#Con3 {
+    background-color: white;
+}
 
 #modal {
     background-color: #647E9F;

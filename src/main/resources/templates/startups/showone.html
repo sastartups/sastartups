@@ -19,19 +19,17 @@
 
 
         <th:block th:replace="fragments/navbar :: navbar"/>
-        
-        <div id="container1" th:style="'background-image:url(' + ${oneStartup.getCover_img()} + ');'">
-            <img th:src="${oneStartup.profile_img}" alt="profile img"/>
-        </div>
 
-        <div id="profileImg" class="container">
+        <div id="container1" class="container"><br/><br/>
             <div class="row">
-                <div class="col-md-12">
-                    <div id='map' style='width: 100%; height: 15rem;'></div>
+                <div class="col-md-2">
+                    <img th:src="${oneStartup.profile_img}" style="height: 100%; width: 100%;" alt="profile img"/>
+                </div>
+                <div class="col-md-10" th:style="'background-image:url(' + ${oneStartup.getCover_img()} + ');'">
+
                 </div>
             </div>
-        </div><br/><br/>
-
+        </div>
 
         <div id="Con3" class="container">
             <div class="row">
@@ -46,7 +44,18 @@
                     <p th:text="${oneStartup.description}"></p>
                 </div>
             </div>
-            <hr/>
+        </div>
+
+        <div id="profileImg" class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id='map' style='width: 100%; height: 15rem;'></div>
+                </div>
+                <hr/>
+            </div>
+        </div>
+
+        <div id="Con3" class="container">
             <div class="row">
                 <div class="mx-auto">
                     <h4>Jobs available</h4>
@@ -91,8 +100,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </form>
                         <div sec:authorize="isAuthenticated()">
                             <div th:if="${#authentication.principal.id == oneStartup.user.id}">
@@ -114,53 +121,52 @@
                 <hr/>
             </div>
         </div>
-        <br/><br/><br/>
+        <br/>
 
         <th:block th:replace="fragments/head :: scripts" />
+        
+            <script>
+
+                mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA';
+
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/light-v10',
+                    zoom: 13
+                });
+
+                let address = document.getElementById("address").innerText;
+
+                geocode(address, "pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA").then(function (data) {
+
+                    map.setCenter(data);
+                    var marker = new mapboxgl.Marker({
+                        draggable: true
+                    })
+                        .setLngLat(data)
+                        .addTo(map);
+
+                    map.addControl(new MapboxGeocoder({
+                        accessToken: mapBoxKey
+
+                    }));
+
+                });
 
 
-                                        <script>
+                function geocode(search, token) {
+                    var baseUrl = 'https://api.mapbox.com';
+                    var endPoint = '/geocoding/v5/mapbox.places/';
+                    return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+                        .then(function (res) {
+                            return res.json();
+                            // to get all the data from the request, comment out the following three lines...
+                        }).then(function (data) {
+                            return data.features[0].center;
+                        });
+                }
 
-                                            mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA';
-
-                                            var map = new mapboxgl.Map({
-                                                container: 'map',
-                                                style: 'mapbox://styles/mapbox/light-v10',
-                                                zoom: 13
-                                            });
-
-                                            let address = document.getElementById("address").innerText;
-
-                                            geocode(address, "pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA").then(function (data) {
-
-                                                map.setCenter(data);
-                                                var marker = new mapboxgl.Marker({
-                                                    draggable: true
-                                                })
-                                                    .setLngLat(data)
-                                                    .addTo(map);
-
-                                                map.addControl(new MapboxGeocoder({
-                                                    accessToken: mapBoxKey
-
-                                                }));
-
-                                            });
-
-
-                                            function geocode(search, token) {
-                                                var baseUrl = 'https://api.mapbox.com';
-                                                var endPoint = '/geocoding/v5/mapbox.places/';
-                                                return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-                                                    .then(function (res) {
-                                                        return res.json();
-                                                        // to get all the data from the request, comment out the following three lines...
-                                                    }).then(function (data) {
-                                                        return data.features[0].center;
-                                                    });
-                                            }
-
-                                        </script>
+            </script>
 
     </body>
 </html>
