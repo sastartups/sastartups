@@ -12,9 +12,14 @@ body {
 }
 
 p {
+    font-family: 'Carrois Gothic', sans-serif;
     margin-top: -7px;
     margin-bottom: 1rem;
     font-size: 115%;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
 }
 
 img {
@@ -27,15 +32,16 @@ img {
 
 /* container-1 */
 #container1 {
-    height: 20rem;
+    height: 28rem;
     margin: 0;
     padding: 0;
     max-width: 100%;
-    background-image: url(/img/sancity.png);
+    background-image: url(/img/san-antonio.jpg);
     background-attachment: fixed;
-    background-size: 100% 65%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     color:white;
+    border-bottom: 1px solid black;
 }
 
 #firsttitle {
@@ -47,14 +53,16 @@ img {
 }
 
 div#element3 {
-    margin-top: 4rem;
+    margin-top: 7rem;
+    margin-bottom: 7rem;
 }
 
 #container2 {
     margin: 0;
+    margin-top: 5rem;
+    margin-bottom: 7rem;
     padding: 0;
     max-width: 100%;
-    border-top: 1px solid black;
 }
 
 .para1 {
@@ -84,6 +92,11 @@ div#element3 {
 
 #container3 p {
     font-size: 1.5rem;
+    font-family: 'Carrois Gothic', sans-serif;
+}
+
+#smalllogo {
+    margin-top: 4rem;
 }
 
 /* container3 */
@@ -127,5 +140,13 @@ div#element3 {
     height: 16rem;
 }
 
+
+@media (max-width: 767.98px) {
+
+    div#element3 {
+        margin-top: -7rem;
+    }
+
+}
 
 
