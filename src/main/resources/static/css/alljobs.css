@@ -12,6 +12,10 @@ img {
     max-width: 70%;
 }
 
+div#rowjob {
+    min-width: 100%;
+}
+
 p{
     font-family: 'Carrois Gothic', sans-serif;
 }
