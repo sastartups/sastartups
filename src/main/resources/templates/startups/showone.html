@@ -33,8 +33,7 @@
                 </div>
                 <div id="coverImg" class="col-md-10" th:style="'background-image:url(' + ${oneStartup.getCover_img()} + ');'">
                     <br/><br/><br/><br/><br/>
-                    <h4>company name:</h4>
-                    <h2 th:text="${oneStartup.name}"></h2>
+                    <h2 id="name" th:text="${oneStartup.name}" style="background-color: white; opacity: .7;"></h2>
                 </div>
             </div>
         </div>
@@ -58,14 +57,14 @@
         <div id="Con3" class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h4>Jobs available</h4>
+                    <h4 id="jobs">Jobs available</h4>
                     <hr/>
                 </div>
             </div><br/>
             <div th:each="item : ${oneStartup.jobs}">
                 <div class="row">
                     <div class="col-md-4">
-                        <h4>job title</h4>
+                        <h4 id="jobTitle">job title</h4>
                         <p th:text="${item.title}"></p>
 
                         <!--<div th:each="item : ${oneStartup.jobs}">-->

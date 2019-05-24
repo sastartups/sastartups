@@ -36,6 +36,19 @@ body {
     margin-top: 8rem;
 }
 
+h4#jobs {
+    margin-top: 2rem;
+}
+
+#name {
+    background-color: white;
+    opacity: .7;
+    padding: 0;
+    margin-bottom: 0;
+    margin-top: 2rem;
+    padding-left: 1rem;
+}
+
 #profileImg {
     background-color: white;
     border-radius: .3rem;
