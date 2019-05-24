@@ -40,6 +40,8 @@ public class StartupController {
             User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User dbUser = userDao.findOne(sessionUser.getId());
             vmodel.addAttribute("user", dbUser);
+            vmodel.addAttribute("navNotifications", notificationRepo.findTop4ByUserOrderByIdDesc(dbUser));
+
         } else {
             vmodel.addAttribute("user", null);
         }
@@ -55,6 +57,8 @@ public class StartupController {
             User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User dbUser = userDao.findOne(sessionUser.getId());
             vmodel.addAttribute("user", dbUser);
+            vmodel.addAttribute("navNotifications", notificationRepo.findTop4ByUserOrderByIdDesc(dbUser));
+
         } else {
             vmodel.addAttribute("user", null);
         }
@@ -125,6 +129,8 @@ public class StartupController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
         vmodel.addAttribute("user", dbUser);
+        vmodel.addAttribute("navNotifications", notificationRepo.findTop4ByUserOrderByIdDesc(dbUser));
+
         Job job = jobDao.findOne(id);
         vmodel.addAttribute("job", job);
         return ("startups/editjob");
@@ -152,6 +158,8 @@ public class StartupController {
             User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User dbUser = userDao.findOne(sessionUser.getId());
             model.addAttribute("user", dbUser);
+            model.addAttribute("navNotifications", notificationRepo.findTop4ByUserOrderByIdDesc(dbUser));
+
         } else {
             model.addAttribute("user", null);
         }

@@ -15,15 +15,17 @@ public class HomeController {
     private final ResumeRepo resumeDao;
     private final StartupRepo startupDao;
     private final UserRepo userDao;
+    private final NotificationRepo notificationRepo;
 
 //    constructor
 
 
-    public HomeController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao) {
+    public HomeController(JobRepo jobDao, ResumeRepo resumeDao, StartupRepo startupDao, UserRepo userDao, NotificationRepo notificationRepo) {
         this.jobDao = jobDao;
         this.resumeDao = resumeDao;
         this.startupDao = startupDao;
         this.userDao = userDao;
+        this.notificationRepo = notificationRepo;
     }
 
 
@@ -35,10 +37,10 @@ public class HomeController {
             User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User dbUser = userDao.findOne(sessionUser.getId());
             model.addAttribute("user", dbUser);
+            model.addAttribute("navNotifications", notificationRepo.findTop4ByUserOrderByIdDesc(dbUser));
         } else {
             model.addAttribute("user", null);
         }
-
         return "startups/index";
     }
 
