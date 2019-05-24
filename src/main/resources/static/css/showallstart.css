@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("/img/formback.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+h2{
+    font-family: 'Carrois Gothic', sans-serif;
+}
+
+#con1 {
+    background-color: white;
+    border-radius: .2rem;
+}
