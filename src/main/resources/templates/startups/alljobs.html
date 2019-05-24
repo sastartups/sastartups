@@ -14,43 +14,43 @@
     <body>
         <th:block th:replace="fragments/navbar :: navbar"/><br/>
 
-            <div id="allCon" class="container-fluid">
+            <div id="con1" class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="mx-auto">
                         <h2>All Jobs Available</h2>
                     </div>
-                    <div class="col-md-6">
-                        <form action="/all/jobs" method="get">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <input type="submit" value="search" class="btn btn-primary" />
-                                </div>
-                                <div class="col-md-4">
-                                    <input name="searchFor" type="search" class="form-control" />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div><hr/><br/>
-                <div id="row" class="row">
-                    <div th:each="job : ${jobs}">
-                    <div id="cover2" class="col-md-12">
-                        <div id="cover" class="row" style="border: 1px solid black">
-                            <div class="col-md-4">
-                                <img th:src="${job.startup.getProfile_img()}" />
-                            </div>
-                            <div id="company" class="col-md-4 offset-md-4">
-                                <h5>Title: <span th:text="${job.title}"></span></h5>
-                                <h5>description</h5>
-                                <p id="para" th:text="${job.description}"></p>
-                            </div>
-                            <div class="col-md-4">
-                                <h5>Company: <span th:text="${job.startup.name}"></span><span>|</span><span th:text="${job.startup.address}"></span></h5>
-                            </div>
-                        </div><br/>
-                    </div>
-                    </div>
                 </div>
+                <hr style="width: 100%;"/>
+                <form action="/all/jobs" method="get">
+                    <div class="row">
+                        <div class="offset-md-3 col-md-4">
+                            <input name="searchFor" type="search" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <input type="submit" value="search" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div id="con2" class="container">
+                <div class="row">
+                    <div class="mx-auto">
+                        <div th:each="job : ${jobs}">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Company: <span th:text="${job.startup.name}"></span></h5>
+                                </div>
+                                <div class="card-body">
+                                    Title:<h5 class="card-title" th:text="${job.title}"></h5>
+                                    Description:<br/>
+                                    <p class="card-text" th:text="${job.description}"></p>
+                                    <a href="#" class="btn btn-primary">Apply</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><br/><br/>
             </div>
 
         <th:block th:replace="fragments/head :: scripts" />
