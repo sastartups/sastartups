@@ -8,11 +8,10 @@ body {
 
 #container1 {
     background-color: white;
+    border-radius: .3rem;
 }
 
-#container1 img {
-    width: 20%;
-}
+
 
 #showoneCon1 {
     margin-left: 0;
@@ -39,6 +38,7 @@ body {
 
 #profileImg {
     background-color: white;
+    border-radius: .3rem;
 }
 
 #profileImg img{
@@ -48,14 +48,24 @@ body {
     min-width: 15rem;
     max-width: 15rem;
     margin-top: -23rem;
+    border-radius: .2rem;
 }
 
 #Con3 {
     background-color: white;
+    border-radius: .3rem;
+}
+
+#img {
+    padding: 0;
 }
 
 #modal {
     background-color: #647E9F;
     /*border-radius: .5rem;*/
     color: white;
+}
+
+#map {
+    margin-top: 1rem;
 }

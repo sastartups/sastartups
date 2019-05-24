@@ -20,44 +20,38 @@
 
         <th:block th:replace="fragments/navbar :: navbar"/>
 
-        <div id="container1" class="container"><br/><br/>
+        <div id="container1" class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div id="img" class="col-md-2">
                     <img th:src="${oneStartup.profile_img}" style="height: 100%; width: 100%;" alt="profile img"/>
                 </div>
                 <div class="col-md-10" th:style="'background-image:url(' + ${oneStartup.getCover_img()} + ');'">
-
-                </div>
-            </div>
-        </div>
-
-        <div id="Con3" class="container">
-            <div class="row">
-                <div class="col-md-4">
+                    <br/><br/><br/><br/><br/>
                     <h4>company name:</h4>
-                    <p th:text="${oneStartup.name}"></p>
-                    <h4>company address:</h4>
-                    <p id="address" th:text="${oneStartup.address}"></p>
-                </div>
-                <div class="col-md-8">
-                    <h4>company description:</h4>
-                    <p th:text="${oneStartup.description}"></p>
+                    <h2 th:text="${oneStartup.name}"></h2>
                 </div>
             </div>
         </div>
 
         <div id="profileImg" class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div id='map' style='width: 100%; height: 15rem;'></div>
+                    <h4>company address:</h4>
+                    <p id="address" th:text="${oneStartup.address}"></p>
+                </div>
+                <div class="col-md-6">
+                    <h4>company description:</h4>
+                    <p th:text="${oneStartup.description}"></p>
                 </div>
                 <hr/>
             </div>
         </div>
 
+        <hr/>
         <div id="Con3" class="container">
             <div class="row">
-                <div class="mx-auto">
+                <div class="col-md-4">
                     <h4>Jobs available</h4>
                     <hr/>
                 </div>
