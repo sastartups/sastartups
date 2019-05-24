@@ -8,6 +8,10 @@ h2{
     font-weight: bold;
 }
 
+img {
+    max-width: 70%;
+}
+
 p{
     font-family: 'Carrois Gothic', sans-serif;
 }
