@@ -77,9 +77,8 @@ div#element3 {
 }
 
 .para2 {
-    padding-left: 2rem;
-    padding-right: 2rem;
-    
+    padding-left: 7rem;
+    padding-right: 7rem;
 }
 
 #container3{
@@ -101,6 +100,7 @@ div#element3 {
 
 #smalllogo {
     margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 
 /* container3 */
@@ -109,11 +109,11 @@ div#element3 {
     padding: 0;
     max-width: 100%;
     color:black;
-    border-top: 1px solid black;
-}
-
-#footer .col-md-4 {
-    border-right: 1px solid black;
+    background-color: white;
+    opacity: .7;
+    background-image: url("/img/formback.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #footer h5 {
@@ -128,19 +128,16 @@ div#element3 {
 /* footer */
 #contact {
     margin-top: 3rem;
-    border-bottom: 1px solid black;
     height: 16rem;
 }
 
 #contact2 {
     margin-top: 3rem;
-    border-bottom: 1px solid black;
     height: 16rem;
 }
 
 #contact3 {
     margin-top: 3rem;
-    border-bottom: 1px solid black;
     height: 16rem;
 }
 
