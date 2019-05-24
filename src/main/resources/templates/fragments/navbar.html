@@ -88,7 +88,7 @@
                                     +
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a th:each="notification : ${user.notifications}" th:text="${notification.message}" class="dropdown-item"></a>
+                                    <a th:each="notification : ${navNotifications}" th:text="${notification.message}" class="dropdown-item"></a>
                                 </div>
                             </li>
                         </div>

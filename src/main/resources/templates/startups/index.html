@@ -32,7 +32,20 @@
                             <li>
                                 <a class="nav-link" th:href="@{/create/startup}">Create startup</a>
                             </li>
-                        </div>                   
+                        </div>
+                        <div th:if="${user != null}">
+                            <div sec:authorize="isAuthenticated()">
+                                <li class="nav-item dropleft">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown"
+                                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        +
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a th:each="notification : ${navNotifications}" th:text="${notification.message}" class="dropdown-item"></a>
+                                    </div>
+                                </li>
+                            </div>
+                        </div>
                         <div sec:authorize="isAuthenticated()">
                             <li>
                                 <a class="nav-link" th:href="@{/userProfile}">Profile</a>
