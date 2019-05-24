@@ -53,6 +53,7 @@
             </div>
         </div>
 
+        <div th:if="${oneStartup.jobs.size() > 0}">
         <hr/>
         <div id="Con3" class="container">
             <div class="row">
@@ -121,6 +122,7 @@
             </div>
         </div>
         <br/>
+        </div>
 
         <th:block th:replace="fragments/head :: scripts" />
         
