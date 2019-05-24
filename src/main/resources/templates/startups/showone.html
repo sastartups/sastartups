@@ -102,12 +102,12 @@
                         </form>
                         <div sec:authorize="isAuthenticated()">
                             <div th:if="${#authentication.principal.id == oneStartup.user.id}">
-
-                                <button class="btn btn-outline-danger"><a th:href="@{'/job/' + ${item.id} + '/delete'}">delete
+                                <br/>
+                                <button class="btn btn-outline-danger btn-small" style="margin: .5rem;"><a th:href="@{'/job/' + ${item.id} + '/delete'}">delete
                                     job</a></button>
 
                                 <!--edit one job-->
-                                <button class="btn btn-outline-warning"><a th:href="@{'/job/' + ${item.id} + '/edit'}">edit
+                                <button class="btn btn-outline-warning btn-small"><a th:href="@{'/job/' + ${item.id} + '/edit'}">edit
                                     job</a></button>
                             </div>
                         </div>
