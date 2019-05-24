@@ -69,3 +69,16 @@ body {
 #map {
     margin-top: 1rem;
 }
+
+@media (max-width: 767.98px) {
+
+    #img {
+         padding: 15;
+    }
+
+    #coverImg {
+        visibility: hidden;
+        height: 0;
+    }
+
+}

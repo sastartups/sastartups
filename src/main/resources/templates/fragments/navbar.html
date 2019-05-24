@@ -83,18 +83,23 @@
                     <div th:if="${user != null}">
                         <div sec:authorize="isAuthenticated()">
                             <li class="nav-item dropleft">
-                                <a class="nav-link dropdown-toggle" th:href="@{/userProfile}" id="navbarDropdown"
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown"
                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Profile
+                                    +
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a th:each="notification : ${user.notifications}" th:text="${notification.message}"
-                                       th:href="@{/userProfile}" class="dropdown-item"></a>
+                                    <a th:each="notification : ${user.notifications}" th:text="${notification.message}" class="dropdown-item"></a>
                                 </div>
                             </li>
                         </div>
                     </div>
-
+                    <div sec:authorize="isAuthenticated()">
+                        <li>
+                            <a class="nav-link" th:href="@{/userProfile}">
+                                Profile
+                            </a>
+                        </li>
+                    </div>
                     <div sec:authorize="isAnonymous()">
                         <li>
                             <a class="nav-link" th:href="@{/sign-up}">Sign Up</a>

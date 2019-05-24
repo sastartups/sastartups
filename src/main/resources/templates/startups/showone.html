@@ -25,7 +25,13 @@
                 <div id="img" class="col-md-2">
                     <img th:src="${oneStartup.profile_img}" style="height: 100%; width: 100%;" alt="profile img"/>
                 </div>
-                <div class="col-md-10" th:style="'background-image:url(' + ${oneStartup.getCover_img()} + ');'">
+                <div class="col-md-4 offset-md-2 d-md-none d-lg-none d-xl-none" style="margin-top: -8rem;">
+                    <div class="d-md-none d-lg-none d-xl-none">
+                        <h4>company name:</h4>
+                        <h2 th:text="${oneStartup.name}"></h2>
+                    </div>
+                </div>
+                <div id="coverImg" class="col-md-10" th:style="'background-image:url(' + ${oneStartup.getCover_img()} + ');'">
                     <br/><br/><br/><br/><br/>
                     <h4>company name:</h4>
                     <h2 th:text="${oneStartup.name}"></h2>
