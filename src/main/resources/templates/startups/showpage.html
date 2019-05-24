@@ -43,7 +43,9 @@
                                     <a th:href="@{'/showpage/' + ${item.id}}"><p th:text="${item.name}"></p></a>
 
                                     <!--company description-->
-                                    <p class="card-text" th:text="${item.description}"></p>
+                                    <p id="para1" class="card-text texthide" th:text="${item.description}"></p>
+                                    <a id="showmore" href="#">show more</a>
+                                    <a id="showless" class="hidden" href="#">show </a>
 
                                     <!--company address-->
                                     <p class="card-text"><small class="text-muted" th:text="${item.address}"></small></p>
@@ -57,6 +59,7 @@
 
 
         <th:block th:replace="fragments/head :: scripts" />
+        <script src="/js/showall.js"></script>
 
 
     </body>
