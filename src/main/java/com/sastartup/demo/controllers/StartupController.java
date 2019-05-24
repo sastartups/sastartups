@@ -80,6 +80,11 @@ public class StartupController {
 
     @PostMapping("/create/{id}/job")
     public String submitJobPosting(@RequestParam String title, @RequestParam String description, @PathVariable Long id, Model model) {
+        if (title.equals("")
+                || description.equals("")) {
+            return "startups/create-job-posting";
+
+        }
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
         model.addAttribute("user", dbUser);
@@ -109,7 +114,7 @@ public class StartupController {
         System.out.println(jobDao.findOne(id).getStartup().getId());
         Long startupId = jobDao.findOne(id).getStartup().getId();
         Job job = jobDao.findOne(id);
-        for(Resume resume : job.getResumes()){
+        for (Resume resume : job.getResumes()) {
             User user = resume.getOwner();
             Notification notification = new Notification("" + job.getStartup().getName() + " has closed their job search for position " + job.getTitle() +
                     ". Thank you for your interest.", user);
@@ -167,10 +172,10 @@ public class StartupController {
         if (searchFor.toString().equals("")) {
             model.addAttribute("jobs", jobDao.findAll());
         } else if (!searchFor.toString().equals("")) {
-            if (jobDao.findByTitle(searchFor).size() == 0) {
+            if (jobDao.findByTitleIgnoreCaseContaining(searchFor).size() == 0) {
                 model.addAttribute("jobs", jobDao.findAll());
-            }else {
-                model.addAttribute("jobs", jobDao.findByTitle(searchFor));
+            } else {
+                model.addAttribute("jobs", jobDao.findByTitleIgnoreCaseContaining(searchFor));
             }
 
         }

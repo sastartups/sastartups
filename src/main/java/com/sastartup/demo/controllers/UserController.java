@@ -54,12 +54,19 @@ public class UserController {
 
     @PostMapping("/sign-up")
     public String saveUser(@ModelAttribute User user, Model model) {
-        for(User registeredUser : userDao.findAll()){
-            if(user.getUsername().equals(registeredUser.getUsername()) || user.getEmail().equals(registeredUser.getEmail())){
-                if((user.getUsername().equals(registeredUser.getUsername()))){
+        if (user.getUsername().equals("")
+                || user.getFirst_name().equals("")
+                || user.getLast_name().equals("")
+                || user.getEmail().equals("")
+                || user.getPassword().equals("")) {
+            return "users/signup-form";
+        }
+        for (User registeredUser : userDao.findAll()) {
+            if (user.getUsername().equals(registeredUser.getUsername()) || user.getEmail().equals(registeredUser.getEmail())) {
+                if ((user.getUsername().equals(registeredUser.getUsername()))) {
                     model.addAttribute("invalidUserName", "Username already taken");
                     return "users/signup-form";
-                } else if(user.getEmail().equals(registeredUser.getEmail())){
+                } else if (user.getEmail().equals(registeredUser.getEmail())) {
                     model.addAttribute("duplicateEmail", "Email already in use");
                     return "users/signup-form";
                 }
@@ -83,13 +90,19 @@ public class UserController {
 
     @PostMapping("/create/startup")
     public String submitStartupForm(@ModelAttribute Startup startup, Model model) {
-        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (startup.getName().equals("")
+                || startup.getAddress().equals("")
+                || startup.getDescription().equals("")
+        ){
+            return "users/create-startup";
+        }
+            User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
         startup.setUser(dbUser);
-        if(startup.getProfile_img().equals("")) {
+        if (startup.getProfile_img().equals("")) {
             startup.setProfile_img("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
         }
-        if(startup.getCover_img().equals("")){
+        if (startup.getCover_img().equals("")) {
             startup.setCover_img("https://coverfiles.alphacoders.com/372/37214.jpg");
         }
 
@@ -207,7 +220,7 @@ public class UserController {
 
 
         return "redirect:/showpage/" + job.getStartup().getId();
-}
+    }
 
 
     @GetMapping("/edit")
@@ -235,12 +248,12 @@ public class UserController {
 
     //ARASH try to see if you can incorporate the email service here to email the resume owner that the startup owner is not interested
     @PostMapping("/resume/{jobId}/pass/{resumeId}")
-    public String notInterestedApplication(@PathVariable long jobId, @PathVariable long resumeId){
+    public String notInterestedApplication(@PathVariable long jobId, @PathVariable long resumeId) {
         Job job = jobDao.findOne(jobId);
         List<Resume> resumes = job.getResumes();
-        for(Iterator<Resume> resume  = resumes.iterator(); resume.hasNext();){
+        for (Iterator<Resume> resume = resumes.iterator(); resume.hasNext(); ) {
             Resume r = resume.next();
-            if(r.getId() == resumeId){
+            if (r.getId() == resumeId) {
                 Resume userResume = r;
                 List<Job> jobs = userResume.getJobs();
                 jobs.remove(job);
@@ -258,7 +271,7 @@ public class UserController {
     }
 
     @PostMapping("/resume/{jobId}/interested/{resumeId}")
-    public String interestedApplication(@PathVariable long jobId, @PathVariable long resumeId){
+    public String interestedApplication(@PathVariable long jobId, @PathVariable long resumeId) {
         Job job = jobDao.findOne(jobId);
         Resume resume = resumeDao.findOne(resumeId);
         Notification notification = new Notification("Good news, " + job.getStartup().getName() + " has reviewed your resume, and are interested in meeting for an interview. Check your email for next steps.", resume.getOwner());
@@ -266,8 +279,6 @@ public class UserController {
         return "redirect:/userProfile";
 
     }
-
-
 
 
 }
