@@ -156,7 +156,7 @@ public class UserController {
         dbUser.setResume(resume);
 
         if (resume.getPath() == "" || resume.toString().length() == 0) {
-            return "redirect:/submit-resume";
+            return "redirect:/userProfile";
         } else {
             resumeDao.save(resume);
             userDao.save(dbUser);
