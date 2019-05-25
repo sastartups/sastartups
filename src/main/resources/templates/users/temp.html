@@ -5,236 +5,146 @@
     <title>Title</title>
 
     <!-- bootstrap, meta, and google fonts -->
-    <th:block th:replace="fragments/head :: header" />
-
-
-    <!-- css links -->
+    <th:block th:replace="fragments/head :: header"/>
     <th:block th:replace="fragments/navbar :: navbarCss" />
 
-    <link rel="stylesheet" type="text/css" href="/css/signup.css" />
 
-    <link rel="stylesheet" type="text/css" href="/css/form.css" />
+    <link rel="stylesheet" type="text/css" href="/css/userprofile.css"/>
+
+
+    <script src="//static.filestackapi.com/filestack-js/2.x.x/filestack.min.js"></script>
+
 </head>
 <body>
-
 <!-- navbar -->
 <th:block th:replace="fragments/navbar :: navbar"/>
 
-
-<div id="center">
-
-    <div class="card text-center">
-        <div id="header" class="card-header">
-            DELETE JOB
+<br/>
+<div class="container">
+    <div class="row">
+        <div id="left" class="col-md-3">
+            <h2>welcome <span th:text="${user.username}"></span></h2>
+            <hr/>
+            <form class="mt-2" th:action="@{/submit-resume}" th:method="POST" th:object="${resume}">
+                <input id="resumeFile" th:field="*{path}" type="hidden"/>
+                <input id="resumeButton" type="button" class="btn btn-block btn-primary" value="Upload resume"/><br/>
+                <input class="btn btn-primary" type="submit" value="submit"/>
+            </form>
+            <a class="nav-link" th:href="@{/create/startup}">Create start up</a>
         </div>
-        <div class="card-body">
-            <h5 class="card-title">WELCOME TO GrowTech-SA</h5>
-            <div class="card-text">
+        <div id="right" class="col-md-9">
+            <div th:if="${user.startups.size() > 0}">
+            <h2>Your startups: </h2>
+            <hr/>
+            <div th:each="startup : ${user.startups}">
+                <h3>startup name: <span><a th:href="@{'/showpage/' + ${startup.id}}"
+                                           th:text="${startup.name}"></a></span></h3>
+                <button class="btn btn-outline-warning btn-sm">
+                    <a th:href="@{'/startup/' + ${startup.id} + '/edit'}">edit startup</a>
+                </button>
+                <button class="btn btn-outline-danger btn-sm">
+                    <a th:href="@{'/startup/' + ${startup.id} + '/delete'}">delete startup</a>
+                </button>
+                <button class="btn btn-outline-success btn-sm">
+                    <a th:href="@{'/create/' + ${startup.id} + '/job'}">create job</a>
+                </button>
+
+                <h3>address: <span th:text="${startup.address}"></span></h3>
+
+                <h3>description:</h3>
+                <p th:text="${startup.description}"></p>
+                <hr/>
 
 
-                <!--<form th:action="@{/login}" method="post">-->
-                    <!--<div class="form-group mx-auto">-->
-                        <!--<label for="username">Username</label>-->
-                        <!--<input type="text" class="form-control" id="username" aria-describedby="username" placeholder="Username"/>-->
-                        <!--<small id="emailHelp" class="form-text text-muted">We'll never share your Username with anyone else.</small>-->
-                    <!--</div>-->
-
-                    <!--<div class="form-group mx-auto">-->
-                        <!--<label for="password">Password</label>-->
-                        <!--<input type="password" class="form-control" id="password" placeholder="Password"/>-->
-                    <!--</div>-->
-
-
-                    <!--<button id="butt" type="submit" class="btn btn-primary">Submit</button>-->
-                <!--</form>-->
-
-
-                <form th:method="post" th:action="@{'/job/' + ${job.id} + '/delete'}">
-                    <div class="form-row">
-
-                        <div class="form-group col-md-6">
-                            <label>Job Title</label>
-                            <h5 class="form-control" th:text="*{job.title}"></h5>
-                        </div>
-
-                        <!--<div class="form-group col-md-6">-->
-                            <!--<label for="description">Job Responsibilities</label>-->
-                            <!--<textarea rows="10" class="form-control" id="description" placeholder="Where are you looking for?"></textarea>-->
-                        <!--</div>-->
-
+                <div th:if="${user.resume != null &amp;&amp; user.resume.jobs.size() > 0}">
+                    <h2>Your Submitted Applications</h2>
+                    <div th:each="job : ${user.resume.jobs}">
+                        <h3>Job title: </h3>
+                        <p th:text="${job.title}"></p>
+                        <h3>Job Description:</h3>
+                        <p th:text="${job.description}"></p>
                     </div>
+                </div>
 
 
-                    <div class="form-row">
-
-                        <div class="form-group col-md-12">
-                            <label>Job Responsibilities</label>
-                            <textarea rows="10" class="form-control" th:text="*{job.description}"></textarea>
-                        </div>
-
-
-                        <!--<div class="form-group col-md-6">-->
-                            <!--<label for="username">USER NAME</label>-->
-                            <!--<input type="text" class="form-control" id="username" placeholder="USER NAME" th:field="*{username}"/>-->
-                        <!--</div>-->
-
-                    </div>
-
-                    <!--<div class="form-row">-->
-
-                        <!--<div class="form-group col-md-6">-->
-                            <!--<label for="picture">PASSWORD</label>-->
-                            <!--<input type="password" class="form-control" id="picture" placeholder="PASSWORD" th:field="*{password}"/>-->
-                        <!--</div>-->
-
-                        <!--<div class="form-group col-md-6">-->
-                            <!--<label for="username">USER NAME</label>-->
-                            <!--<input type="text" class="form-control" id="username" placeholder="USER NAME" th:field="*{username}"/>-->
-                        <!--</div>-->
-
-                    <!--</div>-->
-
-
-
-
-
-
-
-
-
-
-                    <!---->
-                    <!--<div class="form-group">-->
-                        <!--<label for="inputAddress">Address</label>-->
-                        <!--<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">-->
-                    <!--</div>-->
-                    <!--<div class="form-group">-->
-                        <!--<label for="inputAddress2">Address 2</label>-->
-                        <!--<input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">-->
-                    <!--</div>-->
-                    <!--<div class="form-row">-->
-                        <!--<div class="form-group col-md-6">-->
-                            <!--<label for="inputCity">City</label>-->
-                            <!--<input type="text" class="form-control" id="inputCity">-->
-                        <!--</div>-->
-                        <!--<div class="form-group col-md-4">-->
-                            <!--<label for="inputState">State</label>-->
-                            <!--<select id="inputState" class="form-control">-->
-                                <!--<option selected>Choose...</option>-->
-                                <!--<option>...</option>-->
-                            <!--</select>-->
-                        <!--</div>-->
-                        <!--<div class="form-group col-md-2">-->
-                            <!--<label for="inputZip">Zip</label>-->
-                            <!--<input type="text" class="form-control" id="inputZip">-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="form-group">-->
-                        <!--<div class="form-check">-->
-                            <!--<input class="form-check-input" type="checkbox" id="gridCheck">-->
-                            <!--<label class="form-check-label" for="gridCheck">-->
-                                <!--Check me out-->
-                            <!--</label>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-
-
-                    <!--<button id="butt" type="submit" class="btn btn-primary">SUBMIT</button>-->
-
-
-
-
-
-                    <!-- Button trigger modal -->
-                    <button type="button" id="butt" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-                        DELETE JOB
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header" id="header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">DELETE JOB</h5>
-                                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                                    <!--<span aria-hidden="true">&times;</span>-->
-                                    <!--</button>-->
-                                </div>
-                                <div class="modal-body">
-                                    Are you sure you want to <span class="text-danger">DELETE </span><span th:text="*{job.title}"> ?</span>
-                                </div>
-                                <div class="modal-footer">
-                                    <button id="butt" type="button" class="btn" data-dismiss="modal">Close</button>
-                                    <button id="butt" type="submit" class="btn">Save changes</button>
+                            <div th:if="${notifications.size() > 0}">
+                                <div th:each="notification : ${notifications}">
+                                    <h6 th:text="${notification.message}"></h6>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                </form>
-
-
+                <div></div>
             </div>
         </div>
-        <div class="card-footer text-muted" id="header">
+    </div>
+    <hr/>
+</div>
 
-            <!--<div class="red" th:if="${param.error}">-->
-                <!--Invalid Username and Password.-->
-            <!--</div>-->
-            <!--<div class="red" th:if="${param.logout}">-->
-                <!--You have been logged out.-->
-            <!--</div>-->
 
+<div class="container">
+    <div class="row">
+
+            <h1>Applications Dashboard</h1>
+        <div th:each="startup : ${user.startups}">
+            <div th:each="job : ${startup.jobs}">
+                <div th:if="${job.resumes.size() > 0}">
+                    <div th:each="resume : ${job.resumes}">
+                        <h6><span th:text="${resume.owner.first_name}"></span> has applied to position <span th:text="${job.title}"></span> at <span th:text="${startup.name}"></span>
+                            <span><a th:href="@{${resume.path}}">Click here to view submitted resume</a></span></h6>
+                        <form th:action="@{'/resume/' + ${job.id} + '/pass/' + ${resume.id}}" method="post">
+                            <input type="submit" class="btn btn-primary btn-sm" value="not Interested" />
+                        </form><br/>
+                        <form th:action="@{'/resume/' + ${job.id} + '/interested/' + ${resume.owner.id}}"
+                              method="post">
+                            <input type="submit" class="btn btn-primary btn-sm" value="Interested" />
+                        </form>
+                    </div>
+                </div>
+                <hr/>
+            </div>
         </div>
+    </div>
+
+    <!--<h1 th:text="${user.resume.path}"></h1>-->
+
+    <!--<div th:each="startup : ${user.startups}">-->
+    <!--<a th:href="@{'/showpage/' + ${startup.id}}" th:text="${startup.name}"></a>-->
+    <!--<div th:each="job : ${startup.jobs}">-->
+    <!--<p th:text="${job.title}"></p>-->
+    <!--<p th:text="${job.description}"></p>-->
+
+    <!--<div th:if="${job.resumes.size() > 0}">-->
+    <!--<h1>Your resume</h1>-->
+    <!--<div th:each="resume : ${job.resumes}">-->
+    <!--<a th:href="@{${resume.path}}">Click here to view submitted resume</a>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--<div th:if="${job.resumes.size() == 0}">-->
+
+
+    <!--</div>-->
+
+    <!--</div>-->
+    <!--</div>-->
+
 </div>
+
 </div>
 
+<th:block th:replace="fragments/head :: scripts"/>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--<th:block th:replace="fragments/head :: scripts" />-->
-
-
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
-
-
-
-
-
-
+<script>
+    document.getElementById("resumeButton").addEventListener("click", function () {
+        var client = filestack.init('ANjhOz5feQ0OWiw2r1EEgz');
+        client.picker({
+            onFileUploadFinished: function (response) {
+                this.value = "https://cdn.filestackcontent.com/" + (response.handle);
+                document.getElementById("resumeFile").value = this.value
+            }
+        }).open();
+    })
+</script>
 
 
 </body>
