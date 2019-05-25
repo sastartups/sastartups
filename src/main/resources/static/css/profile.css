@@ -1,0 +1,17 @@
+
+.col-lg-3 {
+    background-color: hsla(199, 38%, 41%, 0.22);
+    color: white;
+}
+
+.btn-outline-secondary{
+    color: white;
+}
+
+.tab-pane{
+    margin-top: 50px;
+}
+
+body{
+    background-image: url("/img/formback.png");
+}
