@@ -1,173 +1,120 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-    <head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
 
-        <title>Title</title>
-
-        <!-- adding meta, bootstrap link, google fonts -->
-        <th:block th:replace="fragments/head :: header" />
-        <th:block th:replace="fragments/navbar :: navbarCss" />
-
-        <!-- Mail Trap Api -->
-        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
-        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet'/>
-
-        <link rel="stylesheet" type="text/css" href="/css/showone.css"/>
-
-    </head>
-    <body>
+    <th:block th:replace="fragments/head :: header" />
 
 
-        <th:block th:replace="fragments/navbar :: navbar"/>
+    <!-- css links -->
+    <th:block th:replace="fragments/navbar :: navbarCss" />
 
-        <div id="container1" class="container">
-            <div class="row">
-                <div id="img" class="col-md-2">
-                    <img th:src="${oneStartup.profile_img}" style="height: 100%; width: 100%;" alt="profile img"/>
-                </div>
-                <div class="col-md-4 offset-md-2 d-md-none d-lg-none d-xl-none" style="margin-top: -8rem;">
-                    <div class="d-md-none d-lg-none d-xl-none">
-                        <h4>company name:</h4>
-                        <h2 th:text="${oneStartup.name}"></h2>
-                    </div>
-                </div>
-                <div id="coverImg" class="col-md-10" th:style="'background-image:url(' + ${oneStartup.getCover_img()} + ');'">
-                    <br/><br/><br/><br/><br/>
-                    <h2 id="name" th:text="${oneStartup.name}" style="background-color: white; opacity: .7;"></h2>
-                </div>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+    <link rel="stylesheet" type="text/css" href="/css/showone.css" />
+
+</head>
+<body>
+
+<th:block th:replace="fragments/navbar :: navbar"/>
+
+<div id="container1" class="container">
+    <div class="row">
+        <div id="img" class="col-md-2">
+            <img th:src="${oneStartup.profile_img}" style="height: 100%; width: 100%;" alt="profile img"/>
+        </div>
+        <div class="col-md-4 offset-md-2 d-md-none d-lg-none d-xl-none" style="margin-top: -8rem;">
+            <div class="d-md-none d-lg-none d-xl-none">
+                <h4>company name:</h4>
+                <h2 th:text="${oneStartup.name}"></h2>
             </div>
         </div>
+        <div id="coverImg" class="col-md-10" th:style="'background-image:url(' + ${oneStartup.getCover_img()} + ');'">
+            <br/><br/><br/><br/><br/>
+            <h2 id="name" th:text="${oneStartup.name}" style="background-color: white; opacity: .7;"></h2>
+        </div>
+    </div>
+</div>
 
-        <div id="profileImg" class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div id='map' style='width: 100%; height: 15rem;'></div>
-                    <h4>company address:</h4>
-                    <p id="address" th:text="${oneStartup.address}"></p>
+<div id="con1" class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h4>company address:</h4>
+            <p id="address" th:text="${oneStartup.address}"></p>
+            <div id='map' style='width: 100%; height: 15rem;'></div>
+        </div>
+        <div class="col-md-8">
+            <h4>company description:</h4>
+            <p th:text="${oneStartup.description}"></p>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Jobs available</h4>
+            <hr />
+        </div>
+    </div>
+    <div th:each="item : ${oneStartup.jobs}">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>job title</h4>
+                <p th:text="${item.title}"></p>
+                <div th:each="item : ${oneStartup.jobs}">
                 </div>
-                <div class="col-md-6">
-                    <h4>company description:</h4>
-                    <p th:text="${oneStartup.description}"></p>
-                </div>
-                <hr/>
+            </div>
+            <div class="col-md-8">
+                <h4>job description</h4>
+                <p th:text="${item.description}"></p>
             </div>
         </div>
-
-        <div th:if="${oneStartup.jobs.size() > 0}">
+        <form th:action="@{'/apply/' + ${item.id} }" method="POST">
+            <button class="btn btn-outline-success">Easy Apply</button>
+        </form>
         <hr/>
-        <div id="Con3" class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h4 id="jobs">Jobs available</h4>
-                    <hr/>
-                </div>
-            </div><br/>
-            <div th:each="item : ${oneStartup.jobs}">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h4 id="jobTitle">job title</h4>
-                        <p th:text="${item.title}"></p>
+    </div>
+</div><br/><br/><br/>
 
-                        <!--<div th:each="item : ${oneStartup.jobs}">-->
-
-                        <form th:action="@{'/apply/' + ${item.id} }" method="POST">
-
-                            <!--old button-->
-                            <!--<button class="btn btn-outline-success">Easy Apply</button>-->
-
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-                                Easy Apply
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header" id="modal">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">SEND MY RESUME</h5>
-                                            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                                            <!--<span aria-hidden="true">&times;</span>-->
-                                            <!--</button>-->
-                                        </div>
-                                        <div class="modal-body">
-                                            You are applying for <span th:text="${item.title}"></span> job at <span th:text="${oneStartup.name}"></span>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">SEND</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <div sec:authorize="isAuthenticated()">
-                            <div th:if="${#authentication.principal.id == oneStartup.user.id}">
-                                <br/>
-                                <button class="btn btn-outline-danger btn-small" style="margin: .5rem;"><a th:href="@{'/job/' + ${item.id} + '/delete'}">delete
-                                    job</a></button>
-
-                                <!--edit one job-->
-                                <button class="btn btn-outline-warning btn-small"><a th:href="@{'/job/' + ${item.id} + '/edit'}">edit
-                                    job</a></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <h4>job description</h4>
-                        <p th:text="${item.description}"></p>
-                    </div>
-                </div>
-                <hr/>
-            </div>
-        </div>
-        <br/>
-        </div>
-
-        <th:block th:replace="fragments/head :: scripts" />
-        
-            <script>
-
-                mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA';
-
-                var map = new mapboxgl.Map({
-                    container: 'map',
-                    style: 'mapbox://styles/mapbox/light-v10',
-                    zoom: 13
-                });
-
-                let address = document.getElementById("address").innerText;
-
-                geocode(address, "pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA").then(function (data) {
-
-                    map.setCenter(data);
-                    var marker = new mapboxgl.Marker({
-                        draggable: true
-                    })
-                        .setLngLat(data)
-                        .addTo(map);
-
-                    map.addControl(new MapboxGeocoder({
-                        accessToken: mapBoxKey
-
-                    }));
-
-                });
+<th:block th:replace="fragments/head :: scripts" />
 
 
-                function geocode(search, token) {
-                    var baseUrl = 'https://api.mapbox.com';
-                    var endPoint = '/geocoding/v5/mapbox.places/';
-                    return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-                        .then(function (res) {
-                            return res.json();
-                            // to get all the data from the request, comment out the following three lines...
-                        }).then(function (data) {
-                            return data.features[0].center;
-                        });
-                }
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v10',
+        zoom: 13
+    });
+    let address = document.getElementById("address").innerText;
+    geocode(address, "pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA").then(function (data) {
+        map.setCenter(data);
+        var marker = new mapboxgl.Marker({
+            draggable: true
+        })
+            .setLngLat(data)
+            .addTo(map);
+        map.addControl(new MapboxGeocoder({
+            accessToken: mapBoxKey
+        }));
+    });
+    function geocode(search, token) {
+        var baseUrl = 'https://api.mapbox.com';
+        var endPoint = '/geocoding/v5/mapbox.places/';
+        return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+            .then(function(res) {
+                return res.json();
+                // to get all the data from the request, comment out the following three lines...
+            }).then(function(data) {
+                return data.features[0].center;
+            });
+    }
+</script>
 
-            </script>
-
-    </body>
+</body>
 </html>

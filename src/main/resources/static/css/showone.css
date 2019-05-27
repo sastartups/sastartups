@@ -11,7 +11,10 @@ body {
     border-radius: .3rem;
 }
 
-
+#con1 {
+    background-color: white;
+    border-radius: .3rem;
+}
 
 #showoneCon1 {
     margin-left: 0;
