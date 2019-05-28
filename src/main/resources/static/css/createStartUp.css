@@ -19,6 +19,14 @@ body {
     padding-top: 1rem;
 }
 
+p{
+    font-family: 'Roboto', sans-serif;
+}
+
+h* {
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
 #description {
     resize: none;
     height: 10rem;

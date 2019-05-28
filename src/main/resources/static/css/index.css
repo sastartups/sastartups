@@ -12,18 +12,22 @@ body {
 }
 
 p {
-    font-family: 'Carrois Gothic', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin-top: -7px;
     margin-bottom: 1rem;
     font-size: 115%;
 }
 
 h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'PT Sans', sans-serif;
 }
 
 h3 {
-    font-family: 'Carrois Gothic', sans-serif;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+h4 {
+    font-family: 'PT Sans Narrow', sans-serif;
 }
 
 img {
@@ -97,7 +101,7 @@ div#element3 {
 
 #container3 p {
     font-size: 1.5rem;
-    font-family: 'Carrois Gothic', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin-left: -20px;
 }
 
