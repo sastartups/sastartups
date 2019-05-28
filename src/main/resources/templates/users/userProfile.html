@@ -49,9 +49,14 @@
                         <input id="resumeButton" type="button" class="btn btn-block btn-outline-secondary" value="Upload resume"/>
                         <input class="btn btn-block btn-outline-secondary mb-2" type="submit" value="submit"/>
                     </form>
-
+                    <div><button type="button" class="mb-2 btn btn-block btn-outline-secondary"><a style="color: white;text-decoration: none" th:href="@{${user.resume.path}}">My resume</a></button></div>
                 </div>
+
             </div>
+
+            <!--<div class="row" th:if="${user.resume.path.length() > 0}">-->
+                <!--<div class="col"><button type="button" class="btn btn-block btn-outline-secondary"><a style="color: white;text-decoration: none" th:href="@{${user.resume.path}}">My resume</a></button></div>-->
+            <!--</div>-->
 
 
 <!-- startups names-->
@@ -178,6 +183,9 @@
                     <div th:if="${notifications.size() > 0}">
                         <div th:each="notification : ${notifications}">
                             <h6 th:text="${notification.message}"></h6>
+                            <form th:action="@{'/delete/'+ ${notification.id} + '/notification'}" method="post">
+                                <button class="btn btn-outline-danger btn-block">Delete Notification</button>
+                            </form>
                         </div>
                     </div>
 

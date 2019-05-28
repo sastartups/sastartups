@@ -286,5 +286,11 @@ public class UserController {
 
     }
 
+    @PostMapping("/delete/{id}/notification")
+    public String deleteNotification(@PathVariable long id){
+        notificationRepo.delete(id);
+        return "redirect:/userProfile";
+    }
+
 
 }
