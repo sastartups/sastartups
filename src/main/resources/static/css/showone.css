@@ -4,6 +4,15 @@ body {
     max-width: 100%;
     overflow-x: hidden;
     background-image: url("/img/formback.png");
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
+h*{
+    font-family: 'PT Sans Narrow', sans-serif;
 }
 
 #container1 {

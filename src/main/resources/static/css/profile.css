@@ -1,3 +1,11 @@
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
+h*{
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
 
 .col-lg-3 {
     background-color: hsla(199, 38%, 41%, 0.22);
