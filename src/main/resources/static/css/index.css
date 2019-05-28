@@ -160,7 +160,7 @@ div#element3 {
 @media (max-width: 767.98px) {
 
     div#element3 {
-        margin-top: -7rem;
+        margin-top: 0;
     }
 
 }
