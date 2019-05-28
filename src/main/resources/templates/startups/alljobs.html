@@ -39,13 +39,16 @@
                         <div th:each="job : ${jobs}">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>Company: <span th:text="${job.startup.name}"></span></h5>
+                                    <a th:href="@{'/showpage/' + ${job.startup.id}}"><h5>Company: <span th:text="${job.startup.name}"></span></h5></a>
                                 </div>
                                 <div class="card-body">
                                     Title:<h5 class="card-title" th:text="${job.title}"></h5>
                                     Description:<br/>
                                     <p class="card-text" th:text="${job.description}"></p>
-                                    <a href="#" class="btn btn-primary">Apply</a>
+                                    <form th:action="@{'/apply/' + ${job.startup.id} }" method="POST">
+                                        <input type="hidden" th:value="${job.startup.id}" th:name="id"/>
+                                        <input class="btn btn-primary btn-sm" value="apply" type="submit" />
+                                    </form>
                                 </div>
                             </div>
                         </div>
