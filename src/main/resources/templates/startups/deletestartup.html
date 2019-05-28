@@ -23,12 +23,12 @@
 
 <div id="center">
 
-    <div class="card text-center">
+    <div class="card text-center shadow-lg mb-5 rounded">
         <div id="header" class="card-header">
-            <span class="text-danger">DELETE </span><span class="text-warning" th:text="*{startup.name}"></span> STARTUP ?
+            <span class="text-danger">DELETE </span><span class="text-warning" th:text="*{startup.name}"></span> ?
         </div>
         <div class="card-body">
-            <h5 class="card-title">WELCOME TO GrowTech-SA</h5>
+            <h5 class="card-title">GrowTech-SA</h5>
             <div class="card-text">
 
 
@@ -70,7 +70,7 @@
 
                         <div class="form-group col-md-12">
                             <label>STARTUP DESCRIPTION</label>
-                            <h5 class="form-control" th:text="*{startup.description}"></h5>
+                            <p style="border: solid 1px #ced4d4; color: #495056" th:text="*{startup.description}"></p>
                         </div>
 
                         <!--<div class="form-group col-md-6">-->
