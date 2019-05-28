@@ -36,7 +36,7 @@ img {
 
 /* container-1 */
 #container1 {
-    height: 28rem;
+    height: 31rem;
     margin: 0;
     padding: 0;
     max-width: 100%;
@@ -100,6 +100,15 @@ div#element3 {
 #container3 p {
     font-size: 1.5rem;
     font-family: 'Carrois Gothic', sans-serif;
+    margin-left: -20px;
+}
+
+#growingT {
+    padding-left: 15px;
+}
+
+#growingE{
+    padding-left: 15px;
 }
 
 #smalllogo {

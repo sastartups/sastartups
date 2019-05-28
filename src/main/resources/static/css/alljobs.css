@@ -25,13 +25,15 @@ p{
 }
 
 .card-header {
-    background-color: lightgrey;
+    background-color: #f0f2f9;
 }
 
 #con1 {
     background-color: white;
+    border-radius: .2rem;
 }
 
 #con2{
     background-color: white;
+    border-radius: .2rem;
 }
