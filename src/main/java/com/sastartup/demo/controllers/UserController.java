@@ -198,11 +198,17 @@ public class UserController {
     }
 
     @PostMapping("/apply/{id}")
-    public String easyApply(@PathVariable long id) {
-        Job job = jobDao.findOne(id);
-        List<Resume> jobResumes = job.getResumes();
+    public String easyApply(@PathVariable long id, Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
+
+
+        if(dbUser.getResume() == null){
+            return "redirect:/userProfile";
+        }
+
+        Job job = jobDao.findOne(id);
+        List<Resume> jobResumes = job.getResumes();
         Resume userResume = resumeDao.findByOwnerId(dbUser.getId());
         jobResumes.add(userResume);
         jobDao.save(job);

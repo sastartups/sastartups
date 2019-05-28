@@ -40,23 +40,26 @@
                 <div class="col"><button type="button" class="btn btn-block btn-outline-secondary"><a style="color: white;text-decoration: none" th:href="@{/create/startup}">Create start up</a></button></div>
             </div>
 
+            <div th:if="${uploadResume != null }" class="row">
+                <div>
+                    <span th:text="${uploadResume}"></span>
+                </div>
+            </div>
+
             <!--upload and submit resume-->
             <div class="row">
                 <div class="col">
-
                     <form class="mt-2" th:action="@{/submit-resume}" th:method="POST" th:object="${resume}">
                         <input id="resumeFile" th:field="*{path}" type="hidden"/>
                         <input id="resumeButton" type="button" class="btn btn-block btn-outline-secondary" value="Upload resume"/>
                         <input class="btn btn-block btn-outline-secondary mb-2" type="submit" value="submit"/>
                     </form>
-                    <div><button type="button" class="mb-2 btn btn-block btn-outline-secondary"><a style="color: white;text-decoration: none" th:href="@{${user.resume.path}}">My resume</a></button></div>
                 </div>
-
             </div>
 
-            <!--<div class="row" th:if="${user.resume.path.length() > 0}">-->
-                <!--<div class="col"><button type="button" class="btn btn-block btn-outline-secondary"><a style="color: white;text-decoration: none" th:href="@{${user.resume.path}}">My resume</a></button></div>-->
-            <!--</div>-->
+            <div class="row" th:if="${user.resume != null}">
+                <div class="col"><button type="button" class="mb-2 btn btn-block btn-outline-secondary"><a style="color: white;text-decoration: none" th:href="@{${user.resume.path}}">My resume</a></button></div>
+            </div>
 
 
 <!-- startups names-->
