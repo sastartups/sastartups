@@ -78,9 +78,26 @@
                 <p th:text="${item.description}"></p>
             </div>
         </div>
-        <form th:action="@{'/apply/' + ${item.id} }" method="POST">
-            <button class="btn btn-outline-success">Easy Apply</button>
-        </form>
+
+        <div sec:authorize="isAuthenticated()">
+        <div th:if="${#authentication.principal.id != oneStartup.user.id}">
+
+            <form th:action="@{'/apply/' + ${item.id} }" method="POST">
+                <button class="btn btn-outline-success">Easy Apply</button>
+            </form>
+
+        </div>
+        </div>
+<!--delete job-->
+        <div sec:authorize="isAuthenticated()">
+
+            <div th:if="${#authentication.principal.id == oneStartup.user.id}">
+
+               <a class="btn btn-outline-danger" style="text-decoration: none" th:href="@{'/job/' + ${item.id} + '/delete'}">Delete Job</a>
+<!--edit one job-->
+                <a class="btn btn-outline-warning" style="text-decoration: none" th:href="@{'/job/' + ${item.id} + '/edit'}">Edit Job</a>
+            </div>
+        </div>
         <hr/>
     </div>
 </div>
@@ -88,37 +105,39 @@
 <th:block th:replace="fragments/head :: scripts" />
 
 
-<script>
-    mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/light-v10',
-        zoom: 13
-    });
-    let address = document.getElementById("address").innerText;
-    geocode(address, "pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA").then(function (data) {
-        map.setCenter(data);
-        var marker = new mapboxgl.Marker({
-            draggable: true
-        })
-            .setLngLat(data)
-            .addTo(map);
-        map.addControl(new MapboxGeocoder({
-            accessToken: mapBoxKey
-        }));
-    });
-    function geocode(search, token) {
-        var baseUrl = 'https://api.mapbox.com';
-        var endPoint = '/geocoding/v5/mapbox.places/';
-        return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-            .then(function(res) {
-                return res.json();
-                // to get all the data from the request, comment out the following three lines...
-            }).then(function(data) {
-                return data.features[0].center;
-            });
-    }
-</script>
+
+
+                    <script>
+                                mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA';
+                                var map = new mapboxgl.Map({
+                                    container: 'map',
+                                    style: 'mapbox://styles/mapbox/light-v10',
+                                    zoom: 13
+                                });
+                                let address = document.getElementById("address").innerText;
+                                geocode(address, "pk.eyJ1Ijoiam9zaG02ODE2IiwiYSI6ImNqc2tpa3Z6djA5dG8zem1sYXc4MTk4c3IifQ.leH7wLeVDAnfIgNHDqwSUA").then(function (data) {
+                                    map.setCenter(data);
+                                    var marker = new mapboxgl.Marker({
+                                        draggable: true
+                                    })
+                                        .setLngLat(data)
+                                        .addTo(map);
+                                    map.addControl(new MapboxGeocoder({
+                                        accessToken: mapBoxKey
+                                    }));
+                                });
+                                function geocode(search, token) {
+                                    var baseUrl = 'https://api.mapbox.com';
+                                    var endPoint = '/geocoding/v5/mapbox.places/';
+                                    return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+                                        .then(function(res) {
+                                            return res.json();
+                                            // to get all the data from the request, comment out the following three lines...
+                                        }).then(function(data) {
+                                            return data.features[0].center;
+                                        });
+                                }
+                    </script>
 
 </body>
 </html>
