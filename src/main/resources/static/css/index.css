@@ -187,7 +187,7 @@ div#element3 {
 }
 
 .ml5 .ampersand {
-    font-family: Baskerville, "EB Garamond", serif;
+    /*font-family: Baskerville, "EB Garamond", serif;*/
     font-style: italic;
     font-weight: 400;
     width: 1em;
