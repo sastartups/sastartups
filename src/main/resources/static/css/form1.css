@@ -1,0 +1,36 @@
+body{
+    background-image: url("/img/formback.png");
+}
+
+#center{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 3%;
+}
+
+#header{
+    background-color: #f0f2f9;
+}
+#butt{
+    background-color: #06baf8;
+}
+.red{
+    color: #c50009;
+}
+
+.uploadbutt{
+    background-color: rgba(239, 106, 40, 0.73);
+    color: white;
+}
+
+@media (max-width: 576px) {
+
+    #center{
+        width: 100%;
+        margin-left: 1%;
+        margin-right: 1%;
+        margin-top: 2%;
+    }
+
+}
+
