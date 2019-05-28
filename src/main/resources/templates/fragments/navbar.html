@@ -80,12 +80,12 @@
                     <!--<a class="nav-link" th:href="@{/userProfile}">Profile</a>-->
                     <!--</li>-->
                     <!--</div>-->
-                    <div th:if="${user != null}">
+                    <div th:if="${user != null &amp;&amp; count > 0}">
                         <div sec:authorize="isAuthenticated()">
                             <li class="nav-item dropleft">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown"
                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    +
+                                    <span class="badge badge-light" th:text="${count}"></span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a th:each="notification : ${navNotifications}" th:text="${notification.message}" class="dropdown-item"></a>

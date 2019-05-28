@@ -40,7 +40,9 @@ public class StartupController {
             User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User dbUser = userDao.findOne(sessionUser.getId());
             vmodel.addAttribute("user", dbUser);
+            vmodel.addAttribute("count", notificationRepo.countByUser(dbUser));
             vmodel.addAttribute("navNotifications", notificationRepo.findTop4ByUserOrderByIdDesc(dbUser));
+
 
         } else {
             vmodel.addAttribute("user", null);
@@ -58,6 +60,8 @@ public class StartupController {
             User dbUser = userDao.findOne(sessionUser.getId());
             vmodel.addAttribute("user", dbUser);
             vmodel.addAttribute("navNotifications", notificationRepo.findTop4ByUserOrderByIdDesc(dbUser));
+            vmodel.addAttribute("count", notificationRepo.countByUser(dbUser));
+
 
         } else {
             vmodel.addAttribute("user", null);
@@ -73,6 +77,7 @@ public class StartupController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
         model.addAttribute("user", dbUser);
+        model.addAttribute("count", notificationRepo.countByUser(dbUser));
         model.addAttribute("startupId", id);
         return "startups/create-job-posting";
     }
@@ -104,6 +109,7 @@ public class StartupController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
         vmodel.addAttribute("user", dbUser);
+        vmodel.addAttribute("count", notificationRepo.countByUser(dbUser));
         Job job = jobDao.findOne(id);
         vmodel.addAttribute("job", job);
         return ("startups/deletejob");
@@ -135,6 +141,8 @@ public class StartupController {
         User dbUser = userDao.findOne(sessionUser.getId());
         vmodel.addAttribute("user", dbUser);
         vmodel.addAttribute("navNotifications", notificationRepo.findTop4ByUserOrderByIdDesc(dbUser));
+        vmodel.addAttribute("count", notificationRepo.countByUser(dbUser));
+
 
         Job job = jobDao.findOne(id);
         vmodel.addAttribute("job", job);
@@ -164,6 +172,8 @@ public class StartupController {
             User dbUser = userDao.findOne(sessionUser.getId());
             model.addAttribute("user", dbUser);
             model.addAttribute("navNotifications", notificationRepo.findTop4ByUserOrderByIdDesc(dbUser));
+            model.addAttribute("count", notificationRepo.countByUser(dbUser));
+
 
         } else {
             model.addAttribute("user", null);

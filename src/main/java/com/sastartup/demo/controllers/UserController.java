@@ -84,6 +84,7 @@ public class UserController {
         User dbUser = userDao.findOne(sessionUser.getId());
         model.addAttribute("navNotifications", notificationRepo.findTop4ByUserOrderByIdDesc(dbUser));
         model.addAttribute("user", dbUser);
+        model.addAttribute("count", notificationRepo.countByUser(dbUser));
         model.addAttribute("startup", new Startup());
         return "users/create-startup";
     }
@@ -122,6 +123,8 @@ public class UserController {
         vmodel.addAttribute("startup", startup);
         User sessionuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbuser = userDao.findOne(sessionuser.getId());
+        vmodel.addAttribute("count", notificationRepo.countByUser(dbuser));
+
         vmodel.addAttribute("user", dbuser);
         return "startups/editstartup";
     }
@@ -145,6 +148,7 @@ public class UserController {
         User sessionuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbuser = userDao.findOne(sessionuser.getId());
         vmodel.addAttribute("user", dbuser);
+        vmodel.addAttribute("count", notificationRepo.countByUser(dbuser));
         vmodel.addAttribute("startup", startup);
         return ("startups/deletestartup");
     }
@@ -186,6 +190,7 @@ public class UserController {
         model.addAttribute("user", dbUser);
         model.addAttribute("notifications", notificationRepo.findByUserOrderByIdDesc(dbUser));
         model.addAttribute("navNotifications", notificationRepo.findTop4ByUserOrderByIdDesc(dbUser));
+        model.addAttribute("count", notificationRepo.countByUser(dbUser));
 
 //        model.addAttribute("resumes", resumeDao.findByOwner(dbUser));
 //        model.addAttribute("applicants", )
@@ -228,6 +233,7 @@ public class UserController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
         model.addAttribute("user", dbUser);
+        model.addAttribute("count", notificationRepo.countByUser(dbUser));
         return "users/edit-user-profile";
     }
 

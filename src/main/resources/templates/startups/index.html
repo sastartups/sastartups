@@ -50,7 +50,7 @@
                                 <a class="nav-link" th:href="@{/create/startup}">Create startup</a>
                             </li>
                         </div>
-                        <div th:if="${user != null}">
+                        <div th:if="${user != null &amp;&amp; count > 0}">
                             <div sec:authorize="isAuthenticated()">
                                 <li class="nav-item dropleft">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown"
