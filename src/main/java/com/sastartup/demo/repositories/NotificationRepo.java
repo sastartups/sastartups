@@ -12,4 +12,5 @@ import java.util.List;
 public interface NotificationRepo extends CrudRepository<Notification,Long> {
     List<Notification> findByUserOrderByIdDesc(User user);
     List<Notification> findTop4ByUserOrderByIdDesc(User user);
+    Long countByUser(User user);
 }

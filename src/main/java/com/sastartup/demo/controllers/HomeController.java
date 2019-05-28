@@ -37,6 +37,7 @@ public class HomeController {
             User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User dbUser = userDao.findOne(sessionUser.getId());
             model.addAttribute("user", dbUser);
+            model.addAttribute("count", notificationRepo.countByUser(dbUser));
             model.addAttribute("navNotifications", notificationRepo.findTop4ByUserOrderByIdDesc(dbUser));
         } else {
             model.addAttribute("user", null);
