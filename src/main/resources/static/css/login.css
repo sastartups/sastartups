@@ -11,6 +11,14 @@ body {
     background-repeat: no-repeat;
 }
 
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
+h*{
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
 #loginCon {
     margin-top: 3rem;
     background-color: #647e9f;

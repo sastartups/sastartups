@@ -6,10 +6,19 @@ body {
     background-size: cover;
     overflow-x: hidden;
     max-width: 100%;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
+h*{
+    font-family: 'PT Sans Narrow', sans-serif;
 }
 
 h2{
-    font-family: 'Carrois Gothic', sans-serif;
+    font-family: 'PT Sans Narrow', sans-serif;
 }
 
 .hidden {

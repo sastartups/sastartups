@@ -3,6 +3,15 @@ body {
     padding: 0;
     max-width: 100%;
     overflow-x: hidden;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
+h*{
+    font-family: 'PT Sans Narrow', sans-serif;
 }
 
 h2 {
