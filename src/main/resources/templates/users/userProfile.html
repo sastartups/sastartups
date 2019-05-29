@@ -49,10 +49,10 @@
             <!--upload and submit resume-->
             <div class="row">
                 <div class="col">
-                    <form class="mt-2" th:action="@{/submit-resume}" th:method="POST" th:object="${resume}">
+                    <form th:name="resumeForm" class="mt-2 mb-2" th:action="@{/submit-resume}" th:method="POST" th:object="${resume}">
                         <input id="resumeFile" th:field="*{path}" type="hidden"/>
                         <input id="resumeButton" type="button" class="btn btn-block btn-outline-secondary" value="Upload resume"/>
-                        <input class="btn btn-block btn-outline-secondary mb-2" type="submit" value="submit"/>
+                        <!--<input class="btn btn-block btn-outline-secondary mb-2" type="submit" value="submit"/>-->
                     </form>
                 </div>
             </div>
@@ -254,9 +254,11 @@
                                             onFileUploadFinished: function (response) {
                                                 this.value = "https://cdn.filestackcontent.com/" + (response.handle);
                                                 document.getElementById("resumeFile").value = this.value
+                                                document.forms["resumeForm"].submit();
                                             }
                                         }).open();
                                     })
+
                                 </script>
 
 

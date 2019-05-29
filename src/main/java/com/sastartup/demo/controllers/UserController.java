@@ -248,7 +248,7 @@ public class UserController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User dbUser = userDao.findOne(sessionUser.getId());
         updatedUser.setId(dbUser.getId());
-        if (updatedUser.getPassword() == null) {
+        if (updatedUser.getPassword().equals("")) {
             updatedUser.setPassword(dbUser.getPassword());
         } else {
             updatedUser.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
