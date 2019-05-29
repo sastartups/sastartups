@@ -135,6 +135,10 @@ div#element3 {
     color: black;
 }
 
+#footer h4 {
+    margin-left: 3rem;
+}
+
 #footer hr {
     border-top: 1px solid black;
 }
@@ -159,8 +163,17 @@ div#element3 {
 
 @media (max-width: 767.98px) {
 
+    #title {
+        font-size: x-large;
+    }
+
     div#element3 {
-        margin-top: 0;
+        margin-top: 3rem;
+    }
+
+    .para2 {
+        padding-left: 3rem;
+        padding-right: 3rem;
     }
 
 }
