@@ -73,6 +73,7 @@
                                             <form th:action="@{'/apply/' + ${job.id} }" method="POST">
                                                 <!--<button class="btn btn-outline-success">Easy Apply</button>-->
                                                 <input type="hidden" th:value="${job.id}" th:name="id"/>
+
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-primary" id="butt" data-toggle="modal" data-target="#exampleModalLong">
                                                     Easy Apply
