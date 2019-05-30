@@ -28,7 +28,7 @@
 
             <!--welcome user-->
             <div class="row">
-                <div class="col"><h3>welcome <span th:text="${user.first_name}"></span></h3></div>
+                <div class="col"><h3>Welcome <span th:text="${user.first_name}"></span></h3></div>
             </div>
             <!--edit user profile-->
             <div class="row mb-2">
@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col">
                     <button type="button" class="btn btn-block btn-outline-secondary"><a
-                            style="color: white;text-decoration: none" th:href="@{/create/startup}">Create start up</a>
+                            style="color: white;text-decoration: none" th:href="@{/create/startup}">Create Startup</a>
                     </button>
                 </div>
             </div>
@@ -94,13 +94,16 @@
 
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                       aria-controls="nav-profile" aria-selected="true">Dashboard</a>
+
                         <a th:if="${user.startups.size() > 0}" class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home"
                            role="tab"
                            aria-controls="nav-home" aria-selected="false">Startups</a>
-                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-                       aria-controls="nav-profile" aria-selected="false">Dashboard</a>
+
                         <a th:if="${user.resume != null &amp;&amp; user.resume.jobs.size() > 0}" class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
-                           role="tab" aria-controls="nav-contact" aria-selected="false">Submission</a>
+                           role="tab" aria-controls="nav-contact" aria-selected="false">Applications</a>
                 </div>
             </nav>
 
@@ -216,7 +219,7 @@
                         <div th:each="notification : ${notifications}">
                             <h6 th:text="${notification.message}"></h6>
                             <form th:action="@{'/delete/'+ ${notification.id} + '/notification'}" method="post">
-                                <button class="btn btn-outline-danger btn-block">Delete Notification</button>
+                                <button class="btn btn-outline-danger">Delete Notification</button>
                             </form>
                         </div>
                     </div>
