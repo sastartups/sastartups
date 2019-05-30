@@ -64,55 +64,6 @@
                                         <!--<input class="btn btn-primary btn-sm" value="apply" type="submit" />-->
                                     <!--</form>-->
 
-
-
-
-                                    <div sec:authorize="isAuthenticated()">
-                                        <div th:if="${#authentication.principal.id != job.startup.user.id}">
-
-                                            <form th:action="@{'/apply/' + ${job.id} }" method="POST">
-                                                <!--<button class="btn btn-outline-success">Easy Apply</button>-->
-                                                <input type="hidden" th:value="${job.id}" th:name="id"/>
-
-                                                <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary" id="butt" data-toggle="modal" data-target="#exampleModalLong">
-                                                    Easy Apply
-                                                </button>
-
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header" id="header">
-                                                                <h5 class="modal-title" id="exampleModalLongTitle">Easy Apply</h5>
-                                                                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                                                                <!--<span aria-hidden="true">&times;</span>-->
-                                                                <!--</button>-->
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                You are Applying for <span th:text="${job.title}"></span>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button id="butt" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                                                <button id="butt" type="submit" class="btn btn-primary">Apply</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                            </form>
-
-                                        </div>
-                                    </div>
-
-
-
-
-
-
-
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -120,6 +71,7 @@
             </div>
 
         <th:block th:replace="fragments/head :: scripts" />
+            </div>
 
     </body>
 </html>
