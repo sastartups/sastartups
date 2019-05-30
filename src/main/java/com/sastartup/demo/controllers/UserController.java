@@ -45,6 +45,10 @@ public class UserController {
 
     }
 
+    @GetMapping("/us")
+    public String us(){
+        return "us";
+    }
 
     @GetMapping("/sign-up")
     public String registerForm(Model model) {
