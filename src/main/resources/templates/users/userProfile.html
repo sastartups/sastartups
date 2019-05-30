@@ -6,12 +6,10 @@
 
     <!-- bootstrap, meta, and google fonts -->
     <th:block th:replace="fragments/head :: header"/>
-    <th:block th:replace="fragments/navbar :: navbarCss" />
-
+    <th:block th:replace="fragments/navbar :: navbarCss"/>
 
 
     <link rel="stylesheet" type="text/css" href="/css/profile.css"/>
-
 
 
     <script src="//static.filestackapi.com/filestack-js/2.x.x/filestack.min.js"></script>
@@ -20,8 +18,6 @@
 <body>
 <!-- navbar -->
 <th:block th:replace="fragments/navbar :: navbar"/>
-
-
 
 
 <div class="container mt-3">
@@ -36,12 +32,19 @@
             </div>
             <!--edit user profile-->
             <div class="row mb-2">
-                <div class="col"><button type="button" class="btn btn-block btn-outline-secondary"><a style="color: white;text-decoration: none" th:href="@{/edit}">Edit Profile</a></button></div>
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-outline-secondary"><a
+                            style="color: white;text-decoration: none" th:href="@{/edit}">Edit Profile</a></button>
+                </div>
             </div>
 
             <!--create startup-->
             <div class="row">
-                <div class="col"><button type="button" class="btn btn-block btn-outline-secondary"><a style="color: white;text-decoration: none" th:href="@{/create/startup}">Create start up</a></button></div>
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-outline-secondary"><a
+                            style="color: white;text-decoration: none" th:href="@{/create/startup}">Create start up</a>
+                    </button>
+                </div>
             </div>
 
             <div th:if="${uploadResume != null }" class="row">
@@ -53,98 +56,112 @@
             <!--upload and submit resume-->
             <div class="row">
                 <div class="col">
-                    <form th:name="resumeForm" class="mt-2 mb-2" th:action="@{/submit-resume}" th:method="POST" th:object="${resume}">
+                    <form th:name="resumeForm" class="mt-2 mb-2" th:action="@{/submit-resume}" th:method="POST"
+                          th:object="${resume}">
                         <input id="resumeFile" th:field="*{path}" type="hidden"/>
-                        <input id="resumeButton" type="button" class="btn btn-block btn-outline-secondary" value="Upload resume"/>
+                        <input id="resumeButton" type="button" class="btn btn-block btn-outline-secondary"
+                               value="Upload resume"/>
                     </form>
                 </div>
             </div>
 
             <div class="row" th:if="${user.resume != null}">
-                <div class="col"><button type="button" class="mb-2 btn btn-block btn-outline-secondary"><a style="color: white;text-decoration: none" th:href="@{${user.resume.path}}">My Resume</a></button></div>
-            </div>
-
-
-<!-- startups names-->
-
-            <div class="row" th:each="startup : ${user.startups}">
                 <div class="col">
-               <h3><span><button type="button" class="btn btn-block btn-outline-secondary"><a style="color: white;text-decoration: none" th:href="@{'/showpage/' + ${startup.id}}"
-                                    th:text="${startup.name}"></a></button></span></h3>
+                    <button type="button" class="mb-2 btn btn-block btn-outline-secondary"><a
+                            style="color: white;text-decoration: none" th:href="@{${user.resume.path}}">My Resume</a>
+                    </button>
                 </div>
             </div>
 
-        </div >
+
+            <!-- startups names-->
+
+            <div class="row" th:each="startup : ${user.startups}">
+                <div class="col">
+                    <h3><span><button type="button" class="btn btn-block btn-outline-secondary"><a
+                            style="color: white;text-decoration: none" th:href="@{'/showpage/' + ${startup.id}}"
+                            th:text="${startup.name}"></a></button></span></h3>
+                </div>
+            </div>
+
+        </div>
 
 
- <!--right side-->
+        <!--right side-->
         <!--<div class="col-lg-9 col-md-12 shadow-lg p-3 mb-5 rounded" style="background-color: rgba(234,238,241,0.33)">-->
         <div class="col-lg-9 col-md-12 shadow-lg p-3 mb-5 rounded" style="background-color: white">
 
 
-           <nav>
-               <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                   <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="false">Startups</a>
-                   <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="true">Dashboard</a>
-                   <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Submission</a>
-               </div>
-           </nav>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a th:if="${user.startups.size() > 0}" class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                           role="tab"
+                           aria-controls="nav-home" aria-selected="false">Startups</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                       aria-controls="nav-profile" aria-selected="false">Dashboard</a>
+                        <a th:if="${user.resume != null &amp;&amp; user.resume.jobs.size() > 0}" class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
+                           role="tab" aria-controls="nav-contact" aria-selected="false">Submission</a>
+                </div>
+            </nav>
 
-           <div class="tab-content" id="nav-tabContent">
+            <div class="tab-content" id="nav-tabContent">
 
-             <!--tab 1  -->
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <!--tab 1  -->
+                <div th:if="${user.startups.size() > 0}">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
 
-                    <div th:each="startup : ${user.startups}">
+                        <div th:each="startup : ${user.startups}">
 
-                                <div class="row">
-                                    <div class="col"><span th:text="${startup.name}"></span></div>
-                                </div>
+                            <div class="row">
+                                <div class="col"><span th:text="${startup.name}"></span></div>
+                            </div>
 
-                                <div class="row">
-                                    <div class="col"><p th:text="${startup.description}"></p></div>
-                                </div>
+                            <div class="row">
+                                <div class="col"><p th:text="${startup.description}"></p></div>
+                            </div>
 
-                                <div class="row">
-                                    <div class="col" th:text="${startup.address}"></div>
-                                </div>
+                            <div class="row">
+                                <div class="col" th:text="${startup.address}"></div>
+                            </div>
 
                             <div class="row mt-2">
                                 <div class="col">
 
 
-                                        <div class="row">
-                                            <div class="col">
+                                    <div class="row">
+                                        <div class="col">
 
-                                                    <a class="btn btn-outline-success btn-block" style="text-decoration: none" th:href="@{'/create/' + ${startup.id} + '/job'}">create job</a>
+                                            <a class="btn btn-outline-success btn-block" style="text-decoration: none"
+                                               th:href="@{'/create/' + ${startup.id} + '/job'}">create job</a>
 
-                                            </div>
-
-                                            <div class="col">
-
-                                                    <a class="btn btn-outline-warning btn-block" style="text-decoration: none" th:href="@{'/startup/' + ${startup.id} + '/edit'}">edit startup</a>
-
-                                            </div>
-
-                                            <div class="col">
-
-                                                    <a style="text-decoration: none" class="btn btn-outline-danger btn-block" th:href="@{'/startup/' + ${startup.id} + '/delete'}">delete startup</a>
-
-                                            </div>
                                         </div>
+
+                                        <div class="col">
+
+                                            <a class="btn btn-outline-warning btn-block" style="text-decoration: none"
+                                               th:href="@{'/startup/' + ${startup.id} + '/edit'}">edit startup</a>
+
+                                        </div>
+
+                                        <div class="col">
+
+                                            <a style="text-decoration: none" class="btn btn-outline-danger btn-block"
+                                               th:href="@{'/startup/' + ${startup.id} + '/delete'}">delete startup</a>
+
+                                        </div>
+                                    </div>
 
 
                                 </div>
                             </div>
-<hr/>
+                            <hr/>
+                        </div>
                     </div>
                 </div>
 
 
-
-
-<!--tab 2-->
+                <!--tab 2-->
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
 
@@ -152,34 +169,41 @@
                         <div th:each="job : ${startup.jobs}">
 
                             <div th:if="${job.resumes.size() > 0}">
-                                    <div th:each="resume : ${job.resumes}">
-                                        <h6><span th:text="${resume.owner.first_name}"></span> has applied to position <span th:text="${job.title}"></span> at <span th:text="${startup.name}"></span>
-                                            <span><a th:href="@{${resume.path}}">Click here to view submitted resume</a></span></h6>
+                                <div th:each="resume : ${job.resumes}">
+                                    <h6><span th:text="${resume.owner.first_name}"></span> has applied to position <span
+                                            th:text="${job.title}"></span> at <span th:text="${startup.name}"></span>
+                                        <span><a
+                                                th:href="@{${resume.path}}">Click here to view submitted resume</a></span>
+                                    </h6>
 
 
-                                                    <div class="row">
+                                    <div class="row">
 
-                                                        <div class="col">
+                                        <div class="col">
 
-                                                            <form th:action="@{'/resume/' + ${job.id} + '/interested/' + ${resume.owner.id}}"
-                                                                  method="post">
-                                                                <input type="submit" class="btn btn-outline-success btn-block" value="Interested" />
-                                                            </form>
+                                            <form th:action="@{'/resume/' + ${job.id} + '/interested/' + ${resume.owner.id}}"
+                                                  method="post">
+                                                <input type="submit" class="btn btn-outline-success btn-block"
+                                                       value="Interested"/>
+                                            </form>
 
-                                                        </div>
+                                        </div>
 
-                                                        <div class="col">
+                                        <div class="col">
 
-                                                            <form th:action="@{'/resume/' + ${job.id} + '/pass/' + ${resume.id}}" method="post">
-                                                                <input type="submit" class="btn btn-outline-danger btn-block" value="not Interested" />
-                                                            </form><br/>
+                                            <form th:action="@{'/resume/' + ${job.id} + '/pass/' + ${resume.id}}"
+                                                  method="post">
+                                                <input type="submit" class="btn btn-outline-danger btn-block"
+                                                       value="not Interested"/>
+                                            </form>
+                                            <br/>
 
-                                                        </div>
+                                        </div>
 
 
-                                                    </div>
-                                        <hr/>
                                     </div>
+                                    <hr/>
+                                </div>
                             </div>
 
                         </div>
@@ -200,36 +224,33 @@
                 </div>
 
 
+                <!--tab 3-->
+                <div th:if="${user.resume != null &amp;&amp; user.resume.jobs.size() > 0}">
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 
 
-    <!--tab 3-->
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <div th:each="job : ${user.resume.jobs}">
+                            <div class="row">
+                                <div class="col">
 
+                                    <h6>Job title:</h6>
+                                    <h6 th:text="${job.title}"></h6>
 
-                                <div th:if="${user.resume != null &amp;&amp; user.resume.jobs.size() > 0}">
-
-                                    <div th:each="job : ${user.resume.jobs}">
-                                            <div class="row">
-                                                <div class="col">
-
-                                                    <h6>Job title:</h6>
-                                                    <h6 th:text="${job.title}"></h6>
-
-                                                </div>
-                                            </div>
-
-
-                                            <div class="row">
-                                                <div class="col">
-
-                                                    <h6>Job Description:</h6>
-                                                    <p th:text="${job.description}"></p>
-
-                                                </div>
-                                            </div>
-                                            <hr/>
-                                    </div>
                                 </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col">
+
+                                    <h6>Job Description:</h6>
+                                    <p th:text="${job.description}"></p>
+
+                                </div>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
 
                 </div>
 
@@ -242,27 +263,22 @@
 </div>
 
 
+<th:block th:replace="fragments/head :: scripts"/>
 
 
-<th:block th:replace="fragments/head :: scripts" />
+<script>
+    document.getElementById("resumeButton").addEventListener("click", function () {
+        var client = filestack.init('ANjhOz5feQ0OWiw2r1EEgz');
+        client.picker({
+            onFileUploadFinished: function (response) {
+                this.value = "https://cdn.filestackcontent.com/" + (response.handle);
+                document.getElementById("resumeFile").value = this.value
+                document.forms["resumeForm"].submit();
+            }
+        }).open();
+    })
 
-
-
-
-                                <script>
-                                    document.getElementById("resumeButton").addEventListener("click", function () {
-                                        var client = filestack.init('ANjhOz5feQ0OWiw2r1EEgz');
-                                        client.picker({
-                                            onFileUploadFinished: function (response) {
-                                                this.value = "https://cdn.filestackcontent.com/" + (response.handle);
-                                                document.getElementById("resumeFile").value = this.value
-                                                document.forms["resumeForm"].submit();
-                                            }
-                                        }).open();
-                                    })
-
-                                </script>
-
+</script>
 
 
 </body>
