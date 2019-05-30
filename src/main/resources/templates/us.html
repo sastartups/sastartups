@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>something</title>
+
+        <th:block th:replace="fragments/head :: header" />
+        <th:block th:replace="fragments/navbar :: navbarCss" />
+
+        <style>
+
+            body {
+                background-image: url("/img/formback.png");
+            }
+
+            img {
+                height: 65%;
+                width: 100%;
+                margin-top: 2rem;
+            }
+
+            .col-md-4 {
+                height: 37rem;
+                border-radius: 0.3rem;
+                background-color: white;
+                margin-left: 2.3rem;
+            }
+
+            div#col3 {
+                margin-right: -10rem;
+            }
+
+            #container1 {
+                margin: 0;
+            }
+
+            @media (max-width: 767.98px) {
+
+                  #col1 {
+                      margin-bottom: 2rem;
+                  }
+
+                #col2 {
+                    margin-bottom: 2rem;
+                }
+
+                div#col3 {
+                    margin-right: -10rem;
+                    width: 93%;
+                }
+
+            }
+
+        </style>
+
+    </head>
+    <body>
+
+        <th:block th:replace="fragments/navbar :: navbar" />
+        <!--<br/><br/>-->
+        <!--<div id="container1" class="container">-->
+            <!--<div class="row">-->
+                <!--<div id="col1" style="background-color: #f8f9fa" class="col-md-4">-->
+                    <!--<img src="/img/luis.jpg" />-->
+                    <!--<br/><br/>-->
+                    <!--<h3>linkedin:</h3>-->
+                <!--</div>-->
+                <!--<div id="col2" class="col-md-4">-->
+                    <!--<img src="/img/personal2.jpeg" />-->
+                <!--</div>-->
+                <!--<div id="col3" class="col-md-4">-->
+                    <!--<img src="/img/arash.jpg" />-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <br/><br/>
+        <div id="container1" class="container">
+            <div class="row">
+                <div id="col1" class="col-md-4">
+                    <img src="/img/luis.jpg" />
+                    <br/><br/><br/>
+                    <div class="row">
+                        <div class="mx-auto">
+                            <a th:href="@{https://alumni.codeup.com/students/618}"><h1>Luis Robles</h1></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="col2" class="col-md-4">
+                    <img src="/img/personal2.jpeg" />
+                    <br/><br/><br/>
+                    <div class="row">
+                        <div class="mx-auto">
+                             <a th:href="@{https://alumni.codeup.com/students/624}"><h1>Joshua Markasky</h1></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="col3" class="col-md-4">
+                    <img src="/img/arash.jpg" />
+                    <br/><br/><br/>
+                    <div class="row">
+                        <div class="mx-auto">
+                             <a th:href="@{https://alumni.codeup.com/students/630}"><h1>Arash Arghavan</h1></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <th:block th:replace="fragments/head :: scripts" />
+
+    </body>
+</html>
