@@ -284,9 +284,9 @@ public class UserController {
 
     @PostMapping("/resume/{jobId}/interested/{resumeId}")
     public String interestedApplication(@PathVariable long jobId, @PathVariable long resumeId) {
-        User user = userDao.findOne(resumeId);
         Job job = jobDao.findOne(jobId);
-        Notification notification = new Notification("Good news, " + job.getStartup().getName() + " has reviewed your resume, and are interested in meeting for an interview. Check your email for next steps.", user);
+        Resume resume = resumeDao.findOne(resumeId);
+        Notification notification = new Notification("Good news, " + job.getStartup().getName() + " has reviewed your resume, and are interested in meeting for an interview. Check your email for next steps.", resume.getOwner());
         notificationRepo.save(notification);
         return "redirect:/userProfile";
 
