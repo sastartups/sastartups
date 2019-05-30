@@ -55,6 +55,7 @@ public class StartupController {
     //    show one startup and details
     @GetMapping("/showpage/{id}")
     public String showOne(@PathVariable Long id, Model vmodel) {
+        Startup startup = startupDao.findOne(id);
         if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
             User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User dbUser = userDao.findOne(sessionUser.getId());
@@ -62,11 +63,19 @@ public class StartupController {
             vmodel.addAttribute("navNotifications", notificationRepo.findTop4ByUserOrderByIdDesc(dbUser));
             vmodel.addAttribute("count", notificationRepo.countByUser(dbUser));
 
+//            for(Job job : startup.getJobs()){
+//                for(Resume resume: job.getResumes()){
+//                    if(resume.getOwner().getId() == dbUser.getId()){
+//                        vmodel.addAttribute("notApplied", false );
+//                    }else{
+//                        vmodel.addAttribute("notApplied", true );
+//                    }
+//                }
+//            }
 
         } else {
             vmodel.addAttribute("user", null);
         }
-        Startup startup = startupDao.findOne(id);
         vmodel.addAttribute("oneStartup", startup);
         return "startups/showone";
     }
