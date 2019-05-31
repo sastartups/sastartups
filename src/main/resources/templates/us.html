@@ -14,7 +14,6 @@
 
             img {
                 width: 100%;
-                margin-top: 2rem;
                 background-color: white;
                 border-radius: .3rem;
             }
@@ -22,6 +21,8 @@
             .col-md-4 {
                 border-right: 1px solid black;
                 border-left: 1px solid black;
+                border-bottom: 1px solid black;
+                border-top: 1px solid black;
                 background-color: white;
             }
 
@@ -31,55 +32,54 @@
     <body>
 
         <th:block th:replace="fragments/navbar :: navbar" />
-        <!--<br/><br/>-->
-        <!--<div id="container1" class="container">-->
-            <!--<div class="row">-->
-                <!--<div id="col1" style="background-color: #f8f9fa" class="col-md-4">-->
-                    <!--<img src="/img/luis.jpg" />-->
-                    <!--<br/><br/>-->
-                    <!--<h3>linkedin:</h3>-->
-                <!--</div>-->
-                <!--<div id="col2" class="col-md-4">-->
-                    <!--<img src="/img/personal2.jpeg" />-->
-                <!--</div>-->
-                <!--<div id="col3" class="col-md-4">-->
-                    <!--<img src="/img/arash.jpg" />-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-
         <br/><br/>
         <div id="container1" class="container">
             <div class="row">
-                <div id="col1" class="col-md-4">
-                    <img src="/img/luis.jpg" />
-                    <br/><br/><br/>
+                <div id="col2" class="col-md-4">
                     <div class="row">
                         <div class="mx-auto">
-                            <a th:href="@{https://alumni.codeup.com/students/618}"><h1>Luis Robles</h1></a>
-                            <a th:href="@{https://www.linkedin.com/in/luisroblesaguilar/}"><h2>LinkedIn: in/luisroblesaguilar/</h2></a>
+                            <a th:href="@{https://alumni.codeup.com/students/624}"><h3>Joshua Markasky</h3></a>
+                            <hr/>
                         </div>
                     </div>
-                </div>
-                <div id="col2" class="col-md-4">
                     <img src="/img/personal2.jpeg" />
                     <br/><br/><br/>
                     <div class="row">
                         <div class="mx-auto">
-                             <a th:href="@{https://alumni.codeup.com/students/624}"><h1>Joshua Markasky</h1></a>
-                            <a th:href="@{https://www.linkedin.com/in/joshua-markasky/}"><h2>LinkedIn: in/joshua-markasky/</h2></a>
-
+                            <a th:href="@{https://www.linkedin.com/in/joshua-markasky/}"><h5>LinkedIn: /joshua-markasky</h5></a>
+                            <a style="margin-bottom: 2rem;" th:href="@{https://github.com/JoshMarkasky}"><h5>Github: /JoshMarkasky</h5></a>
                         </div>
                     </div>
                 </div>
                 <div id="col3" class="col-md-4">
+                    <div class="row">
+                        <div class="mx-auto">
+                            <a th:href="@{https://alumni.codeup.com/students/630}"><h3>Arash Arghavan</h3></a>
+                            <hr/>
+                        </div>
+                    </div>
                     <img src="/img/arash.jpg" />
                     <br/><br/><br/>
                     <div class="row">
                         <div class="mx-auto">
-                             <a th:href="@{https://alumni.codeup.com/students/630}"><h1>Arash Arghavan</h1></a>
-                            <a th:href="@{https://www.linkedin.com/in/arash-arghavan/}"><h2>LinkedIn: in/arash-arghavan/</h2></a>
-
+                            <a th:href="@{https://www.linkedin.com/in/arash-arghavan/}"><h5>LinkedIn: in/arash-arghavan/</h5></a>
+                            <a style="margin-bottom: 2rem;" th:href="@{https://github.com/arasharghavan}"><h5>Github: /arasharghavan</h5></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="col1" class="col-md-4">
+                    <div class="row">
+                        <div class="mx-auto">
+                            <a th:href="@{https://alumni.codeup.com/students/618}"><h3>Luis Robles</h3></a>
+                            <hr/>
+                        </div>
+                    </div>
+                    <img src="/img/luis.jpg" />
+                    <br/><br/><br/>
+                    <div class="row">
+                        <div class="mx-auto">
+                            <a th:href="@{https://www.linkedin.com/in/luisroblesaguilar/}"><h5>LinkedIn: in/luisroblesaguilar/</h5></a>
+                            <a style="margin-bottom: 2rem;" th:href="@{https://github.com/laroblesaguilar}"><h5>Github: /laroblesaguilar</h5></a>
                         </div>
                     </div>
                 </div>
