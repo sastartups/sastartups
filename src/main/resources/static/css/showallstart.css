@@ -29,17 +29,6 @@ h2{
     visibility: visible;
 }
 
-.texthide {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.textshow {
-    white-space: pre-line;
-    overflow: hidden;
-}
-
 #con1 {
     background-color: white;
     border-radius: .2rem;

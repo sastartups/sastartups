@@ -49,9 +49,9 @@
         <div class="col-md-6">
             <div id='map' style='width: 100%; height: 15rem;'></div>
             <p id="address" th:text="${oneStartup.address}"></p>
-        </div>
+        </div><br/>
         <div class="col-md-6">
-            <h4>Description:</h4>
+            <h4 style="margin-top: 1rem;">Description:</h4>
             <p th:text="${oneStartup.description}"></p>
         </div>
     </div>
@@ -62,11 +62,19 @@
 
 <div id="con1" class="container">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4"><br/>
             <h4>Available Jobs</h4>
-            <hr />
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Job Title</h4>
+        </div>
+        <div class="offset-md-2 col-md-4">
+            <h4>Job Description</h4>
+        </div>
+    </div>
+    <hr style="margin-top: 0; margin-bottom: 1rem;"/>
     <div th:each="item : ${oneStartup.jobs}">
         <div class="row">
             <div class="col-md-4">
