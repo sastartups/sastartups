@@ -21,7 +21,7 @@
 
 
 <div class="container mt-3">
-    <div class="row">
+    <div class="row" style="height: 40em">
 
         <!--left side-->
         <div class="col-lg-3 col-md-12 shadow-lg p-3 mb-5 rounded">
@@ -136,21 +136,21 @@
                                         <div class="col">
 
                                             <a class="btn btn-outline-success btn-block" style="text-decoration: none"
-                                               th:href="@{'/create/' + ${startup.id} + '/job'}">create job</a>
+                                               th:href="@{'/create/' + ${startup.id} + '/job'}">Create Job</a>
 
                                         </div>
 
                                         <div class="col">
 
-                                            <a class="btn btn-outline-warning btn-block" style="text-decoration: none"
-                                               th:href="@{'/startup/' + ${startup.id} + '/edit'}">edit startup</a>
+                                            <a class="btn btn-outline-info btn-block" style="text-decoration: none"
+                                               th:href="@{'/startup/' + ${startup.id} + '/edit'}">Edit Startup</a>
 
                                         </div>
 
                                         <div class="col">
 
                                             <a style="text-decoration: none" class="btn btn-outline-danger btn-block"
-                                               th:href="@{'/startup/' + ${startup.id} + '/delete'}">delete startup</a>
+                                               th:href="@{'/startup/' + ${startup.id} + '/delete'}">Delete Startup</a>
 
                                         </div>
                                     </div>
