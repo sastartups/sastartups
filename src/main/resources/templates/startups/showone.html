@@ -63,21 +63,19 @@
 <div id="con1" class="container">
     <div class="row">
         <div class="col-md-4">
-            <h4>Jobs Available</h4>
+            <h4>Available Jobs</h4>
             <hr />
         </div>
     </div>
     <div th:each="item : ${oneStartup.jobs}">
         <div class="row">
             <div class="col-md-4">
-                <h4>job title</h4>
-                <p th:text="${item.title}"></p>
+                <h4 th:text="${item.title}"></h4>
                 <div th:each="item : ${oneStartup.jobs}">
                 </div>
             </div>
             <div class="col-md-8">
-                <h4>Job Description</h4>
-                <p th:text="${item.description}"></p>
+                <h4 th:text="${item.description}"></h4>
             </div>
         </div>
 
@@ -87,11 +85,9 @@
                 <span th:text="${notApplied}"></span>
             </div>
         <div th:if="${#authentication.principal.id != oneStartup.user.id}">
-
             <form th:action="@{'/apply/' + ${item.id} }" method="POST">
                 <button class="btn btn-primary ea">Easy Apply</button>
             </form>
-
             </div>
 
 
