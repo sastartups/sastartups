@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>something</title>
+        <title>About Us</title>
 
         <th:block th:replace="fragments/head :: header" />
         <th:block th:replace="fragments/navbar :: navbarCss" />
@@ -28,6 +28,8 @@
 
         </style>
 
+        <script src="https://kit.fontawesome.com/e81c808e47.js"></script>
+
     </head>
     <body>
 
@@ -45,10 +47,17 @@
                     <img src="/img/personal2.jpeg" />
                     <br/><br/><br/>
                     <div class="row">
-                        <div class="mx-auto">
-                            <a th:href="@{https://www.linkedin.com/in/joshua-markasky/}"><h5>LinkedIn: /joshua-markasky</h5></a>
-                            <a style="margin-bottom: 2rem;" th:href="@{https://github.com/JoshMarkasky}"><h5>Github: /JoshMarkasky</h5></a>
+
+                        <div class="col-4 text-center">
+                            <a th:href="@{https://www.linkedin.com/in/joshua-markasky/}"><h1><i class="fab fa-linkedin"></i></h1></a>
                         </div>
+                        <div class="col-4 text-center">
+                            <a style="margin-bottom: 2rem;" th:href="@{https://alumni.codeup.com/students/624}"><img style="height: 40px;width: 40px" src="/img/codeup.png"/></a>
+                        </div>
+                        <div class="col-4 text-center">
+                            <a style="margin-bottom: 2rem;" th:href="@{https://github.com/JoshMarkasky}"><h1><i class="fab fa-github-alt"></i></h1></a>
+                        </div>
+
                     </div>
                 </div>
                 <div id="col3" class="col-md-4">
@@ -61,10 +70,17 @@
                     <img src="/img/arash.jpg" />
                     <br/><br/><br/>
                     <div class="row">
-                        <div class="mx-auto">
-                            <a th:href="@{https://www.linkedin.com/in/arash-arghavan/}"><h5>LinkedIn: in/arash-arghavan/</h5></a>
-                            <a style="margin-bottom: 2rem;" th:href="@{https://github.com/arasharghavan}"><h5>Github: /arasharghavan</h5></a>
-                        </div>
+
+                                <div class="col-4 text-center">
+                                    <a th:href="@{https://www.linkedin.com/in/arash-arghavan/}"><h1><i class="fab fa-linkedin"></i></h1></a>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <a style="margin-bottom: 2rem;" th:href="@{https://alumni.codeup.com/students/630}"><img style="height: 40px;width: 40px" src="/img/codeup.png"/></a>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <a style="margin-bottom: 2rem;" th:href="@{https://github.com/arasharghavan}"><h1><i class="fab fa-github-alt"></i></h1></a>
+                                </div>
+
                     </div>
                 </div>
                 <div id="col1" class="col-md-4">
@@ -77,10 +93,17 @@
                     <img src="/img/luis.jpg" />
                     <br/><br/><br/>
                     <div class="row">
-                        <div class="mx-auto">
-                            <a th:href="@{https://www.linkedin.com/in/luisroblesaguilar/}"><h5>LinkedIn: in/luisroblesaguilar/</h5></a>
-                            <a style="margin-bottom: 2rem;" th:href="@{https://github.com/laroblesaguilar}"><h5>Github: /laroblesaguilar</h5></a>
+
+                        <div class="col-4 text-center">
+                            <a th:href="@{https://www.linkedin.com/in/luisroblesaguilar/}"><h1><i class="fab fa-linkedin"></i></h1></a>
                         </div>
+                        <div class="col-4 text-center">
+                            <a style="margin-bottom: 2rem;" th:href="@{https://alumni.codeup.com/students/618}"><img style="height: 40px;width: 40px" src="/img/codeup.png"/></a>
+                        </div>
+                        <div class="col-4 text-center">
+                            <a style="margin-bottom: 2rem;" th:href="@{https://github.com/laroblesaguilar}"><h1><i class="fab fa-github-alt"></i></h1></a>
+                        </div>
+
                     </div>
                 </div>
             </div>
