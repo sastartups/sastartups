@@ -275,7 +275,7 @@ public class UserController {
                 jobs.remove(job);
                 userResume.setJobs(jobs);
                 resumeDao.save(userResume);
-                Notification notification = new Notification("" + job.getStartup().getName() + " has reviewed your resume, and at this time they have decided to move on with other candidates. Thank you for your interest.", userResume.getOwner());
+                Notification notification = new Notification("" + job.getStartup().getName() + " has reviewed your resume for position " + job.getTitle() + ", and at this time they have decided to move on with other candidates. Thank you for your interest.", userResume.getOwner());
                 notificationRepo.save(notification);
                 resume.remove();
             }
@@ -290,7 +290,7 @@ public class UserController {
     public String interestedApplication(@PathVariable long jobId, @PathVariable long resumeId) {
         Job job = jobDao.findOne(jobId);
         User user = userDao.findOne(resumeId);
-        Notification notification = new Notification("Good news, " + job.getStartup().getName() + " has reviewed your resume, and are interested in meeting for an interview. Check your email for next steps.", user);
+        Notification notification = new Notification("Good news, " + job.getStartup().getName() + " has reviewed your resume for position " + job.getTitle() + " and are interested in meeting for an interview. Check your email for next steps.", user);
         notificationRepo.save(notification);
         return "redirect:/userProfile";
 
