@@ -45,7 +45,7 @@ public class UserController {
 
     }
 
-    @GetMapping("/us")
+    @GetMapping("/aboutus")
     public String us(){
         return "us";
     }
